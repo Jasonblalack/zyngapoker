@@ -17,4 +17,19 @@ Concepts
 * Locales: Jasy includes full-blown support for locales as defined by unicode.org and the CLDR archive. It contains informations about number and date formats, country names, etc.
 * Translations: This is based on gettext-files. The main differentiator from a lot of other implementations is that Jasy can inline-replace translations requests during building a specific permutation.
 
+Requirements
+------------
+
+Jasy requires a [Python 3](http://www.python.org/) installation. It does not need any external modules and any other installations. Python 2 comes installed on a lot of machines by default at the moment. Even though Python 3 is out for a few years already (released early 2009) it is still not installed by default on a lot of machines. Luckily installation is pretty straightforward though. 
+
+[Python 3.2](http://www.python.org/download/releases/) is the current version. It is not suggested to install any older 3.x version with Jasy. There are installers available for Windows and Mac. Both should work fine. For Linux users it is suggested to use their included software manager to look out for Python 3.
+
+After installing type `python3 -V` on the command line to verify that it is working. It should output something like `Python 3.2.1`.
+
+Build Script
+------------
+
+
+
+
 
