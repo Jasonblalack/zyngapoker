@@ -24,8 +24,10 @@ Classes are a central concept in most object-oriented languages, and as a progra
 
 Classes in Jasy do not support single inheritance. We believe in new ideas like compositing functionality. Using interfaces instead of deep inheritance is the better way to deal with complex requirements. Even the old Java guys would [prefer a Java without a "extend" keyword nowadays](http://www.javaworld.com/cgi-bin/mailto/x_java.cgi?pagetosend=/export/home/httpd/javaworld/javaworld/jw-08-2003/jw-0801-toolbox.html&pagename=/javaworld/jw-08-2003/jw-0801-toolbox.html&pageurl=http://www.javaworld.com/javaworld/jw-08-2003/jw-0801-toolbox.html&site=jw_core). 
 
+There is a good article on compositing and duck typing as preferred by the Jasy Class declaration: [OOP The Good Parts: Message Passing, Duck Typing, Object Composition, and not Inheritance](http://fitzgeraldnick.com/weblog/39/)
 
 
 Interfaces
 ----------
 
+Interfaces are used to validate whether a class matches a specific set of functionality. This is somewhat comparable to the [duck typing](http://en.wikipedia.org/wiki/Duck_typing) pattern mentioned above. A Interface can define the methods to implement, the properties to offer and the events to fire. 
