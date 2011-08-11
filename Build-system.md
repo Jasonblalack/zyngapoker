@@ -21,13 +21,24 @@ Key Concepts
 
 Before beginning writing your first build script it might makes sense to learn about a few key concepts of Jasy. You don't need to understand everything in detail yet.
 
-* Tasks: A task is a method which is executable from the command line using e.g. `generate.py taskname`.
-* Session: Every time you are dealing with processing code from projects you create a session instance.
-* Projects: A project is any folder with JavaScript files, assets and/or translations. The main project is the one which contains the currently executed build script. Each project needs to have a `manifest.json` file to define its public name and configuration.
-* Fields: A build-time configurable setting which is used by the code of a project which defines it. The build script of the main project is able to enable permutations for all known fields and can override any defaults from the defining project.
-* Permutations: A permutation is a combination of values for different fields e.g. debug=off and engine=webkit is one possible permutation. Every new field which is enabled as a permutation multiplies the number of created permutations.
-* Locales: Jasy includes full-blown support for locales as defined by unicode.org and the CLDR archive. It contains informations about number and date formats, country names, etc.
-* Translations: This is based on gettext-files. The main differentiator from a lot of other implementations is that Jasy can inline-replace translations requests during building a specific permutation.
+* **Tasks**: A task is a method which is executable from the command line using e.g. `generate.py taskname`.
+* **Session**: Every time you are dealing with processing code from projects you create a session instance.
+* **Projects**: A project is any folder with JavaScript files, assets and/or translations. The main project is the one which contains the currently executed build script. Each project needs to have a `manifest.json` file to define its public name and configuration.
+* **Fields**: A build-time configurable setting which is used by the code of a project which defines it. The build script of the main project is able to enable permutations for all known fields and can override any defaults from the defining project.
+* **Permutations**: A permutation is a combination of values for different fields e.g. debug=off and engine=webkit is one possible permutation. Every new field which is enabled as a permutation multiplies the number of created permutations.
+* **Locales**: Jasy includes full-blown support for locales as defined by unicode.org and the CLDR archive. It contains informations about number and date formats, country names, etc.
+* **Translations**: This is based on gettext-files. The main differentiator from a lot of other implementations is that Jasy can inline-replace translations requests during building a specific permutation.
+
+Basic Manifest
+--------------
+
+Each project must have a `manifest.json`. This file defines the name of the project and optionally a few other things like supported fields and their configuration.
+
+
+
+Project Types
+-------------
+
 
 Build Script
 ------------
