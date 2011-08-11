@@ -7,14 +7,3 @@ Tooling systems which are based on a [DSL](http://en.wikipedia.org/wiki/Domain-s
 
 Jasy is to some point comparable to the ideas also implemented in build systems like [SCons](http://www.scons.org/).
 
-FAQ
----
-
-### Do I need to know how to program in Python to use SCons?
-
-No, you can use Jasy very successfully even if you don't know how to program in Python.
-
-With Jasy, you use Python functions to tell a engine about your projects and output wishes. You can look at these simply as different commands that you use to specify what software you want built. Jasy takes care of the rest, including figuring out dependencies etc.
-
-Of course, if you do know Python, you can use its scripting capabilities to do more sophisticated things in your build: construct lists of files, manipulate file names dynamically, handle flow control (loops and conditionals) in your build process, etc.
-
