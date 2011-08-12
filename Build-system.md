@@ -45,6 +45,14 @@ In a project (kind: classic) called `notebook` a file placed in `src/view/Prefer
 
 Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
 
+Fuzzy names allows you to have class names which differ from file names. This is by no means thought as the ideal way to do, but is sometimes helpful when you don't own a specific project or a in the middle of a refactoring. If `fuzzy` is enabled in a project every class in the project needs to have a documentation comment with the JavaDoc-like `@name {package.ClassName}` e.g.
+
+    /** 
+     * @name {my.ui.Button} 
+     */
+
+As soon as fuzzy mode is enabled classes without such a comment are regarded as errors and prevent the build script from succeeding.
+
 ### Assets
 
 Assets will be merged and do not behave like classes. Conflict resolution works in direction of adding projects to the session in your build script. In works on a file-by-file basis. Projects which are registered later win over projects registered earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations.
@@ -93,9 +101,9 @@ Pretty simple. The `projectname` needs to be unique in all the projects you are 
 These are all the top-level keys which are supported:
 
 * **name**: The unique name of the project (defaults to the basename of the project folder)
-* **kind**: This defines the structure inside the project. For alot of typical structures this just works without any configuration. For more information take a look at the section "Project Kinds".
-* **package**: By default the package is identical to the name of the project. This means that if your project is called `my`, Jasy thinks that every class or asset in this project should be identified via the `my.`-string in front of it e.g. `my.ui.Button`, `my.io.Ajax`, etc. If the project name differs from the package you use, or all files are regarded as being non-sandboxed inside a package, you are able to override the package via this configuration flag.
-* **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. If configured with `true` every class in the project needs to have a documentation comment with the JavaDoc-like `@name {package.ClassName}`. Such a documentation comment looks like `/** @name {my.ui.Button} */`. As soon as fuzzy mode is enabled classes without such a comment are regarded as errors.
+* **kind**: This defines the structure inside the project. Should work automatically in most cases.
+* **package**: By default the package is identical to the name of the project. See the naming section above for details.
+* **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. 
 * **fields**: Configures the fields which are defined and used by the project. Fields are automatically made available to every project using the project defining them. In the build script one can also activate fields to being permutated into specicialized output files/folders. 
 
 ## Build Script
