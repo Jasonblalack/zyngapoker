@@ -45,7 +45,7 @@ Public names exported from JavaScript code have to be unique across all projects
 
 ### Assets
 
-Something different happens for assets. These will be merged. Conflict resolution works in direction of adding projects to the session in your build script. Projects which are registered later win over projects registered earlier. This allows to override assets or translations from a library project you use in your application project. This is fine for using data from external repositories or company standards and still having the possibility to easily override single assets or translations.
+Assets will be merged and do not behave like classes. Conflict resolution works in direction of adding projects to the session in your build script. In works on a file-by-file basis. Projects which are registered later win over projects registered earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations.
 
 Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `manifest.json` to an empty string.
 
@@ -54,7 +54,7 @@ In the default configuration these assets will automatically get assigned to the
     source/asset/icon/save.png => "notebook/icon/save.png"
     source/asset/icon/open.png => "notebook/icon/open.png"
 
-You use these assets by passing this asset ID through `jasy.io.Asset.toUri(assetId) => fullUrl`. In Jasy powered projects you don't have to deal with file system locations anymore when using `jasy.io.Asset` together with asset indexing. 
+To use these assets pass the asset ID through `jasy.io.Asset.toUri(assetId) => fullUri`. In Jasy powered projects you don't have to deal (and shouldn't deal) with file system locations (or relative paths) anymore. Just use `jasy.io.Asset` together with asset indexing via the build tools.
 
 To override icons from e.g. your companies icon pool, the behavior of this ID assignment changes. This means you have to have a sub folder which represents your application name as well as one representing the name of the other project e.g.:
 
@@ -68,7 +68,11 @@ The default of injecting the project name automatically in the namespaces is a g
 
 ### Translations
 
-Translations behave similar to assets. But there is no namespacing at all. All IDs used with the translation engine are regarded as top-level. This is because one normally prefer English sentences like `Save to...` in code instead of logical IDs for translation files. It makes not really a lot of sense to namespace sentences. You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to place any placeholders and make it visible for translators where dynamic data is inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
+Translations behave similar to assets, but there is no namespacing at all. All IDs used with the translation engine are regarded as top-level. This is because one normally prefer English sentences like `Save to...` in code instead of logical IDs for translation files. It makes not really a lot of sense to namespace sentences. 
+
+You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to use any placeholders and make it visible for translators where dynamic data is planned to be inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
+
+Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant => language => default` happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation.
 
 ## Manifest
 
