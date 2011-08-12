@@ -110,34 +110,36 @@ These are all the top-level keys which are supported:
 
 The most trivial example of a build scriot
 
-    # Extend PYTHONPATH with 'lib'
-    import sys, os
-    sys.path.insert(0, "/path/to/jasy")
+```python
+# Extend PYTHONPATH with 'lib'
+import sys, os
+sys.path.insert(0, "/path/to/jasy")
 
-    # Import JavaScript tooling
-    from jasy import *
+# Import JavaScript tooling
+from jasy import *
 
-    @task
-    def simple():
-        # Setup session
-        session = Session()
-        session.addProject(Project("."))
+@task
+def simple():
+    # Setup session
+    session = Session()
+    session.addProject(Project("."))
 
-        # Collecting projects
-        resolver = Resolver(session.getProjects())
-        resolver.addClassName("notebook.Application")
-        
-        # Resolving classes
-        classes = Sorter(resolver).getSortedClasses()
-        
-        # Compressing classes
-        compressedCode = Combiner(classes).getCompressedCode()
-        
-        # Writing files
-        writefile("build/simple.js", compressedCode)
+    # Collecting projects
+    resolver = Resolver(session.getProjects())
+    resolver.addClassName("notebook.Application")
 
-    # Execute Jasy
-    run()
+    # Resolving classes
+    classes = Sorter(resolver).getSortedClasses()
+
+    # Compressing classes
+    compressedCode = Combiner(classes).getCompressedCode()
+
+    # Writing files
+    writefile("build/simple.js", compressedCode)
+  
+# Execute Jasy
+run()
+```
 
 ## Fields & Permutations
 
