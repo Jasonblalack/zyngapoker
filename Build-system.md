@@ -48,7 +48,7 @@ Public names exported from JavaScript code have to be unique across all projects
 Fuzzy names allows you to have class names which differ from file names. This is by no means thought as the ideal way to do, but is sometimes helpful when you don't own a specific project or a in the middle of a refactoring. If `fuzzy` is enabled in a project every class in the project needs to have a documentation comment with the JavaDoc-like `@name {package.ClassName}` e.g.
 
     /** 
-     * @name {my.ui.Button} 
+     * @name {notebook.ui.Button} 
      */
 
 As soon as fuzzy mode is enabled classes without such a comment are regarded as errors and prevent the build script from succeeding.
@@ -104,11 +104,13 @@ These are all the top-level keys which are supported:
 * **kind**: This defines the structure inside the project. Should work automatically in most cases.
 * **package**: By default the package is identical to the name of the project. See the naming section above for details.
 * **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. 
-* **fields**: Configures the fields which are defined and used by the project. Fields are automatically made available to every project using the project defining them. In the build script one can also activate fields to being permutated into specicialized output files/folders. 
+* **fields**: Configures the fields which are defined and used by the project. See section about fields and permutations for details.
 
 ## Build Script
 
 
+## Fields & Permutations
 
+Fields are automatically made available to every project using the project defining them. In the build script one can also activate fields to being permutated into specicialized output files/folders. 
 
 
