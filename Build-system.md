@@ -74,7 +74,7 @@ Translations behave similar to assets, but there is no namespacing at all. All I
 
 You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to use any placeholders and make it visible for translators where dynamic data is planned to be inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
 
-Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant (de_AT) => language (de) => default` (en) happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation.
+Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant (de_AT) => language (de) => default (en)` happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation.
 
 ## Manifest
 
@@ -86,7 +86,9 @@ A simple manifest file looks like this:
       name : "projectname"
     }
 
-The `projectname` needs to be unique in all the projects you are using. 
+Pretty simple. The `projectname` needs to be unique in all the projects you are using. At name automatically defaults to the project's folder name. If that okay it's even okay to just leave it nearly empty:
+
+    {}
 
 These are all the top-level keys which are supported:
 
