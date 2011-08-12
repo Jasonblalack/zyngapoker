@@ -167,7 +167,7 @@ run()
 
 ## Fields
 
-Fields allow for configuration flags in projects. They are shared by all projects e.g. an application using a library project also inherits all fields defined by this library. Conflicts result in an exception during build time. Be careful on how you name your fields. It is not uncommon to prefix library specific fields with the project name e.g. "richtext.table" instead of just "table". There is nothing enforced here, though, as there might be also common useful names like "debug".
+Fields allow for configuration flags in projects. They are shared by all projects e.g. an application using a library project also inherits all fields defined by this library. Conflicts result in an exception during build time. Be careful on how you name your fields. It is not uncommon to prefix library specific fields with the project name e.g. `richtext.table` instead of just `table`. There is nothing enforced here, though, as there might be also common useful names like `debug`.
 
 Fields can be configured using these keys:
 
@@ -175,12 +175,36 @@ Fields can be configured using these keys:
 * `check`: The check to apply to the detected value for validation. Value could be either one of `"Boolean"`, `"String"`, `"Number"` or a list of possible values e.g. `["small", "medium", "large"]`
 * `default`: Defines a default value. Used when validation fails or no value was detected.
 
-You can configure a field in your build script using:
+Each field it is automatically tested via the `detect` class defined in the project's configuration and filled with a value. These detection classes could have a static field `VALUE` or a getter `get(field)` which should return the value of the given field. Using getter methods one can share a detection class for multiple fields (e.g. to return server data, parse the query string, etc.)
+
+You can hard-configure a field in your build script using as well:
 
 ```python
 session.setField("name", value)
 ```
 
+In this case no detection happens. This is good to inject values from the outside e.g. the version number of your application.
+
+## Environment
+
+Inside your JavaScript you have access to the fields configured in your fields using the `Permutation` class.
+
+```js
+var appTitle = Permutation.getValue("app-title");
+
+if (Permutation.isSet("debug")) {
+  // debug code
+}
+
+if (Permutation.isSet("customer", "premium")) {
+  // premium customer
+} else if (Permutation.isSet("customer", "plus")) {
+  // plus customer
+} else {
+  // free customer
+}
+```
+
 ## Permutations
 
-
+Permutations build upon the field configuration. The idea is basically to combine separate values of different fields into a combination - a so called permutation. This permutation can be used to build a specific JavaScript file 
