@@ -20,10 +20,10 @@ Jasy supports different kind of projects. A project is something like your very 
 
 In most cases the kind of project is detected automatically based on its folder structure. A project author is able to override the kind of project using the `kind` keyword in the manifest. Supported values are: 
 
-* `full`: code in sub folder `source/class`, assets in `source/asset`, translations in `source/translation`.
-* `basic`: code in sub folders `class`, assets in `asset`, translations in `translation`
-* `classic`: code in sub folder `src`
-* `flat`: code in top-level project folder
+* `full`: code in `source/class`, assets in `source/asset`, translations in `source/translation`.
+* `basic`: code in `class`, assets in `asset`, translations in `translation`
+* `classic`: code and assets in `src`
+* `flat`: code and assets in top-level project folder
 
 For your own application the `full` variant makes the most sense as you typically also generate a folder `build` or `dist` for your optimized and distribution ready application build. Libraries which are itself not a full-blown application are typically perfectly fine with being kind of `basic`, `classic` or `flat`.
 
@@ -33,15 +33,19 @@ Each project needs to contain `manifest.json` file in its top-level folder. If y
 
 ## Name Handling
 
-Each file in a project needs to have a qualified name. For classes or modules this is typically identical to the name of the JavaScript object/function it defines.
+Each file in a project needs to have a qualified name. For classes or modules this is typically identical to the name of the public JavaScript object/function it defines/exports. A qualified name of any class or asset is automatically derived from the file name and location inside the project. Jasy currently only supports one name declaration per file. A class per file is required to make the dependency engine works well.
 
-A qualified name of any class or asset is automatically derived from the file name and location inside the project. 
+Let's start with a short example: In a project (kind: classic) called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. Jasy does not very whether you are exporting this global symbol: There is no name validation happening at the moment.
 
-For example: In a project (kind=classic) called `my` a file placed in `src/ui/Button.js` will be called `my.ui.Button`. As you can see the `my`-part is injected into the fully qualified name.
+Public names exported from JavaScript code have to be unique across all projects. If you completely override a full class under its original name it makes no sense to include it at all, right?
+
+Something different happens for assets and translations. These will be merged. Overriding works in direction of adding projects to the session. Later registered projects win when conflicts arise. This allows to override assets or translations from a library project you use in your application project. This is fine for using data from external repositories or company standards and still having the possibility to easily override single assets or translations.
+
+There is a JavaScript equivalent called `jasy.io.Asset` to resolve asset paths.
 
 ## Package Handling
 
-Typically each project should define exactly one top-level namespace. The top level namespace is automatically set to the name of the project. 
+Typically each project should define exactly one top-level namespace. The top level namespace is automatically set to the name of the project. This makes it easy for the developer using a project to understand what global name it defines.
 
 
 
