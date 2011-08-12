@@ -31,17 +31,19 @@ A fully custom folder structure is currently not supported. Jasy throws an error
 
 Each project needs to contain `manifest.json` file in its top-level folder. If your project is part of a larger project you might want to place the `manifest.json` file into a sub-folder of your larger project and point to this folder in your build script.
 
+JavaScript source code must have the extension `js` and export a single class. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be in the [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
+
 ## Names
 
 Each file in a project needs to have a qualified name. A qualified name of any class or asset is automatically derived from the file name and location inside the project.
 
 ### Classes
 
-For classes this should be identical to the name it defines/exports. Jasy currently only supports one name declaration per file. A class per file is required to make the class dependency engine works well.
+For classes this should be identical to the name it defines/exports. Jasy requires that there is exactly one name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
 
-In a project (kind: classic) called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. Jasy does not very whether you are exporting this global symbol: There is no name validation happening at the moment.
+In a project (kind: classic) called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. Jasy does not verify whether the developer is really are exporting that symbol: There is no name validation happening.
 
-Public names exported from JavaScript code have to be unique across all projects. If you completely override a full class under its original name it makes no sense to include it at all, right?
+Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
 
 ### Assets
 
@@ -72,7 +74,7 @@ Translations behave similar to assets, but there is no namespacing at all. All I
 
 You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to use any placeholders and make it visible for translators where dynamic data is planned to be inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
 
-Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant => language => default` happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation.
+Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant (de_AT) => language (de) => default` (en) happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation.
 
 ## Manifest
 
