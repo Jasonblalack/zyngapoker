@@ -64,14 +64,12 @@ Keep in mind that assets are typically "protected" by the auto-namespacing enabl
 In the default configuration these assets will automatically get assigned to the asset ID on the right hand side.
 
     source/asset/icon/save.png => "notebook/icon/save.png"
-    source/asset/icon/open.png => "notebook/icon/open.png"
 
 To use these assets pass the asset ID through `jasy.io.Asset.toUri(assetId) => fullUri`. In Jasy powered projects you don't have to deal (and shouldn't deal) with file system locations (or relative paths) anymore. Just use `jasy.io.Asset` together with asset indexing via the build tools.
 
 To override icons from e.g. your companies icon pool, the behavior of this ID assignment changes. This means you have to have a sub folder which represents your application name as well as one representing the name of the other project e.g.:
 
     source/asset/notebook/icon/save.png => "notebook/icon/save.png"
-    source/asset/notebook/icon/open.png => "notebook/icon/open.png"
     source/asset/common/logo.png => "common/logo.png"
 
 The last asset file overrides the asset "logo.png" which is also available through a project called `common`. To make this work the application project have to be registered after the `common` project in your build script.
@@ -94,13 +92,13 @@ A simple manifest file looks like this:
 
 ```js
 {
-  name : "projectname"
+  "name" : "projectname"
 }
 ```
 
 Pretty simple. The `projectname` needs to be unique in all the projects you are using. At name automatically defaults to the project's folder name. If that okay it's even okay to just leave it nearly empty:
 
-```
+```js
 {}
 ```
 
@@ -111,6 +109,26 @@ These are all the top-level keys which are supported:
 * **package**: By default the package is identical to the name of the project. See the "Naming" section above for details.
 * **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. 
 * **fields**: The fields which are used by the project. See section about fields and permutations for details.
+
+A more complex `manifest.json` might look like this:
+
+```js
+{
+  "name" : "projectname",
+  "kind" : "full",
+  "package" : "",
+  "fuzzy" : true,
+  "fields" : 
+  {
+    "debug" : 
+    {
+      "check" : "Boolean",
+      "default" : false,
+      "detect" : "jasy.detect.Param"
+    }
+  }
+}
+```
 
 ## Build Script
 
@@ -147,8 +165,10 @@ def simple():
 run()
 ```
 
-## Fields & Permutations
+## Fields
 
-Fields are automatically made available to every project using the project defining them. In the build script one can also activate fields to being permutated into specicialized output files/folders. 
+Fields are automatically made available to every project using the project defining them. 
+
+## Permutations
 
 
