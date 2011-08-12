@@ -1,4 +1,4 @@
-### Build System
+# Build System
 
 Tooling for JavaScript is not yet captured by a good collection of tools yet. **Jasy** is one approach to fix this situation. Without a good and generic build system it's pretty hard to deal with even semi-complex project structures. In basically every other programming environment (.NET, Java, Objective-C or even Flash) it's typically to use a build system. Still it seems that in JavaSCript people think to be able to life without such a system.
 
@@ -31,7 +31,7 @@ A fully custom folder structure is currently not supported. Jasy throws an error
 
 Each project needs to contain `manifest.json` file in its top-level folder. If your project is part of a larger project you might want to place the `manifest.json` file into a sub-folder of your larger project and point to this folder in your build script.
 
-## Name Handling
+## Names
 
 Each file in a project needs to have a qualified name. For classes or modules this is typically identical to the name of the public JavaScript object/function it defines/exports. A qualified name of any class or asset is automatically derived from the file name and location inside the project. Jasy currently only supports one name declaration per file. A class per file is required to make the dependency engine works well.
 
@@ -39,18 +39,32 @@ Let's start with a short example: In a project (kind: classic) called `notebook`
 
 Public names exported from JavaScript code have to be unique across all projects. If you completely override a full class under its original name it makes no sense to include it at all, right?
 
-Something different happens for assets and translations. These will be merged. Overriding works in direction of adding projects to the session. Later registered projects win when conflicts arise. This allows to override assets or translations from a library project you use in your application project. This is fine for using data from external repositories or company standards and still having the possibility to easily override single assets or translations.
+### Assets
 
-There is a JavaScript equivalent called `jasy.io.Asset` to resolve asset paths.
+Something different happens for assets. These will be merged. Conflict resolution works in direction of adding projects to the session in your build script. Projects which are registered later win over projects registered earlier. This allows to override assets or translations from a library project you use in your application project. This is fine for using data from external repositories or company standards and still having the possibility to easily override single assets or translations.
 
-## Package Handling
+Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `manifest.json` to an empty string.
 
-Typically each project should define exactly one top-level namespace. The top level namespace is automatically set to the name of the project. This makes it easy for the developer using a project to understand what global name it defines.
+In the default configuration these assets will automatically get assigned to the asset ID on the right hand side.
 
+    source/asset/icon/save.png => "notebook/icon/save.png"
+    source/asset/icon/open.png => "notebook/icon/open.png"
 
+You use these assets by passing this asset ID through `jasy.io.Asset.toUri(assetId) => fullUrl`. In Jasy powered projects you don't have to deal with file system locations anymore when using `jasy.io.Asset` together with asset indexing. 
 
+To override icons from e.g. your companies icon pool, the behavior of this ID assignment changes. This means you have to have a sub folder which represents your application name as well as one representing the name of the other project e.g.:
 
-If you need to define multiple top-level classes you need to reconfigure the package to an empty string. This changes the structure of your folders as well.
+    source/asset/notebook/icon/save.png => "notebook/icon/save.png"
+    source/asset/notebook/icon/open.png => "notebook/icon/open.png"
+    source/asset/common/logo.png => "common/logo.png"
+
+The last asset file overrides the asset "logo.png" which is also available through a project called `common`. To make this work the application project have to be registered after the `common` project in your build script.
+
+The default of injecting the project name automatically in the namespaces is a good default for most projects. If you have more complex scenarios where you have to override single assets from you can still achieve them by resetting `package` in your project's manifest to an empty string.
+
+### Translations
+
+Translations behave similar to assets. But there is no namespacing at all. All IDs used with the translation engine are regarded as top-level. This is because one normally prefer English sentences like `Save to...` in code instead of logical IDs for translation files. It makes not really a lot of sense to namespace sentences. You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to place any placeholders and make it visible for translators where dynamic data is inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
 
 ## Manifest
 
