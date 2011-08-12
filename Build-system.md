@@ -101,13 +101,43 @@ Pretty simple. The `projectname` needs to be unique in all the projects you are 
 These are all the top-level keys which are supported:
 
 * **name**: The unique name of the project (defaults to the basename of the project folder)
-* **kind**: This defines the structure inside the project. Should work automatically in most cases.
-* **package**: By default the package is identical to the name of the project. See the naming section above for details.
+* **kind**: This defines the structure inside the project. Should work automatically in most cases. See "Projects" section above for details.
+* **package**: By default the package is identical to the name of the project. See the "Naming" section above for details.
 * **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. 
-* **fields**: Configures the fields which are defined and used by the project. See section about fields and permutations for details.
+* **fields**: The fields which are used by the project. See section about fields and permutations for details.
 
 ## Build Script
 
+The most trivial example of a build scriot
+
+    # Extend PYTHONPATH with 'lib'
+    import sys, os
+    sys.path.insert(0, "/path/to/jasy")
+
+    # Import JavaScript tooling
+    from jasy import *
+
+    @task
+    def simple():
+        # Setup session
+        session = Session()
+        session.addProject(Project("."))
+
+        # Collecting projects
+        resolver = Resolver(session.getProjects())
+        resolver.addClassName("notebook.Application")
+        
+        # Resolving classes
+        classes = Sorter(resolver).getSortedClasses()
+        
+        # Compressing classes
+        compressedCode = Combiner(classes).getCompressedCode()
+        
+        # Writing files
+        writefile("build/simple.js", compressedCode)
+
+    # Execute Jasy
+    run()
 
 ## Fields & Permutations
 
