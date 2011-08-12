@@ -47,9 +47,11 @@ Public names exported from JavaScript code have to be unique across all projects
 
 Fuzzy names allows you to have class names which differ from file names. This is by no means thought as the ideal way to do, but is sometimes helpful when you don't own a specific project or a in the middle of a refactoring. If `fuzzy` is enabled in a project every class in the project needs to have a documentation comment with the JavaDoc-like `@name {package.ClassName}` e.g.
 
-    /** 
-     * @name {notebook.ui.Button} 
-     */
+```js
+/** 
+ * @name {notebook.ui.Button} 
+ */
+```
 
 As soon as fuzzy mode is enabled classes without such a comment are regarded as errors and prevent the build script from succeeding.
 
@@ -90,13 +92,17 @@ Each project must have a `manifest.json`. This file defines the name of the proj
 
 A simple manifest file looks like this:
 
-    {
-      name : "projectname"
-    }
+```js
+{
+  name : "projectname"
+}
+```
 
 Pretty simple. The `projectname` needs to be unique in all the projects you are using. At name automatically defaults to the project's folder name. If that okay it's even okay to just leave it nearly empty:
 
-    {}
+```
+{}
+```
 
 These are all the top-level keys which are supported:
 
