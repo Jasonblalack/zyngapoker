@@ -167,7 +167,19 @@ run()
 
 ## Fields
 
-Fields are automatically made available to every project using the project defining them. 
+Fields allow for configuration flags in projects. They are shared by all projects e.g. an application using a library project also inherits all fields defined by this library. Conflicts result in an exception during build time. Be careful on how you name your fields. It is not uncommon to prefix library specific fields with the project name e.g. "richtext.table" instead of just "table". There is nothing enforced here, though, as there might be also common useful names like "debug".
+
+Fields can be configured using these keys:
+
+* `detect`: Defines a class name to query for the value. The class defined here is automatically injected into the build.
+* `check`: The check to apply to the detected value for validation. Value could be either one of `"Boolean"`, `"String"`, `"Number"` or a list of possible values e.g. `["small", "medium", "large"]`
+* `default`: Defines a default value. Used when validation fails or no value was detected.
+
+You can configure a field in your build script using:
+
+```python
+session.setField("name", value)
+```
 
 ## Permutations
 
