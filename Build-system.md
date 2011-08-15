@@ -217,6 +217,8 @@ If you want to limit the number of files created keep in mind to only permutate 
 
 These permutated fields might be loaded server-side e.g. when placing the name or the fields into the file. In the loop, where you are creating the permutations, you can ask each permutation object for specific field values e.g. the value of `debug` and inject this into the file name (`permutation.get("debug")`). 
 
+### Loader Script
+
 The other more scalable alternative, which also has better possibilities to figure out which client you are using, is to use a loader script. This loader script uses the configured tests from the field configuration to automatically determine the value and runtime. With these values and the information about which fields are used for the permutation it is able to know which permutated files to load. This works based on a checksum [Adler32](http://en.wikipedia.org/wiki/Adler-32). Adler32 is a pretty compact checksum and easily to compute (simpler than MD5, SHA1, etc.) at the price of less reliability. The loader script is able to automatically inject the computed checksum into the script loader. 
 
 ```js
@@ -230,4 +232,12 @@ Permutation.loadScripts(["myapp.js", ...]);
 "myapp.js" => "myapp-a342399.js"
 ```
 
+On the Python side you can inject this checksum as well using `permutation.getChecksum()`. You can construct your filename based on this checksum during your build loop e.g. `"myapp-" + permutation.getChecksum() + ".js"`. Jasy has a built-in feature to generate a loader script based on the permutated fields in the session. This loader can be written to a file using the `session.writeLoader("loader.js", optimization, formatting)` command. In your HTML file you integrate the loader script into the `head` element and load the file using the `Permutation.loadScripts()` command.
+
+
+
+
+### Specific output folders
+
+Another possibility is to generate different output folders for each permutation e.g. `a342399/index.html`.
 
