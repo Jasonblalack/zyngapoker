@@ -190,15 +190,15 @@ In this case no detection happens. This is good to inject values from the outsid
 Inside your JavaScript you have access to the fields configured in your fields using the `Permutation` class.
 
 ```js
-var appTitle = Permutation.getValue("app-title");
+var appTitle = Env.getValue("app-title");
 
-if (Permutation.isSet("debug")) {
+if (Env.isSet("debug")) {
   // debug code
 }
 
-if (Permutation.isSet("customer", "premium")) {
+if (Env.isSet("customer", "premium")) {
   // premium customer
-} else if (Permutation.isSet("customer", "plus")) {
+} else if (Env.isSet("customer", "plus")) {
   // plus customer
 } else {
   // free customer
@@ -207,4 +207,8 @@ if (Permutation.isSet("customer", "premium")) {
 
 ## Permutations
 
-Permutations build upon the field configuration. The idea is basically to combine separate values of different fields into a combination - a so called permutation. This permutation can be used to build a specific JavaScript file 
+Permutations build upon the field configuration. The idea is basically to combine separate values of different fields into a combination - a so called permutation. This permutation can be used to build a specific optimized JavaScript file. Each new field which should be permutated multiplies the number of files created e.g.:
+
+* debug=true/false * engine=gecko/webkit/trident/presto => 2*4 => 8 files
+
+If you want to limit the number of files created keep in mind to only permutate on often used or otherwise important fields (e.g. free vs. premium user).
