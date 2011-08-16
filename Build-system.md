@@ -186,21 +186,21 @@ In this case no detection happens. This is good to inject values from the outsid
 
 ## Environment
 
-Inside your JavaScript you have access to the fields configured in your fields using the `Env` class.
+Inside your JavaScript you have access to the fields configured in your fields using the `jasy.Env` class.
 
 ```js
 // read value for local variable
-var appTitle = Env.getValue("app-title");
+var appTitle = jasy.Env.getValue("app-title");
 
 // auto queries for a true value
-if (Env.isSet("debug")) { 
+if (jasy.Env.isSet("debug")) { 
   // debug code
 }
 
 // easy string/number compare
-if (Env.isSet("customer", "premium")) {
+if (jasy.Env.isSet("customer", "premium")) {
   // premium customer
-} else if (Env.isSet("customer", "plus")) {
+} else if (jasy.Env.isSet("customer", "plus")) {
   // plus customer
 } else {
   // free customer
@@ -213,20 +213,20 @@ Permutations build upon the field configuration. The idea is to basically combin
 
 * debug=true/false * engine=gecko/webkit/trident/presto * locale=en,de,fr => 2*4*3 => 24 files
 
-If you want to limit the number of files created keep in mind to only permutate on often used or otherwise important fields (e.g. free vs. premium user). Permutations are pretty fast to generate as Jasy keeps track of the fields queried for in each file and caches it accordingly. So generating 40 or 200 makes not really so much difference. Best is to try it out yourself.
+If you want to limit the number of files created keep in mind, to only permutate often used or otherwise important fields (e.g. free vs. premium user). Permutations are pretty fast to generate as Jasy keeps track of the fields (using `jasy.Env`) queried for in each file and caches it accordingly. So generating 40 or 200 makes not really so much difference. Best is to try it out yourself on a real application.
 
 These permutated fields might be loaded server-side e.g. when placing the name or the fields into the file. In the loop, where you are creating the permutations, you can ask each permutation object for specific field values e.g. the value of `debug` and inject this into the file name (`permutation.get("debug")`). 
 
 ### Loader Script
 
-The other more scalable alternative, which also has better possibilities to figure out which client you are using, is to use a loader script. This loader script uses the configured tests from the field configuration to automatically determine the value and runtime. With these values and the information about which fields are used for the permutation it is able to know which permutated files to load. This works based on a checksum [Adler32](http://en.wikipedia.org/wiki/Adler-32). Adler32 is a pretty compact checksum and easily to compute (simpler than MD5, SHA1, etc.) at the price of less reliability. The loader script is able to automatically inject the computed checksum into the script loader. 
+The other more scalable alternative, which also has better possibilities to figure out which client you are using, is to use a loader script. This loader script uses the configured tests from the field configuration to automatically determine the value at runtime. With these values and the information about which fields are used for the permutation it is able to know which permutated files to load. This works based on a checksum [Adler32](http://en.wikipedia.org/wiki/Adler-32). Adler32 is a pretty compact checksum and easily to compute (simpler than MD5, SHA1, etc.) at the price of less reliability. The loader script is able to automatically inject the computed checksum into the script loader. 
 
 ```js
 // Instead of loading your scripts using:
 jasy.io.Script.load(["myapp.js", ...]);
 
 // you are using:
-Permutation.loadScripts(["myapp.js", ...]);
+jasy.Env.loadScripts(["myapp.js", ...]);
 
 // the files loaded are automatically patched to inject the adler32 checksum:
 "myapp.js" => "myapp-a342399.js"
