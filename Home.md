@@ -8,7 +8,6 @@ Essentially the **tooling framework** makes it easy to develop medium to large s
 The **JavaScript library** support the core concepts of the build system like dealing with permutations and assets. It also comes with some other functionality like a full object orientation layer with classes and interfaces. 
 
 * [[Build System]]
-* [[Object Orientation]]
 
 FAQ
 ---
