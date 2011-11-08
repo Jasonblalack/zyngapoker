@@ -12,7 +12,7 @@ We recommend [Homebrew](http://mxcl.github.com/homebrew/). It uses the pre-insta
 
 ### Linux
 
-To install Python 3 use your package manager on that system. 
+To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation.
 
 ### Windows
 
