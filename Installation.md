@@ -27,5 +27,3 @@ To install Jasy you download it first and then execute the `setup.py` script via
 `python3 setup.py install`
 
 This should install all the files into your Python3 standard folders. On some systems the default locations are not in the PATH of your system yet. In these cases you have to add the binary folder used by Python3 to the PATH.
-
-
