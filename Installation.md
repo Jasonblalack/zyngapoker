@@ -8,7 +8,7 @@ You just need a Python 3 installation. Typical Unix based systems like Mac OS X 
 
 ### Mac OS X
 
-We recommend [Homebrew|http://mxcl.github.com/homebrew/]. It uses the pre-installed Unix tools and just builds the immediate requirements for the apps you like to install. After you have installed the `brew` command just do a `brew install python3`.
+We recommend [Homebrew](http://mxcl.github.com/homebrew/). It uses the pre-installed Unix tools and just builds the immediate requirements for the apps you like to install. After you have installed the `brew` command just do a `brew install python3`.
 
 ### Linux
 
@@ -16,7 +16,7 @@ To install Python 3 use your package manager on that system.
 
 ### Windows
 
-Install Python3 using the installer offered at the [Python homepage|http://www.python.org/getit/releases/]. Please choose the latest 3.x release version.
+Install Python3 using the installer offered at the [Python homepage](http://www.python.org/getit/releases/). Please choose the latest 3.x release version.
 
 
 Installing Jasy
