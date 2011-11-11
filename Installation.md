@@ -21,20 +21,22 @@ Install Python3 using the installer offered at the [Python homepage](http://www.
 
 ## Installing Jasy automatically
 
-You can install the current stable version of Jasy using _easy_install_. You must use the Python3 version of the script. Some times this script is named _easy_install3_, _easy_install-3_ or _easy_install-3.2_ for better compatibility with other versions. If easy install for Python 3 is not installed, you can easily do this using: 
-
-`$ curl -O http://python-distribute.org/distribute_setup.py`
-`$ python3 distribute_setup.py`
+You can install the current stable version of Jasy using _easy_install_. You must use the Python3 version of the script. 
 
 Now you can install Jasy using:
 
-`$ easy_install3 jasy`
+    $ easy_install3 jasy
+
+Sometimes this script is named `easy_install3`, `easy_install-3` or `easy_install-3.2`. If `easy_install` for Python 3 is not installed, you can easily do this using: 
+
+    $ curl -O http://python-distribute.org/distribute_setup.py
+    $ python3 distribute_setup.py
 
 ## Installing Jasy manually
 
 To install Jasy you download it first and then execute the `setup.py` script via:
 
-`python3 setup.py install`
+    $ python3 setup.py install
 
 This should install all the files into your Python3 standard folders. On some systems the default locations are not in the PATH of your system yet. In these cases you have to add the binary folder used by Python3 to the PATH.
 
