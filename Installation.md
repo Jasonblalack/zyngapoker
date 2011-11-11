@@ -19,7 +19,18 @@ To install Python 3 use your package manager on that system. On Debian based sys
 Install Python3 using the installer offered at the [Python homepage](http://www.python.org/getit/releases/). Please choose the latest 3.x release version.
 
 
-## Installing Jasy
+## Installing Jasy automatically
+
+You can install the current stable version of Jasy using _easy_install_. You must use the Python3 version of the script. Some times this script is named _easy_install3_, _easy_install-3_ or _easy_install-3.2_ for better compatibility with other versions. If easy install for Python 3 is not installed, you can easily do this using: 
+
+`$ curl -O http://python-distribute.org/distribute_setup.py`
+`$ python3 distribute_setup.py`
+
+Now you can install Jasy using:
+
+`$ easy_install3 jasy`
+
+## Installing Jasy manually
 
 To install Jasy you download it first and then execute the `setup.py` script via:
 
