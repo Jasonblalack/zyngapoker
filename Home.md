@@ -6,6 +6,8 @@ Jasy - JavaScript Tooling Framework
 Contents
 --------
 
+* [[FAQ]]
+* [[Features]]
 * [[Installation]]
 * [[Build System]]
 
