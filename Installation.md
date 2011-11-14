@@ -54,3 +54,12 @@ This should install all the files into your Python3 standard folders. On some sy
 This will install Jasy into the default system location for Python 3. After installation `jasy` should be in the `PATH`. 
 
 To update your installation just execute the command again.
+
+## Testing the Installation
+
+Try the following on your console/terminal:
+
+    $ jasy
+    !!! Did not found 'jasyscript.py'!
+
+The error message is infact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
