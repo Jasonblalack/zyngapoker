@@ -64,4 +64,4 @@ Try the following on your console/terminal:
 
 The error message is infact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
 
-For Windows users you need to execute `jasy.bat` instead.
+Windows users need to execute `jasy.bat` instead.
