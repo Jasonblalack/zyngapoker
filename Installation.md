@@ -29,8 +29,15 @@ Now you can install Jasy using:
 
 Sometimes this script is named `easy_install3`, `easy_install-3` or `easy_install-3.2`. If `easy_install` for Python 3 is not installed, you can easily do this using: 
 
-    $ curl -O http://python-distribute.org/distribute_setup.py
+    $ curl -O http://python-distribute.org/distribute_setup.py 
+         OR 
+    $ wget http://python-distribute.org/distribute_setup.py 
+
+Then install it:
+
     $ python3 distribute_setup.py
+
+This should work on all systems. On Windows you must be sure to execucte it in the "Admin Console" though. After this easy_install should be installed on your system. Sometimes you need to add the scripts folder to your PATH though.
 
 ## Installing Jasy manually
 
