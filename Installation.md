@@ -12,7 +12,7 @@ Scripts are installed to `/usr/local/share/python3`. You need to add it to your 
 
 ### Linux
 
-To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation.
+To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation. Normally there is also a package "Python3 Setup Tools". Be sure to install this, too. It offers you the friendly `easy_install` tool.
 
 ### Windows
 
