@@ -39,7 +39,9 @@ Then install it do (please use be sure to use the Python3 executable):
 
     $ python3 distribute_setup.py
 
-This should work on all systems. On Windows you must be sure to execucte it in the "Admin Console". On Linux it might require a "sudo". After this `easy_install` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. See also: http://packages.python.org/distribute/easy_install.html#installing-easy-install
+This should work on all systems. On Windows you must be sure to execucte it in the "Admin Console". On Linux it might require a "sudo". After this `easy_install` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. 
+
+See also: http://packages.python.org/distribute/easy_install.html#installing-easy-install
 
 ## Installing Jasy Manually
 
