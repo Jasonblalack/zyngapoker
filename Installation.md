@@ -21,11 +21,25 @@ Install Python3 using the installer offered at the [Python homepage](http://www.
 
 ## Installing Jasy Automatically
 
-You can install the current stable version of Jasy using _easy_install_. Be sure to use the Python3 version of it:
+You can install the current stable version of Jasy using _pip_ or _easy_install_. PIP is preferred as it supports uninstalls etc. Be sure to use the Python3 version of them:
 
-    $ easy_install3 jasy
+    $ pip-3.2 install jasy
+    OR
+    $ easy_install-3.2 jasy
 
-Sometimes this script is named `easy_install3`, `easy_install-3` or `easy_install-3.2`.
+Sometimes these scripts are named differently when installing in parallel to Python-2.x: `easy_install3`, `easy_install-3` or `easy_install-3.2`. Best is to just use tab completion.
+
+### Installing PIP
+
+If `pip` for Python 3 is not installed, you can easily do this using: 
+
+    $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    OR
+    $ wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+
+Then install it do (please use be sure to use the Python3 executable):
+
+    $ python3 get-pip.py
 
 ### Installing Easy Install
 
