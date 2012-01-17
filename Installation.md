@@ -21,41 +21,20 @@ Install Python3 using the installer offered at the [Python homepage](http://www.
 
 ## Installing Jasy Automatically
 
-You can install the current stable version of Jasy using _pip_ or _easy_install_. PIP is preferred as it supports uninstalls etc. Be sure to use the Python3 version of them:
+You can install the current stable version of Jasy using _pip_ or _easy_install_. PIP is preferred as it supports uninstalls etc. Be sure to use the Python3 version of them. Sometimes these scripts are named differently when installing in parallel to Python-2.x: `pip3`, `pip-3` or `pip-3.2`. Best is to just use tab completion.
 
     $ pip-3.2 install jasy
-    OR
-    $ easy_install-3.2 jasy
-
-Sometimes these scripts are named differently when installing in parallel to Python-2.x: `easy_install3`, `easy_install-3` or `easy_install-3.2`. Best is to just use tab completion.
 
 ### Installing PIP
 
-If `pip` for Python 3 is not installed, you can easily do this using: 
+If `pip` for Python 3 is not installed, you can easily do this following the easy steps:
 
-    $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    OR
-    $ wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    $ curl http://python-distribute.org/distribute_setup.py | python3
+    $ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
 
-Then install it do (please use be sure to use the Python3 executable):
+See also: http://www.pip-installer.org/en/latest/installing.html
 
-    $ python3 get-pip.py
-
-### Installing Easy Install
-
-If `easy_install` for Python 3 is not installed, you can easily do this using: 
-
-    $ curl -O http://python-distribute.org/distribute_setup.py 
-    OR 
-    $ wget http://python-distribute.org/distribute_setup.py 
-
-Then install it do (please use be sure to use the Python3 executable):
-
-    $ python3 distribute_setup.py
-
-This should work on all systems. On Windows you must be sure to execucte it in the "Admin Console". On Linux it might require a "sudo". After this `easy_install` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. 
-
-See also: http://packages.python.org/distribute/easy_install.html#installing-easy-install
+This should work on all systems. On Windows you must be sure to execute it in the "Admin Console". On Linux it might require a "sudo". After this `pip` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. 
 
 ## Installing Jasy Manually
 
@@ -71,11 +50,10 @@ To update your installation just execute the command again.
 
 ## Testing the Installation
 
-Try the following on your console/terminal:
+Try the following on your console/terminal (Windows users need to execute `jasy.bat` instead):
 
     $ jasy
     !!! Did not found 'jasyscript.py'!
 
-The error message is infact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
+The error message is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
 
-Windows users need to execute `jasy.bat` instead.
