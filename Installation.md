@@ -35,7 +35,7 @@ You can install the current stable version of Jasy using _pip_ or _easy_install_
 
 You should definitely prefer `pip` over the older `easy_install` because it has features like updates and uninstall. 
 
-### Windows Troubleshooting
+### Windows Hints
 
 Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and a pretty easy to install. Misaka is a little bit special as it requires a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
 
@@ -46,10 +46,6 @@ Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib)
 * Install PIP: `$ python3 get-pip.py`
 * Install Misaka using [binary installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
 * Install Jasy using PIP: `pip install jasy`
-
-### Windows ActiveState Python
-
-An alternative for installing Python on Windows with the required packages might be to use the distribution of Python by ActiveState: http://www.activestate.com/activepython/downloads
 
 ## 4. Testing the Installation
 
