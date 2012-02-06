@@ -37,7 +37,7 @@ You should definitely prefer `pip` over the older `easy_install` because it has 
 
 ### Windows Hints
 
-Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and a pretty easy to install. Misaka is a little bit special as it requires a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
+Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and are easily installable. Misaka is a little bit special as it requires a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
 
 * Python 3.x (using official installer): http://python.org/download/releases/
 * Downloading Distribute: http://python-distribute.org/distribute_setup.py
