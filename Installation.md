@@ -47,6 +47,10 @@ Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib)
 * Install Misaka using [binary installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
 * Install Jasy using PIP: `pip install jasy`
 
+### Windows ActiveState Python
+
+An alternative for installing Python on Windows with the required packages might be to use the distribution of Python by ActiveState: http://www.activestate.com/activepython/downloads
+
 ## 4. Testing the Installation
 
 Try the following on your console/terminal (Windows users need to execute `jasy.bat` instead):
