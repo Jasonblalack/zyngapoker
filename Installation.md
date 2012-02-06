@@ -27,7 +27,6 @@ See also: http://www.pip-installer.org/en/latest/installing.html
 
 This should work on all systems. On Windows you must be sure to execute it in the "Admin Console". On Linux it might require a "sudo". After this `pip` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. 
 
-
 ## 3. Installing Jasy
 
 You can install the current stable version of Jasy using _pip_ or _easy_install_. PIP is preferred as it supports uninstalls etc. Be sure to use the Python3 version of them. Sometimes these scripts are named differently when installing in parallel to Python-2.x: `pip3`, `pip-3` or `pip-3.2`. Best is to just use tab completion.
@@ -36,6 +35,7 @@ You can install the current stable version of Jasy using _pip_ or _easy_install_
 
 You should definitely prefer `pip` over the older `easy_install` because it has features like updates and uninstall. 
 
+Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and a pretty easy to install. Misaka is a little bit special as it requires a GNU C compiler being installed to compile C source files. This is not n issue under Mac OS X with XCode installed or on any typical Unix system. On Windows one needs to install [MinGW](http://www.mingw.org/) first. Alternatively one could install a [binary version of Misaka](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba) (latest available is 0.4.1) directly after installing Python 3.
 
 ## 4. Testing the Installation
 
