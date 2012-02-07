@@ -42,13 +42,13 @@ You need to install the package manager "PIP" to install Python packages. PIP re
 
 Open a Terminal and execute the following commands:
 
-=== Homebrew
+### Homebrew
 
     $ cd ~/Downloads
     $ curl http://python-distribute.org/distribute_setup.py | python3
     $ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
 
-=== Python Installer
+### Python Installer
 
     $ cd ~/Downloads
     $ curl http://python-distribute.org/distribute_setup.py | sudo python3
