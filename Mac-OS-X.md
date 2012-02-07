@@ -32,8 +32,7 @@ Homebrew is typically installed in a folder which does not require admin rights.
 
 Download the installer of the latest 3.x release via http://python.org/download/releases/, mount it and use the installer to install Python 3.x on your system. The official installer installs Python into system folders which means that all installations require to use `sudo` for installing any software.
 
-You need to modify your `PATH` to make Python as well as any scripts installed by Python being available globally on your Terminal.
-
+You need to modify your `PATH` to make Python as well as any scripts installed by Python being available globally on your Terminal. Python binaries are installed under `/Library/Frameworks/Python.framework/Versions/3.2/bin/`.
 
 Installing Setuptools
 ---------------------
