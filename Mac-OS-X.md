@@ -68,4 +68,4 @@ Try the following command on your console/terminal after installation is complet
 
     $ jasy
 
-There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
+There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working.
