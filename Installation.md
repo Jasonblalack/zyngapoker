@@ -40,8 +40,8 @@ Python 3 is installed in parallel to Python2 and is typically made available on 
 
 It might be required to use "sudo" to have installation rights.
 
-    wget http://python-distribute.org/distribute_setup.py | python3
-    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
+    wget -qO- http://python-distribute.org/distribute_setup.py | python3
+    wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
 
 Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
 
@@ -57,41 +57,38 @@ Open the "Admin Console", change the working directory to the download location 
     python distribute_setup.py
     python get-pip.py
 
+Python on Windows is installed in "C:\PythonXX" where XX stands for the major and minor version. The executables are named  without any version information so just using `python` on the command line should work fine.
 
 ### All
 
-There will be a lot of messages printed out. As long as there is no real error message all should went fine and you should have a `pip` command on the command line available now. You can try it out just executing it without any arguments:
+There will be a lot of messages printed out during installation. As long as there is no real error message all should went fine and you should have a `pip` command on the command line available now. You can try it out just executing it without any arguments:
 
-    pip
+    pip-3.2
 
 You should see some usage hints like "Usage: pip COMMAND [OPTIONS]".
 
 ## 3. Installing Jasy
 
-You can install the current stable version of Jasy using _pip_ or _easy_install_. PIP is preferred as it supports uninstalls etc. Be sure to use the Python3 version of them. Sometimes these scripts are named differently when installing in parallel to Python-2.x: `pip3`, `pip-3` or `pip-3.2`. Best is to just use tab completion.
+You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. Be sure to use the Python3 version of them. Sometimes these scripts are named differently when installing in parallel to Python-2.x: `pip3`, `pip-3` or `pip-3.2`. Best is to just use tab completion.
 
     $ pip-3.2 install jasy
 
 You should definitely prefer `pip` over the older `easy_install` because it has features like updates and uninstall. 
 
-### Windows Hints
+### Compilation Hints
 
-Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and are easily installable. Misaka is a little bit special as it requires a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
+Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and are easily installable. Misaka and Msgpack are a little bit special as they require a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
 
-* Python 3.x (using official installer): http://python.org/download/releases/
-* Downloading Distribute: http://python-distribute.org/distribute_setup.py
-* Downloading PIP: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-* Install Distribute: `$ python3 distribute_setup.py`
-* Install PIP: `$ python3 get-pip.py`
 * Install Misaka using [binary installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
-* Install Jasy using PIP: `pip install jasy`
+* Install Msgpack using [binary installer](http://www.lfd.uci.edu/~gohlke/pythonlibs/fj2ir7sn/msgpack-python-0.1.12.win32-py3.2.exe)
 
-## 4. Testing the Installation
+* Afterwards install Jasy using PIP: `pip-3.2 install jasy`
 
-Try the following on your console/terminal (Windows users need to execute `jasy.bat` instead):
+### Testing the Installation
+
+Try the following command on your console/terminal:
 
     $ jasy
-    !!! Did not found 'jasyscript.py'!
 
-The error message is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
+There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
 
