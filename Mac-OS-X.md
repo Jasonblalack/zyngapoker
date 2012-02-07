@@ -1,4 +1,4 @@
-The installation process on Windows includes the installation of:
+The installation process on Mac OS X includes the installation of:
 
 1. XCode
 2. Python3
