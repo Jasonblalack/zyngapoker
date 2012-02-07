@@ -6,7 +6,12 @@ You just need a Python 3 installation. Typical Unix based systems like Mac OS X 
 
 ### Mac OS X
 
-We recommend [Homebrew](http://mxcl.github.com/homebrew/). It uses the pre-installed Unix tools and just builds the immediate requirements for the apps you like to install. After you have installed the `brew` command just do a `brew install python3`. Scripts are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available. See also: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
+It is suggested to install XCode first, to have the typical compilers and linkers installed on your system.
+
+You have different options to install Python 3 on Windows:
+
+* Homebrew: After you have installed the `brew` command just do a `brew install python3`. Scripts are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available. See also: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
+* Official Python 3 Installer from http://python.org/download/releases/
 
 ### Linux
 
@@ -14,18 +19,40 @@ To install Python 3 use your package manager on that system. On Debian based sys
 
 ### Windows
 
-Install Python3 using the installer offered at the [Python homepage](http://www.python.org/getit/releases/). Please choose the latest 3.x release version.
+Install Python3 using the installer offered at the [Python homepage](http://www.python.org/getit/releases/). Please choose the latest 3.x release version as **32 bit**. Even if your Windows is 64 bit it is important to install the 32 bit version. Be sure to add "C:\Python32;C:\Python32\Scripts" to your PATH (using e.g. the system preferences dialog).
 
-## 2. Installing PIP
+## 2. Installing Distribute/PIP
 
-If `pip` for Python 3 is not installed, you can easily do this following the easy steps:
+You need to install the package manager "PIP" to install Python packages.  See also: http://www.pip-installer.org/en/latest/installing.html
 
-    $ curl http://python-distribute.org/distribute_setup.py | python3
-    $ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
+### Mac OS
 
-See also: http://www.pip-installer.org/en/latest/installing.html
+Open a Terminal and execute the following commands:
 
-This should work on all systems. On Windows you must be sure to execute it in the "Admin Console". On Linux it might require a "sudo". After this `pip` should be installed on your system. Sometimes you need to add the scripts folder to your PATH though. 
+    curl http://python-distribute.org/distribute_setup.py | python3
+    curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
+
+### Linux
+
+It might be required to use "sudo" to have installation rights.
+
+### Windows
+
+Download the following scripts:
+
+* [Distribute](http://python-distribute.org/distribute_setup.py)
+* [PIP](https://raw.github.com/pypa/pip/master/contrib/get-pip.py)
+
+Open the "Admin Console" and execute the following two commands:
+
+    python distribute_setup.py
+    python get-pip.py
+
+There will be a lot of messages printed out. As long as there is no real error message all should went fine and you should have a `pip` command on the command line available now. You can try it out just executing it without any arguments:
+
+    pip
+
+You should see some usage hints like "Usage: pip COMMAND [OPTIONS]".
 
 ## 3. Installing Jasy
 
