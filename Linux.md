@@ -16,8 +16,8 @@ Installing Setuptools
 
 Execute the following commands to install D^istribute and PIP.
 
-    wget -qO- http://python-distribute.org/distribute_setup.py | sudo python3
-    wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
+    $ wget -qO- http://python-distribute.org/distribute_setup.py | sudo python3
+    $ wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
 
 Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
 
@@ -26,4 +26,10 @@ Installing Jasy
 
 You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
-    pip-3.2 install jasy
+    $ pip-3.2 install jasy
+
+Try the following command on your console/terminal after installation is complete:
+
+    $ jasy
+
+There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working.
