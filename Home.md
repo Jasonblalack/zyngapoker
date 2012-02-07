@@ -6,3 +6,10 @@ Jasy - Web Tooling Framework
 * [[Installation]]
 * [[Documentation]]
 * [[TODO]]
+
+Installation
+------------
+
+* [[Windows]]
+* [[Mac OS]]
+* [[Linux]]
