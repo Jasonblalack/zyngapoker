@@ -15,8 +15,8 @@ Installing Python3
 
 You have different options to install Python 3 on your Mac:
 
-* Homebrew: 
-* Official Installer from 
+* **Homebrew**
+* **Official Installer**
 
 ### Installing via Homebrew
 
