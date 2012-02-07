@@ -15,15 +15,17 @@ You have different options to install Python 3 on Windows:
 
 ### Linux
 
-To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation. Normally there is also a package "Python3 Setup Tools". Currently this does not seem to work because of a transition of `setuptools` to Python3. A working alternative is the method using `distribute` as explained below.
+To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation. 
+
+Normally there is also a package "Python3 Setup Tools". Currently this does not seem to work because of a transition of `setuptools` to Python3. A working alternative is the method using `distribute` and `pip` as explained below.
 
 ### Windows
 
 Install Python3 using the installer offered at the [Python homepage](http://www.python.org/getit/releases/). Please choose the latest 3.x release version as **32 bit**. Even if your Windows is 64 bit it is important to install the 32 bit version. Be sure to add "C:\Python32;C:\Python32\Scripts" to your PATH (using e.g. the system preferences dialog).
 
-## 2. Installing Distribute/PIP
+## 2. Installing Distribute and PIP
 
-You need to install the package manager "PIP" to install Python packages.  See also: http://www.pip-installer.org/en/latest/installing.html
+You need to install the package manager "PIP" to install Python packages. PIP requires Distribute being installed first. (See also: http://www.pip-installer.org/en/latest/installing.html)
 
 ### Mac OS
 
@@ -32,21 +34,31 @@ Open a Terminal and execute the following commands:
     curl http://python-distribute.org/distribute_setup.py | python3
     curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
 
+Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
+
 ### Linux
 
 It might be required to use "sudo" to have installation rights.
 
+    wget http://python-distribute.org/distribute_setup.py | python3
+    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
+
+Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
+
 ### Windows
 
-Download the following scripts:
+Download the following scripts using your browser:
 
 * [Distribute](http://python-distribute.org/distribute_setup.py)
 * [PIP](https://raw.github.com/pypa/pip/master/contrib/get-pip.py)
 
-Open the "Admin Console" and execute the following two commands:
+Open the "Admin Console", change the working directory to the download location and execute the following two commands:
 
     python distribute_setup.py
     python get-pip.py
+
+
+### All
 
 There will be a lot of messages printed out. As long as there is no real error message all should went fine and you should have a `pip` command on the command line available now. You can try it out just executing it without any arguments:
 
