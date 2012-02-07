@@ -59,7 +59,7 @@ Open the "Admin Console", change the working directory to the download location 
 
 Python on Windows is installed in "C:\PythonXX" where XX stands for the major and minor version. The executables are named  without any version information so just using `python` on the command line should work fine.
 
-### All
+### Testing the Installation
 
 There will be a lot of messages printed out during installation. As long as there is no real error message all should went fine and you should have a `pip` command on the command line available now. You can try it out just executing it without any arguments:
 
@@ -69,26 +69,25 @@ You should see some usage hints like "Usage: pip COMMAND [OPTIONS]".
 
 ## 3. Installing Jasy
 
-You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. Be sure to use the Python3 version of them. Sometimes these scripts are named differently when installing in parallel to Python-2.x: `pip3`, `pip-3` or `pip-3.2`. Best is to just use tab completion.
+You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
-    $ pip-3.2 install jasy
+    pip-3.2 install jasy
 
-You should definitely prefer `pip` over the older `easy_install` because it has features like updates and uninstall. 
+### Binary Packages
 
-### Compilation Hints
+It this fails for you, you might be missing a GNU C compiler to compile the C libraries of [misaka](http://pypi.python.org/pypi/misaka/) and [msgpack-python](http://msgpack.org/). On Windows one have to install [MinGW](http://www.mingw.org/) first allow compilation of the files. 
 
-Jasy installs a few dependencies like [polib](http://pypi.python.org/pypi/polib), [misaka](http://pypi.python.org/pypi/misaka/), [pygments](http://pygments.org/) and [msgpack-python](http://msgpack.org/). Most of them are pure Python packages and are easily installable. Misaka and Msgpack are a little bit special as they require a GNU C compiler being installed to compile C source files. This is not a major issue under Mac OS X (with XCode installed) or on any typical Linux system. On Windows one have to install [MinGW](http://www.mingw.org/) first to compile the C files. A way easier alternative is to install Misaka using the downloadable binary installer. This is the suggested installation order for Windows users:
+The way easier alternative is to install Misaka and Msgpack using binary installers first:
 
 * Install Misaka using [binary installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
 * Install Msgpack using [binary installer](http://www.lfd.uci.edu/~gohlke/pythonlibs/fj2ir7sn/msgpack-python-0.1.12.win32-py3.2.exe)
-
-* Afterwards install Jasy using PIP: `pip-3.2 install jasy`
+* Afterwards continue with the installation of Jasy using PIP: `pip-3.2 install jasy`
 
 ### Testing the Installation
 
 Try the following command on your console/terminal:
 
-    $ jasy
+    jasy
 
 There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
 
