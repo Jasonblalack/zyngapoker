@@ -11,5 +11,5 @@ Installation
 ------------
 
 * [[Windows]]
-* [[Mac OS]]
+* [[Mac OS X]]
 * [[Linux]]
