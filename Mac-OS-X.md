@@ -60,9 +60,27 @@ Python 3 is installed in parallel to Python2 (which is included in Mac OS since 
 Installing Jasy
 ---------------
 
+### Homebrew
+
+Currently it is required to install Cython before installing Jasy. Please execute this in your Terminal:
+
+    $ pip-3.2 install cython
+
 Now you should be able to install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
     $ pip-3.2 install jasy
+
+### Python Installer
+
+Currently it is required to install Cython before installing Jasy. Please execute this in your Terminal:
+
+    $ sudo pip-3.2 install cython
+
+Now you should be able to install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
+
+    $ sudo pip-3.2 install jasy
+
+### Testing Installation
 
 Try the following command on your console/terminal after installation is complete:
 
