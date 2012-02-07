@@ -73,7 +73,7 @@ You can install the current stable version of Jasy using _pip_ . PIP is preferre
 
     pip-3.2 install jasy
 
-### Binary Packages
+### Binary Packages on Windows
 
 It this fails for you, you might be missing a GNU C compiler to compile the C libraries of [misaka](http://pypi.python.org/pypi/misaka/) and [msgpack-python](http://msgpack.org/). On Windows one have to install [MinGW](http://www.mingw.org/) first allow compilation of the files. 
 
