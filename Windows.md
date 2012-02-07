@@ -36,3 +36,17 @@ On Windows you typically don't have any C compiler installed. To ease the instal
 
 * [Misaka Binary Installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
 * [Msgpack Binary Installer](http://www.lfd.uci.edu/~gohlke/pythonlibs/fj2ir7sn/msgpack-python-0.1.12.win32-py3.2.exe)
+
+
+Installing Jasy
+---------------
+
+Jasy should finally be installed using the Python package manager "PIP" which has fine support for advanced features like upgrades and uninstallation of packages, too. Open the "Admin Console" and execute the following command:
+
+    pip-3.2 install jasy
+
+This should print out some messages about dependencies which are being installed like "polib" and "pygments". After the command is executed you should be able to execute "jasy":
+
+    jasy
+
+There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. No start building your `jasyscript.py` inside your application.
