@@ -23,7 +23,7 @@ Python 3 is installed in parallel to Python2 and is typically made available on 
 
 Installing Cython
 ---------------
-$ pip-3.2 install cython
+    $ pip-3.2 install cython
 
 
 Installing Jasy
