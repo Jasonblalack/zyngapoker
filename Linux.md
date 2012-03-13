@@ -21,6 +21,10 @@ Execute the following commands to install D^istribute and PIP.
 
 Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
 
+Installing Cython
+---------------
+{code}$ pip-3.2 install cython{code}
+
 Installing Jasy
 ---------------
 
