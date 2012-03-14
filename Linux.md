@@ -38,3 +38,6 @@ Try the following command on your console/terminal after installation is complet
     $ jasy
 
 There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working.
+
+
+_NOTE:_ You may get some encoding errors with polib during jasy installation. If that happens, you need to find the directory containing the files with the encoding errors, back them up, and replace them with empty files of the same name. Then retry the jasy install and it should work.
