@@ -2,20 +2,9 @@
 
 - Build scripts are plain Python and can do everything you want to do. No limitations.
 - Import Jasy and define any number of custom tasks
-
-
-## Project Handling
-
 - Project support bundle every project into it's own config and omits copying files around manually
-
-## Permutation Features
-
-- Permutation Support (building different results from one code base)
-- Might be used to remove debug blocks or alternative code
-
-## Developer Support
-
-- Generates a so-named "source" version which loads the original class files which is useful during the development phase of an application.
+- Permutation Support (building different results from one code base). Might be used to remove debug blocks or alternative code
+- Supports a so-named "source" version which loads the original class files which is useful during the development phase of an application.
 
 
 ## JavaScript
@@ -61,6 +50,14 @@
 - Removes needless else (if previous if-block ends with a return/throw statement)
 - Removes needless parens based on priority analysis on the AST
 
+### API Data
+
+- Generates API data from different JavaScript declarations (core library, native prototype, ...)
+- Supports classes, mixins, interfaces, events and properties
+- Supports links to native types like String, Array
+- Merges polyfills to target classes
+- Translates markdown content into HTML and applies syntax highlighting to code sections
+- Support tags on any statics, members, etc.
 
 
 ## Localization
