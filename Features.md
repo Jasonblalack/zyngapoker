@@ -1,24 +1,40 @@
-## Parser
+## General
+
+- Build scripts are plain Python and can do everything you want to do. No limitations.
+- Import Jasy and define any number of custom tasks
+
+
+## Project Handling
+
+- Project support bundle every project into it's own config and omits copying files around manually
+
+## Permutation Features
+
+- Permutation Support (building different results from one code base)
+- Might be used to remove debug blocks or alternative code
+
+## Developer Support
+
+- Generates a so-named "source" version which loads the original class files which is useful during the development phase of an application.
+
+
+## JavaScript
+
+### Parser
 
 - Full JavaScript 1.8 parser based on Narcissus (which itself is based on Spidermonkey)
 - Reworked parser for better child handling (easier to traverse tree compared to original)
 - Full support for JavaScript 1.8 (Generators, Block Scope, Function Expressions, Array Comprehensions, ...)
 - Comment processing (Comments are attached to nodes and are part of the AST)
 
-## Project Handling
-
-- Project Support (Bundling multiple projects)
-- Build scripts are plain Python and can do everything you want to do. No limitations.
-- Import Jasy and define your own tasks (using Python decorator "task") (See demo/generate.py as an example)
-
-## Dependency Analysis
+### Dependency Analysis
 
 - Dependency Analysis (with support for permutations). 
 - All dependencies are regarded as load-time specific.
 - Automatic and fine-tunable breaking of circular dependencies.
 - Detects all objects which are not declared in the file itself e.g. window, document, my.namespaced.Class, etc.
 
-## Dead Code Removal
+### Dead Code Removal
 
 - Resolves conditions and removes blocks which could not be reached
 - Function part of the permutation support
@@ -27,17 +43,12 @@
 - Resolves boolean, number and string compares
 - Supports AND and OR operators
 
-## Permutation Features
-
-- Permutation Support (building different results from one code base)
-- Might be used to remove debug blocks or alternative code
-
-## Compression Features
+### Compression
 
 - Comment Removal
 - White Space Removal (even in some quirky places e.g. keywords before strings, etc.)
 
-## Optimizer Features
+### Optimizer
 
 - Renames local variables/functions/exceptions (based on their usage number)
 - Renames file private variables (starting with double underscore by convention)
@@ -50,11 +61,9 @@
 - Removes needless else (if previous if-block ends with a return/throw statement)
 - Removes needless parens based on priority analysis on the AST
 
-## Developer Support
 
-- Generates a so-named "source" version which loads the original class files which is useful during the development phase of an application.
 
-## Localization Features
+## Localization
 
 - Unicode CLDR Data Transformation
   - Rebuilds XML files to nicely useable ultra-modular JSON data classes
