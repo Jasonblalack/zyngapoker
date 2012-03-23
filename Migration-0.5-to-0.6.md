@@ -13,6 +13,7 @@ Major changes
 - Exception to the previous rule are tasks which contain the word "clean". These are working from the root directory of each project e.g. `removeDir("build")` deletes the build folder in the project's root.
 - Projects could now be called from other locations e.g. `jasy -f ~/Workspace/myJasy/Project/jasyscript.py build`.
 - Tasks support parameters via the command line. The signature of jasy is now like `jasy --general-options task1 --option1=foo --option2=bar task2 --option1=xyz`. These parameters are passed to the defined methods as named parameters e.g. in `task1` needs to be two named parameters `option1` and `option2`. Parameters of tasks must have a value. Flags are not supported.
+- It's possible to call remote tasks while keeping and sharing the prefix with the running task e.g. building another project into the local folder. This can be achieved using the `runTask("projectName", "taskName")`.
 
 Minor changes
 -------------
