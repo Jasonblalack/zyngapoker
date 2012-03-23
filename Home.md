@@ -6,4 +6,3 @@ Jasy - Web Tooling Framework
 * [[Features]]
 * [[Documentation]]
 * [[Migration 0.5 to 0.6]]
-* [[TODO]]
