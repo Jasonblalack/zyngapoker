@@ -1,9 +1,6 @@
 Migration 0.5 to 0.6
 ====================
 
-Major changes
--------------
-
 - Session, Formatting and Optimization objects are globally initialized
 - Projects are automatically scanned for. No need to add projects to the session manually. Configure project dependencies using new "require" section in jasyscript.py. The `addProject()` method is still available but there should not be a need to call it manually.
 - Permutations are still configured on the `session` object via `setField` or `permutateField`. Just use the pre-existing object instead of your own instance.
@@ -14,14 +11,10 @@ Major changes
 - Projects could now be called from other locations e.g. `jasy -f ~/Workspace/myJasy/Project/jasyscript.py build`.
 - Tasks support parameters via the command line. The signature of jasy is now like `jasy --general-options task1 --option1=foo --option2=bar task2 --option1=xyz`. These parameters are passed to the defined methods as named parameters e.g. in `task1` needs to be two named parameters `option1` and `option2`. Parameters of tasks must have a value. Flags are not supported.
 - It's possible to call remote tasks while keeping and sharing the prefix with the running task e.g. building another project into the local folder. This can be achieved using the `runTask("projectName", "taskName")`.
-
-Minor changes
--------------
-
 - `Asset` was renamed to `AssetManager` to differentiate with the `Asset` class being used by projects right now.
-- `storeCompressed` does not support the parameters `formatting`, `optimization` and `permutation` anymore.
-- `storeKernel` does not support the `formatting` parameter anymore.
-- `session.clearCache()` was renamed to `session.clean()`
-- `Resolver` does not has any parameters anymore.
+- `Resolver` does not has any parameters anymore. `addClassName` and `excludeClasses` return the `Resolver` instance for making calls chainable.
 - `Sorter` has only one parameter now (`resolver`)
-
+- `storeKernel()` does not support the `formatting` and `session` parameters anymore.
+- `storeCompressed()` does not support the parameters `formatting`, `optimization` and `permutation` anymore.
+- `storeSourceLoader()` was renamed to `storeLoader()` and does not support the parameter `session` anymore.
+- `session.clearCache()` was renamed to `session.clean()`
