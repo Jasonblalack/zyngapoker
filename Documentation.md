@@ -18,7 +18,7 @@ Jasy requires a [Python 3](http://www.python.org/) installation. It does not nee
 
 Jasy supports different kind of projects. A project is something like your very own application folder, but also any kind of library you make use of e.g. jQuery. In most cases the kind of project is detected automatically based on its folder structure. A project author is able to define a custom structure using the "content" section inside the configuration files.
 
-Each project needs to contain `jasyproject.json` file in its top-level folder. If your project is part of a larger project you might want to place the `manifest.json` file into a sub-folder of your larger project e.g. frontend folder.
+Each project needs to contain `jasyproject.json` file in its top-level folder. If your project is part of a larger project you might want to place the `jasyproject.json` file into a sub-folder of your larger project e.g. frontend folder.
 
 JavaScript source code must have the extension `js` and export a single classes. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
 
@@ -30,23 +30,13 @@ Each file in a project needs to have a qualified name. A qualified name of any c
 
 For classes this should be identical to the name it defines/exports. Jasy requires that there is exactly one name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these different classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
 
-In a project (kind: classic) called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. Jasy does not verify whether the developer is really are exporting that symbol: There is no name validation happening.
+In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening. Jasy does not verify whether the developer is really exporting that symbol
 
 Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
 
-Fuzzy names allows you to have class names which differ from file names. This is by no means thought as the ideal way to do, but is sometimes helpful when you don't own a specific project or a in the middle of a refactoring. If `fuzzy` is enabled in a project every class in the project needs to have a documentation comment with the JavaDoc-like `@name {package.ClassName}` e.g.
-
-```js
-/** 
- * @name {notebook.ui.Button} 
- */
-```
-
-As soon as fuzzy mode is enabled classes without such a comment are regarded as errors and prevent the build script from succeeding.
-
 ### Assets
 
-Assets will be merged and do not behave like classes. Conflict resolution works in direction of adding projects to the session in your build script. In works on a file-by-file basis. Projects which are registered later win over projects registered earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations.
+Assets will be merged and do not behave like classes. Conflict resolution works in direction of how projects are added to the session (typically via automatic project dependency handling). This conflict handling works on a file by file basis. Projects which are added later win over projects added earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations. 
 
 Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `manifest.json` to an empty string.
 
@@ -73,9 +63,9 @@ You can still achieve something like this – if you really want to – using ID
 
 Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant (de_AT) => language (de) => default (en) => code (en)` happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation. Please note that this means that text from a library project which is placed in a file `de_DE.po` is of higher priority than the same text in your location project's `de.po` file.
 
-## Manifest
+## Project Configurations
 
-Each project must have a `manifest.json`. This file defines the name of the project and optionally a few other things like supported fields and their configuration.
+Each project must have a `jasyproject.json`. This file defines the name of the project and optionally a few other things like required projects, supported fields, manual file mappings etc.
 
 A simple manifest file looks like this:
 
@@ -94,20 +84,16 @@ Pretty simple. The `projectname` needs to be unique in all the projects you are 
 These are all the top-level keys which are supported:
 
 * **name**: The unique name of the project (defaults to the basename of the project folder)
-* **kind**: This defines the structure inside the project. Should work automatically in most cases. See "Projects" section above for details.
 * **package**: By default the package is identical to the name of the project. See the "Naming" section above for details.
-* **fuzzy**: Whether the naming of clases is strictly bound the filenames or not. Defaults to `false`. 
 * **fields**: The fields which are used by the project. See section about fields and permutations for details.
-* **names**: Override automatically detected file names (faster than parsing the files itself). (Not yet implemented)
+* **requires**: List of folders or repository URLs which are required. 
 
-A more complex `manifest.json` might look like this:
+A more complex `jasyproject.json` might look like this:
 
 ```js
 {
   "name" : "projectname",
-  "kind" : "full",
   "package" : "",
-  "fuzzy" : true,
   "fields" : 
   {
     "debug" : 
@@ -122,37 +108,17 @@ A more complex `manifest.json` might look like this:
 
 ## Build Script
 
-The most trivial example of a build scriot
+The most trivial example of a build script
 
 ```python
-# Extend PYTHONPATH with 'lib'
-import sys, os
-sys.path.insert(0, "/path/to/jasy")
-
-# Import JavaScript tooling
-from jasy import *
-
 @task
 def simple():
-    # Setup session
-    session = Session()
-    session.addProject(Project("."))
-
-    # Collecting projects
-    resolver = Resolver(session.getProjects())
-    resolver.addClassName("notebook.Application")
-
     # Resolving classes
+    resolver = Resolver().addClassName("notebook.Application")
     classes = Sorter(resolver).getSortedClasses()
 
-    # Compressing classes
-    compressedCode = Combiner(classes).getCompressedCode()
-
-    # Writing files
-    writefile("build/simple.js", compressedCode)
-  
-# Execute Jasy
-run()
+    # Write compressed classes
+    storeCompressed("build/simple.js", classes)
 ```
 
 ## Fields
@@ -177,21 +143,21 @@ In this case no detection happens. This is good to inject values from the outsid
 
 ## Environment
 
-Inside your JavaScript you have access to the fields configured in your fields using the `jasy.Env` class.
+Inside your JavaScript you have access to the fields configured in your fields using the `core.Env` class (inside the core project).
 
 ```js
 // read value for local variable
-var appTitle = jasy.Env.getValue("app-title");
+var appTitle = core.Env.getValue("app-title");
 
 // auto queries for a true value
-if (jasy.Env.isSet("debug")) { 
+if (core.Env.isSet("debug")) { 
   // debug code
 }
 
 // easy string/number compare
-if (jasy.Env.isSet("customer", "premium")) {
+if (core.Env.isSet("customer", "premium")) {
   // premium customer
-} else if (jasy.Env.isSet("customer", "plus")) {
+} else if (core.Env.isSet("customer", "plus")) {
   // plus customer
 } else {
   // free customer
@@ -231,4 +197,3 @@ On the Python side you can inject this checksum as well using `permutation.getCh
 ### Specific output folders
 
 Another possibility is to generate different output folders for each permutation e.g. `a342399/index.html`.
-
