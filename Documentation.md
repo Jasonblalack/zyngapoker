@@ -30,7 +30,7 @@ Each file in a project needs to have a qualified name. A qualified name of any c
 
 For classes this should be identical to the name it defines/exports. Jasy requires that there is exactly one name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these different classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
 
-In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's manifest to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening. Jasy does not verify whether the developer is really exporting that symbol
+In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's configuration to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening. Jasy does not verify whether the developer is really exporting that symbol
 
 Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
 
@@ -38,7 +38,7 @@ Public names exported from JavaScript code have to be unique across all projects
 
 Assets will be merged and do not behave like classes. Conflict resolution works in direction of how projects are added to the session (typically via automatic project dependency handling). This conflict handling works on a file by file basis. Projects which are added later win over projects added earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations. 
 
-Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `manifest.json` to an empty string.
+Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `jasyproject.json` to an empty string.
 
 In the default configuration these assets will automatically get assigned to the asset ID on the right hand side.
 
@@ -53,7 +53,7 @@ To override icons from e.g. your companies icon pool, the behavior of this ID as
 
 The last asset file overrides the asset "logo.png" which is also available through a project called `common`. To make this work the application project have to be registered after the `common` project in your build script.
 
-The default of injecting the project name automatically in the namespaces is a good default for most projects. If you have more complex scenarios where you have to override single assets from you can still achieve them by resetting `package` in your project's manifest to an empty string.
+The default of injecting the project name automatically in the namespaces is a good default for most projects. If you have more complex scenarios where you have to override single assets from you can still achieve them by resetting `package` in your `jasyproject.json` to an empty string.
 
 ### Translations
 
@@ -67,7 +67,7 @@ Translation files are merged per language e.g. all `de.po` files are merged into
 
 Each project must have a `jasyproject.json`. This file defines the name of the project and optionally a few other things like required projects, supported fields, manual file mappings etc.
 
-A simple manifest file looks like this:
+A simple `jasyproject.json` file looks like this:
 
 ```js
 {
@@ -85,22 +85,25 @@ These are all the top-level keys which are supported:
 
 * **name**: The unique name of the project (defaults to the basename of the project folder)
 * **package**: By default the package is identical to the name of the project. See the "Naming" section above for details.
-* **fields**: The fields which are used by the project. See section about fields and permutations for details.
 * **requires**: List of folders or repository URLs which are required. 
+* **fields**: The fields which are used by the project. See section about fields and permutations for details.
 
 A more complex `jasyproject.json` might look like this:
 
 ```js
 {
-  "name" : "projectname",
+  "name" : "notebook",
   "package" : "",
+  "requires" : [
+    "../core"
+  ],
   "fields" : 
   {
     "debug" : 
     {
       "check" : "Boolean",
       "default" : false,
-      "detect" : "jasy.detect.Param"
+      "detect" : "core.detect.Param"
     }
   }
 }
@@ -111,7 +114,7 @@ A more complex `jasyproject.json` might look like this:
 The most trivial example of a build script
 
 ```python
-@task
+@task("Help Text")
 def simple():
     # Resolving classes
     resolver = Resolver().addClassName("notebook.Application")
@@ -168,32 +171,29 @@ if (core.Env.isSet("customer", "premium")) {
 
 Permutations build upon the field configuration. The idea is to basically combine separate values of different fields into a combination - a so called permutation. This permutation can be used to build a specific optimized JavaScript file. Each new field which should be permutated multiplies the number of files created e.g.:
 
-* debug=true/false * engine=gecko/webkit/trident/presto * locale=en,de,fr => 2*4*3 => 24 files
+* `debug` = `true`/`false`
+* `engine` = `gecko`/`webkit`/`trident`/`presto`
+* `locale` = `en`, `de`, `fr`
+
+Results in 2*4*3 => 24 files.
 
 If you want to limit the number of files created keep in mind, to only permutate often used or otherwise important fields (e.g. free vs. premium user). Permutations are pretty fast to generate as Jasy keeps track of the fields (using `jasy.Env`) queried for in each file and caches it accordingly. So generating 40 or 200 makes not really so much difference. Best is to try it out yourself on a real application.
 
 These permutated fields might be loaded server-side e.g. when placing the name or the fields into the file. In the loop, where you are creating the permutations, you can ask each permutation object for specific field values e.g. the value of `debug` and inject this into the file name (`permutation.get("debug")`). 
 
-### Loader Script
+### Kernel Script
 
-The other more scalable alternative, which also has better possibilities to figure out which client you are using, is to use a loader script. This loader script uses the configured tests from the field configuration to automatically determine the value at runtime. With these values and the information about which fields are used for the permutation it is able to know which permutated files to load. This works based on a checksum [Adler32](http://en.wikipedia.org/wiki/Adler-32). Adler32 is a pretty compact checksum and easily to compute (simpler than MD5, SHA1, etc.) at the price of less reliability. The loader script is able to automatically inject the computed checksum into the script loader. 
+The other more scalable alternative, which also has better possibilities to figure out which client you are using, is to use a kernel script. This kernel script uses the configured tests from the field configuration to automatically determine the value at runtime. With these values and the information about which fields are used for the permutation it is able to know which permutated files to load. This works based on a [SHA1](http://en.wikipedia.org/wiki/SHA1) checksum. 
 
 ```js
 // Instead of loading your scripts using:
-jasy.io.Script.load(["myapp.js", ...]);
+core.io.Script.load(["myapp.js", ...]);
 
 // you are using:
-jasy.Env.loadScripts(["myapp.js", ...]);
+core.Env.loadScripts(["myapp.js", ...]);
 
-// the files loaded are automatically patched to inject the adler32 checksum:
-"myapp.js" => "myapp-a342399.js"
+// the files loaded are automatically patched to inject the SHA1 checksum:
+"myapp.js" => "myapp-8a401c44a4c74321062b8378176be3f5636ff3ed.js"
 ```
 
-On the Python side you can inject this checksum as well using `permutation.getChecksum()`. You can construct your filename based on this checksum during your build loop e.g. `"myapp-" + permutation.getChecksum() + ".js"`. Jasy has a built-in feature to generate a loader script based on the permutated fields in the session. This loader can be written to a file using the `session.writeLoader("loader.js", optimization, formatting)` command. In your HTML file you integrate the loader script into the `head` element and load the file using the `Permutation.loadScripts()` command.
-
-
-
-
-### Specific output folders
-
-Another possibility is to generate different output folders for each permutation e.g. `a342399/index.html`.
+On the Python side you can inject this checksum as well using `permutation.getChecksum()`. You can construct your filename based on this checksum during your build loop e.g. `"myapp-" + permutation.getChecksum() + ".js"`. Jasy has a built-in feature to generate a kernel script based on the permutated fields in the session. This kernel can be written to a file using the `storeKernel("kernel.js", assets)` command. In your HTML file you integrate the kernel script into the `head` element and load the file using the `Permutation.loadScripts()` command.
