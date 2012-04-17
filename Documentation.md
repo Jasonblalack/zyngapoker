@@ -12,24 +12,15 @@ Tooling systems which are based on a [DSL](http://en.wikipedia.org/wiki/Domain-s
 
 Jasy requires a [Python 3](http://www.python.org/) installation. It does not need any external modules. Python 2 comes installed on a lot of machines by default at the moment. Even though Python 3 is out for a few years already (released in early 2009) it is still not installed by default on most machines. Luckily installation is pretty straightforward though. 
 
-[Python 3.2](http://www.python.org/download/releases/) is the current version. It is not suggested to install any older 3.x version with Jasy. There are installers available for Windows and Mac. Both should work fine. For Linux users it is suggested to userse their included software manager to look out for Python 3. After installing type `python3 -V` on the command line to verify that it is working. It should output something like `Python 3.2.1`.
+[Python 3.2](http://www.python.org/download/releases/) is the current version. It is not suggested to install any older 3.x version with Jasy. There are installers available for Windows and Mac. Both should work fine. For Linux users it is suggested to userse their included software manager to look out for Python 3. After installing type `python3 -V` on the command line to verify that it is working. It should output something like `Python 3.2.3`.
 
 ## Projects
 
-Jasy supports different kind of projects. A project is something like your very own application folder, but also any kind of library you make use of e.g. jQuery. In most cases the kind of project is detected automatically based on its folder structure. A project author is able to override the kind of project using the `kind` keyword in the manifest. Supported values are: 
+Jasy supports different kind of projects. A project is something like your very own application folder, but also any kind of library you make use of e.g. jQuery. In most cases the kind of project is detected automatically based on its folder structure. A project author is able to define a custom structure using the "content" section inside the configuration files.
 
-* `full`: code in `source/class`, assets in `source/asset`, translations in `source/translation`
-* `basic`: code in `class`, assets in `asset`, translations in `translation`
-* `classic`: code and assets in `src`
-* `flat`: code and assets in top-level project folder
+Each project needs to contain `jasyproject.json` file in its top-level folder. If your project is part of a larger project you might want to place the `manifest.json` file into a sub-folder of your larger project e.g. frontend folder.
 
-For your own application the `full` variant makes the most sense as you typically also generate a folder `build` or `dist` for your optimized and distribution ready (self contained) application build. Libraries which are itself not a full-blown application are typically perfectly fine with being kind of `basic`, `classic` or `flat`.
-
-A fully custom folder structure is currently not supported. Jasy throws an error when a project structure is not supported. All projects can also only use a subset of the folder structure e.g. just assets (icon sets).
-
-Each project needs to contain `manifest.json` file in its top-level folder. If your project is part of a larger project you might want to place the `manifest.json` file into a sub-folder of your larger project and point to this folder in your build script.
-
-JavaScript source code must have the extension `js` and export a single class. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
+JavaScript source code must have the extension `js` and export a single classes. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
 
 ## Names
 
