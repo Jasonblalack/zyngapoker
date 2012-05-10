@@ -1,3 +1,29 @@
+# Concepts
+
+Jasy is a construction tool for web projects. Think of Jasy as a replacement for the classic make utility heavily inspired by modern tools like [SCons](http://www.scons.org/) and [Waf]().
+
+# What makes Jasy better?
+
+- [Make](http://www.gnu.org/software/make/) requires the use of its own [domain specific language](http://en.wikipedia.org/wiki/Domain-specific_language) — this is, in general, not a good idea. Configuration files in Jasy are Python scripts -- use the power of a real programming language to solve build problems. 
+- Full support for complex projects with dependencies to libraries and frameworks.
+- Deep language support through being based on a full-blown JavaScript parser which itself is based on the mature Spidermonkey parser from Mozilla.
+- Reliable, automatic dependency analysis built-in for JavaScript files.
+- Integrated path abstraction support to access assets (images, CSS files, ...) using project IDs instead of folder on the client side.
+
+
+# Features
+
+- Integrated GIT support supports auto-cloning and managing of used libraries and frameworks.
+- Support for internationalization and localization (gettext/CLDR based)
+- Support for generating and using image sprites.
+- Support for defining and using sprite animations.
+
+
+
+
+
+
+
 ## General
 
 - Build scripts are plain Python and can do everything you want to do. No limitations.
