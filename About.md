@@ -3,7 +3,7 @@ Jasy is a construction tool for web projects. Think of Jasy as a replacement for
 
 # Why not use Make?
 
-[Make](http://www.gnu.org/software/make/) requires the use of its own [domain specific language](http://en.wikipedia.org/wiki/Domain-specific_language) — this is, in general, not a good idea. Makefile are so hard to write and extend that several popular build systems today are essentially Makefile generators. A good example is [CMake](http://www.cmake.org/). Also make does not contain any specific tools for dealing with web related files like JavaScript files.
+[Make](http://www.gnu.org/software/make/) requires the use of its own [domain specific language](http://en.wikipedia.org/wiki/Domain-specific_language) — this is, in general, not a good idea. Makefile are so hard to write and extend that several popular build systems today are essentially Makefile generators e.g. [CMake](http://www.cmake.org/). Also make does not contain any specific tools for dealing with web related files like JavaScript files.
 
 
 # What makes Jasy better?
