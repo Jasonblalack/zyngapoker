@@ -14,6 +14,7 @@ Jasy is a construction tool for web projects. Think of Jasy as a replacement for
 - Integrated [GIT](http://git-scm.com/) support for auto-cloning and managing of used libraries and frameworks. Fully supports the model of branches and tags. No more GIT sub repositories to manage by hand.
 - Two different project build variants (source and build) offer the right features for developing and deployment phase of an application. The so-named "source" version loads the original class files which is useful during the development phase of an application. The build version puts all compiled into one (or multiple) optimized code bundles to minimize transfer size and runtime performance.
 - Highly effective single file binary cache (with integrated memory cache). This solution is very fast on all operating systems (much faster than single file lookups with legacy build tools.
+- Integrated permutation supports allow for complex output scenarios (debug=on/off, device=tablet/desktop/mobile, locale=en/fr/de, ...) and access the selected variant using a simple JavaScript API.
 
 
 # Features
@@ -23,7 +24,6 @@ Jasy is a construction tool for web projects. Think of Jasy as a replacement for
 - Deep JavaScript language support through being based on a full-blown parser which itself is based on the mature Spidermonkey parser from Mozilla. Jasy even fully supports upcoming features like generators, array comprehension, etc. of JavaScript 1.8.
 - Generates a easy to process [AST](http://en.wikipedia.org/wiki/Abstract_syntax_tree). This `AST` can be used to transform the original code for e.g. API documentation, code formatting, code linting, optimization, etc.
 - Handles comments during parse process and attaches the comment informations to the generated `AST` nodes.
-- Integrated permutation supports allow for complex output scenarios (debug on/off, device=tablet/desktop/mobile, locale=en/fr/de, ...) and access the selected variant using a simple JavaScript API.
 - Reliable, automatic dependency analysis for JavaScript is built in. Automatically sorts files by their requirements. Dependency analysis happens with permutations applied (e.g. debug builds might contain classes deployment builds might not contain).
 
 
