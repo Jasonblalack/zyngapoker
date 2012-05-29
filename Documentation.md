@@ -4,7 +4,8 @@
 
 Jasy supports different kind of projects. A project is something like your very own application folder, but also any kind of library you make use of e.g. jQuery. In most cases the kind of project is detected automatically based on its folder structure. A project author is able to define a custom structure using the "content" section inside the configuration files.
 
-Each project needs to contain `jasyproject.json` file in its top-level folder. If your project is part of a larger project you might want to place the `jasyproject.json` file into a sub-folder of your larger project e.g. frontend folder.
+
+## Files
 
 JavaScript source code must have the extension `js` and export a single classes. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
 
