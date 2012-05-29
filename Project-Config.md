@@ -110,16 +110,28 @@ It's possible to inline the configuration of 3rd party code into the main projec
 Using this additional configuration we can define that there is a class `_` in the Underscore library which is defined by the file `underscore.js` in the top-level.
 
 
-## Cheap Clones
+### Shallow Clones
 
-One word of warning. Jasy is cloning repositories using cheap clones. This is the best way to deal with external repositories without adding too much bloat to the disk. However this has two side effects:
+One word of warning. Jasy is cloning repositories using so-called shallow clones. This is the best way to deal with external repositories without adding too much bloat to the disk and reduce download size. However this has two side effects one should be aware of:
 
-* It's not possible to track the history of changes
-* One cannot easily change code in these repositories and commit
+A shallow repository has a number of limitations. You cannot clone or fetch from it, nor push from nor into it, but is adequate if you are only interested in the recent history or a specific version of a large project with a long history, and would want to send in fixes as patches.
 
-It's possible though to detect changes which where made after the checkout using `git diff`. 
+*Warning*: Every execution of `jasy` resets these clones to their origin state. If you make changes inside be sure to copy them over to protect them. Otherwise they will be lost after executing `jasy` the next time.
 
-*Warning*: Every run of jasy resets these clones to their origin state. If you make changes inside be sure to copy them over to protect them. Otherwise they will be lost after executing `jasy` the next time.
+
+### Requirements vs. Git Submodules
+
+You can use Git Submodules and requirements (using folder directives) together but typically it's easier to omit submodules all together and just use requirements. You have the benefit of easy recursive dependencies. You have always up-to-date builds using the `jasy` command without the hassle of keeping submodules (recursively) up-to-date manually. Updating these requirements will also automatically update them for all other developers on the next time they execute `jasy`. No need to inform each other to call `git submodule update --recursively` after changing requirements.
+
+
+### Recursive Dependencies
+
+Jasy supports recursive dependencies. If you have a project `A` which requires a project `B` and project `B` which requires project `C` than during the initialization of project `A`, project `C` will be added/cloned as well. 
+
+
+### Overriding Projects
+
+Projects can be overridden by their unique identifier. Let's say you are using a company wide JavaScript library which has a requirement to a 3rd party library called `awesome`. Under some condition it might be required to use a more up-to-date version of that exact library. By adding it to the local `requires` section one can override the requirement of the company wide library and make use of that version instead. Just keep in mind that this works with minor changes only. This version of `awesome` still needs to be compatible to the version required by your company's shared library.
 
 
 ## Setup Fields
