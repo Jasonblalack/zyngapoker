@@ -52,6 +52,7 @@ Requirements can be either defined as folder references or as repository referen
     "https://github.com/documentcloud/underscore",
     "git://github.com/dperini/nwevents.git"
   }
+  ...
 }
 ```
 
@@ -73,6 +74,7 @@ For repository it's also possible to define the version one wants to checkout:
     },
     "git://github.com/dperini/nwevents.git"
   }
+  ...
 }
 ```
 
