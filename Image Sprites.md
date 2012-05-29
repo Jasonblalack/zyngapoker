@@ -8,7 +8,7 @@ Read more about image sprites on Wikipedia: http://en.wikipedia.org/wiki/Sprite_
 
 A typical `jasysprite.json` looks like:
 
-```js
+```json
 {
   "sprite1.png" : {
     "icon/copy.png" : {
@@ -51,7 +51,7 @@ This is the corresponding file system layout:
 
 Normally you place the single images e.g. `copy.png` inside your repository as well. If that's not the case you should define the dimensions of the images as well:
 
-```js
+```json
 {
   "sprite1.png" : {
     "icon/copy.png" : {
@@ -104,7 +104,25 @@ def sprites():
 
 These calls generate three sprite sheets (`jasysprite.json` with any number if `jasysprite_xx.png` files) from the images found in the folders `source/asset/icon`, `source/asset/settings` and `source/asset/help`. 
 
-During the project phases layouts might change dramatically. It's worth adding a call to `clear` first to delete all existing image sprite files. Keep in mind that this deletes custom added files as well!
+``` 
+- asset/
+  - icon/
+    - jasysprite.json
+    - jasysprite_0.png
+    - copy.png
+    - cut.png
+    - paste.png
+    - bold.png
+    - italic.png
+  - settings/
+    ...
+  - help/
+    ...
+``` 
+
+As you can see these additional files are generated inside your projects folders.
+
+During the project phases layouts might change dramatically. It's worth adding a call to `clear` first to delete all existing image sprite files. Keep in mind that this deletes custom added sprite files as well!
 
 ```python
 @task
