@@ -37,7 +37,7 @@ A typical `jasysprite.json` looks like:
 This is the corresponding file system layout:
 
 ```
-- asset
+- asset/
   - jasysprite.json
   - splash.png
   - sprite1.png
@@ -91,7 +91,7 @@ There is an API in Jasy to automatically generate sprite sheets. You can define 
 
 Note: The sprite packer currently supports PNG files only.
 
-```  
+```python
 @task
 def sprites():
   packer = SpritePacker("source/asset")
@@ -100,5 +100,17 @@ def sprites():
   packer.packDir("help")
 ```
 
-These calls generate three sprite sheets from the images found in the folders `source/asset/icon`, `source/asset/settings` and `source/asset/help`.
+These calls generate three sprite sheets (`jasysprite.json` with any number if `jasysprite_xx.png` files) from the images found in the folders `source/asset/icon`, `source/asset/settings` and `source/asset/help`. 
+
+During the project phases layouts might change dramatically. It's worth adding a call to `clear` first to delete all existing image sprite files. Keep in mind that this deletes custom added files as well!
+
+```python
+@task
+def sprites():
+  packer = SpritePacker("source/asset")
+  packer.clear()
+  packer.packDir("icon")
+  packer.packDir("settings")
+  packer.packDir("help")
+```
 
