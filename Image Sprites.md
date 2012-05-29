@@ -2,6 +2,8 @@
 
 Image sprites can be configured using the file `jasysprite.json` inside the asset folder of the application. For better structure this data could be split up into multiple `jasysprite.json` files (e.g. place them in sub folders).
 
+Read more about [image sprites on Wikipedia](http://en.wikipedia.org/wiki/Sprite_(computer_graphics))
+
 ## Manually defining sprite sheets
 
 A typical `jasysprite.json` looks like:
