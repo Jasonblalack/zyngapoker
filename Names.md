@@ -1,14 +1,18 @@
 # Names
 
-Each file in a project needs to have a qualified name. A qualified name of any class or asset is automatically derived from the file name and location inside the project.
+Each file in a project needs to have a qualified name. A qualified name of any class or asset is automatically derived from the file name and location inside the project and the project's configuration.
+
 
 ## Classes
 
-For classes this should be identical to the name it defines/exports. Jasy requires that there is exactly one name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these different classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
+For classes the name should reflect the name it defines/exports. Jasy requires that there is exactly one (public) name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these different classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
 
-In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is prepended into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's configuration to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening right now. Jasy does not verify whether the developer is really exporting that symbol. Mainly that's because it would be pretty complicated to do in such a dynamic language
+In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is prepended into the fully qualified name automatically. 
+
+If you want to disable this behavior, you can set up the `package` configuration in the project's configuration to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening right now. Jasy does not verify whether the developer is really exporting that symbol. Mainly that's because it would be pretty complicated to do in such a dynamic language.
 
 Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
+
 
 ## Assets
 
