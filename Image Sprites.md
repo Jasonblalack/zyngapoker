@@ -104,7 +104,7 @@ def sprites():
 
 These calls generate three sprite sheets (`jasysprite.json` with any number if `jasysprite_xx.png` files) from the images found in the folders `source/asset/icon`, `source/asset/settings` and `source/asset/help`. 
 
-``` 
+```
 - asset/
   - icon/
     - jasysprite.json
@@ -118,7 +118,7 @@ These calls generate three sprite sheets (`jasysprite.json` with any number if `
     ...
   - help/
     ...
-``` 
+```
 
 As you can see these additional files are generated inside your projects folders.
 
