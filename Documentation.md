@@ -34,7 +34,7 @@ JavaScript source code must have the extension `js` and export a single classes.
 
 ### *Sprites* - Setup image sprites: 
 
-* File: `jasysprite.json`
+* File: `jasysprite.json` + `jasysprite_xxx.png`
 * Occurrences: many
 * Location: Inside asset folder
 * Docs: [[Image Sprites]]
