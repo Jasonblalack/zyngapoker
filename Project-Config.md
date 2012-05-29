@@ -107,7 +107,7 @@ It's possible to inline the configuration of 3rd party code into the main projec
 }
 ```
 
-Using this additional configuration we can define that there is a class `_` in the Underscore library which is defined by the file `underscore.js` in the top-level.
+Using this additional configuration we can define that there is a class `_` in the Underscore library which is defined by the file `underscore.js` in the top-level. The `config` section supports all keys supported by `jasyproject.json`.
 
 
 ### Shallow Clones
