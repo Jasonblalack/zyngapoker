@@ -39,3 +39,11 @@ JavaScript source code must have the extension `js` and export a single classes.
 * Occurrences: multiple times
 * Location: Inside asset folder
 * Docs: [[Image Animations]]
+
+
+
+## Further informations:
+
+* [[Installation]]
+* [[Names]]
+* [[Fields]]
