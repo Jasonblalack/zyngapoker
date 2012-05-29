@@ -44,11 +44,14 @@ Requirements can work with simple folder structures inside or outside your proje
 Requirements can be either defined as folder references or as repository references (currently limited to Git). These types can be mixed in any order:
 
 ```json
-"requires" : 
 {
-  "external/core",
-  "https://github.com/documentcloud/underscore",
-  "git://github.com/dperini/nwevents.git"
+  ...
+  "requires" : 
+  [
+    "external/core",
+    "https://github.com/documentcloud/underscore",
+    "git://github.com/dperini/nwevents.git"
+  ]
 }
 ```
 
@@ -60,12 +63,16 @@ For repository it's also possible to define the version one wants to checkout:
 
 ```json
 {
-  "external/core",
-  {
-    "source" : "https://github.com/documentcloud/underscore",
-    "version" : "1.3.1"
-  },
-  "git://github.com/dperini/nwevents.git"
+  ...
+  "requires" : 
+  [
+    "external/core",
+    {
+      "source" : "https://github.com/documentcloud/underscore",
+      "version" : "1.3.1"
+    },
+    "git://github.com/dperini/nwevents.git"
+  ]
 }
 ```
 
@@ -77,23 +84,26 @@ For supporting the version info we introduce another inner object to configure `
 It's possible to inline the configuration of 3rd party code into the main project's configuration. This way it's possible to use non-Jasy ready 3rd party code without hassle. Once configured all Jasy benefits like automatic dependency tracking works fine. To add manual configuration for underscore the code needs to be changed like this:
 
 ```json
-"requires" : 
 {
-  "external/core",
-  {
-    "source" : "https://github.com/documentcloud/underscore",
-    "version" : "1.3.1",
-    "config" :
+  ...
+  "requires" : 
+  [
+    "external/core",
     {
-      "content" :
+      "source" : "https://github.com/documentcloud/underscore",
+      "version" : "1.3.1",
+      "config" :
       {
-        "_" : [
-          "underscore.js"
-        ]
+        "content" :
+        {
+          "_" : [
+            "underscore.js"
+          ]
+        }
       }
-    }
-  },
-  "git://github.com/dperini/nwevents.git"
+    },
+    "git://github.com/dperini/nwevents.git"
+  ]
 }
 ```
 
