@@ -6,7 +6,7 @@ Jasy is a construction tool for web projects. Think of Jasy as a replacement for
 [Make](http://www.gnu.org/software/make/) requires the use of its own [domain specific language](http://en.wikipedia.org/wiki/Domain-specific_language) — this is, in general, not a good idea. Makefile are so hard to write and extend that several popular build systems today are essentially Makefile generators e.g. [CMake](http://www.cmake.org/). Also make does not contain any specific tools for dealing with web related files like JavaScript files.
 
 
-## Why not use a DSL?
+# Why not use a DSL?
 
 Tooling systems which are based on a [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) are often quite limited regarding flexibility. Jasy should be the one and only tooling solution for your JavaScript you need. There should not be anything you can't implement in there. This is one of the reasonings why the build system is not configured using a DSL. Instead Jasy is used through a Python3-API. The project author writes a Python3 script using the Jasy API but is also able to use all standard Python modules to fulfill the tasks. Jasy borrows this idea of using a full programming language instead of pure configuration files from build systems like [SCons](http://www.scons.org/) or [Waf](http://code.google.com/p/waf/).
 
