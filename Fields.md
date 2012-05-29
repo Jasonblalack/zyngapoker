@@ -13,6 +13,14 @@ Fields can be configured using these keys:
 * `check`: The check to apply to the detected value for validation. Value could be either one of `"Boolean"`, `"String"`, `"Number"` or a list of possible values e.g. `["small", "medium", "large"]`
 * `default`: Defines a default value. Used whenever no other value is available.
 
+You can freeze a fields value in your build script using:
+
+```python
+session.setField("name", value)
+```
+
+Each field may automatically tested via the `detect` class defined in the project's configuration and filled with a value. These detection classes could have a static field `VALUE` or a getter `get("field")` which should return the value of the given field. Using getter methods one can share a detection class for multiple fields (e.g. to return server data, parse the query string, etc.)
+
 Example:
 
 ```json
@@ -47,24 +55,6 @@ core.Module("core.detect.Param",
     return value;
   }
 });
-```
-
-
-
-
-
-### Dynamic Value Detection
-
-Each field is automatically tested via the `detect` class defined in the project's configuration and filled with a value. These detection classes could have a static field `VALUE` or a getter `get("field")` which should return the value of the given field. Using getter methods one can share a detection class for multiple fields (e.g. to return server data, parse the query string, etc.)
-
-
-
-
-
-You can hard-configure a field in your build script using as well:
-
-```python
-session.setField("name", value)
 ```
 
 In this case no detection happens. This is good to inject values from the outside e.g. the version number of your application. In any case this field have to be defined by the project (e.g. your application) first.
