@@ -4,15 +4,6 @@
 
 **Jasy** is an approach to fix the missing tooling infrastructure for JavaScript projects. Without a good and generic build system it's pretty complicated to even handle semi-complex project structures with ease. In basically every other development environment (.NET, Java, Objective-C or even Flash) it's typically to use a powerful build system. Jasy tries to be exactly this for JavaScript developers.
 
-## Full Scripting
-
-Tooling systems which are based on a [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) are often quite limited regarding flexibility. Jasy should be the one and only tooling solution for your JavaScript you need. There should not be anything you can't implement in there. This is one of the reasonings why the build system is not configured using a DSL. Instead Jasy is used through a Python3-API. The project author writes a Python3 script using the Jasy API but is also able to use all standard Python modules to fulfill the tasks. Jasy borrows this idea of using a full programming language instead of pure configuration files from build systems like [SCons](http://www.scons.org/) or [Waf](http://code.google.com/p/waf/).
-
-## Requirements
-
-Jasy requires a [Python 3](http://www.python.org/) installation. It does not need any external modules. Python 2 comes installed on a lot of machines by default at the moment. Even though Python 3 is out for a few years already (released in early 2009) it is still not installed by default on most machines. Luckily installation is pretty straightforward though. 
-
-[Python 3.2](http://www.python.org/download/releases/) is the current version. It is not suggested to install any older 3.x version with Jasy. There are installers available for Windows and Mac. Both should work fine. For Linux users it is suggested to userse their included software manager to look out for Python 3. After installing type `python3 -V` on the command line to verify that it is working. It should output something like `Python 3.2.3`.
 
 ## Projects
 
@@ -22,6 +13,12 @@ Each project needs to contain `jasyproject.json` file in its top-level folder. I
 
 JavaScript source code must have the extension `js` and export a single classes. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in [gettext](http://www.gnu.org/s/gettext/) `po` format. One language per file e.g. `de.po`.
 
+
+## Special Files
+
+
+
+
 ## Names
 
 Each file in a project needs to have a qualified name. A qualified name of any class or asset is automatically derived from the file name and location inside the project.
@@ -30,42 +27,52 @@ Each file in a project needs to have a qualified name. A qualified name of any c
 
 For classes this should be identical to the name it defines/exports. Jasy requires that there is exactly one name declaration per file. (This might be feel like a strong limitation first but makes modularity and code typically easier to understand. The main argument before tooling to bundle these different classes into one file was to reduce loading overhead. This is not relevant anymore with Jasy.)
 
-In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is injected into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's configuration to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening. Jasy does not verify whether the developer is really exporting that symbol
+In a project called `notebook` a file placed in `src/view/Preferences.js` will be called `notebook.view.Preferences`. As you can see the `notebook`-part is prepended into the fully qualified name automatically. If you want to disable this behavior, you can set up the `package` configuration in the project's configuration to something else. If it is called `noty` instead, the exported class name should be `noty.view.Preferences`. There is no name validation happening right now. Jasy does not verify whether the developer is really exporting that symbol. Mainly that's because it would be pretty complicated to do in such a dynamic language
 
 Public names exported from JavaScript code have to be unique across all projects. If one completely override a full class under its original name it makes no sense to include it at all, right? The dependency engine in the build system use these public names to analyse dependencies between files e.g. a class `notebook.controller.Main` (stored in `src/controller/Main.js`) might use the preferences dialog from above. The dependency and ordering is automatically detected - even through project borders.
 
 ### Assets
 
-Assets will be merged and do not behave like classes. Conflict resolution works in direction of how projects are added to the session (typically via automatic project dependency handling). This conflict handling works on a file by file basis. Projects which are added later win over projects added earlier. This allows the application developer to override assets or translations from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets or translations. 
+Assets will be merged and do not behave like classes. Conflict resolution works in direction of how projects are added to the session (typically via automatic project dependency handling). This conflict handling works on a file by file basis. Projects which are added later win over projects added earlier. This allows the application developer to override assets (or translations) from a library project inside an application. This is fine for using data from external repositories or company standards while still having the possibility to easily override single assets.
 
-Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. To override assets from another project you have to configure `package` in your `jasyproject.json` to an empty string.
-
-In the default configuration these assets will automatically get assigned to the asset ID on the right hand side.
+Keep in mind that assets are typically "protected" by the auto-namespacing enabled through `package` having being configured to the `name` of the project. In the default configuration these assets will automatically get assigned to the asset ID on the right hand side.
 
     source/asset/icon/save.png => "notebook/icon/save.png"
 
-To use these assets pass the asset ID through `jasy.io.Asset.toUri(assetId) => fullUri`. In Jasy powered projects you don't have to deal (and shouldn't deal) with file system locations (or relative paths) anymore. Just use `jasy.io.Asset` together with asset indexing via the build tools.
+To use these assets pass the asset ID through `core.io.Asset.toUri("assetId") => fullUri`. In Jasy powered projects you don't have to deal (and shouldn't deal) with file system locations (or relative paths) anymore.
 
 To override icons from e.g. your companies icon pool, the behavior of this ID assignment changes. This means you have to have a sub folder which represents your application name as well as one representing the name of the other project e.g.:
 
     source/asset/notebook/icon/save.png => "notebook/icon/save.png"
     source/asset/common/logo.png => "common/logo.png"
 
-The last asset file overrides the asset "logo.png" which is also available through a project called `common`. To make this work the application project have to be registered after the `common` project in your build script.
+The last asset file overrides the asset "common/logo.png" which is also available through a project called `common`. This simply works then registering "common" as a requirement to the "notebook" application.
 
-The default of injecting the project name automatically in the namespaces is a good default for most projects. If you have more complex scenarios where you have to override single assets from you can still achieve them by resetting `package` in your `jasyproject.json` to an empty string.
+The default of injecting the project name automatically in the namespaces is a good default for most projects. If you have more complex scenarios where you have to override single assets you can still achieve them by resetting `package` in your `jasyproject.json` to an empty string.
+
 
 ### Translations
 
-Translations behave similar to assets, but there is no namespacing at all. All IDs used with the translation engine are regarded as top-level. This is because one normally prefer English sentences like `Save to...` in code instead of logical IDs for translation files. It makes not really a lot of sense to namespace sentences. 
+Translations behave similar to assets, but there is no namespacing at all. All IDs used with the translation engine are regarded as top-level. This is because one normally prefer English sentences like `Save to...` in code instead of logical IDs for translation files. It makes not really a lot of sense to namespace plain sentences. 
 
 You can still achieve something like this – if you really want to – using IDs instead of sentences and building them with namespaces in mind like `notebook.preferences.OptionTitle`. Just keep in mind that IDs don't easily allow you to use any placeholders and make it visible for translators where dynamic data is planned to be inserted e.g. `Copying file %1 of %2...` is easily translated to e.g. German `Kopiere Datei %1 von %2...`. Not so easy with a translation ID like `notebook.CopyProgress`.
 
 Translation files are merged per language e.g. all `de.po` files are merged into one. As the translation system support language variants as well, you might also have a e.g. `de_AT.po` file. If your application figures out that the user comes from Austria you would select the `de_AT` locale. The merge happens on translation level first. On a second round the resolution `variant (de_AT) => language (de) => default (en) => code (en)` happens and leads to a final lookup table for the given language. This behavior is basically identical to every other [gettext](http://www.gnu.org/s/gettext/) implementation. Please note that this means that text from a library project which is placed in a file `de_DE.po` is of higher priority than the same text in your location project's `de.po` file.
 
-## Project Configurations
 
-Each project must have a `jasyproject.json`. This file defines the name of the project and optionally a few other things like required projects, supported fields, manual file mappings etc.
+## Configuration
+
+### Overview
+
+* *Config* - Configure the project: `jasyproject.json`
+* *Tasks* - Define build targets: `jasyscript.py`
+* *Sprites* - Setup image sprites: `jasysprite.json`
+* *Animations* - Setup frame based image animations: `jasyanimation.json`
+
+
+### *Config* - Project Configurations
+
+Each project must have a `jasyproject.json`. This file defines the name of the project and optionally a few other things like other required projects, supported fields (pass data from build to the client), etc.
 
 A simple `jasyproject.json` file looks like this:
 
@@ -75,7 +82,7 @@ A simple `jasyproject.json` file looks like this:
 }
 ```
 
-Pretty simple. The `projectname` needs to be unique in all the projects you are using. At name automatically defaults to the project's folder name. If that okay it's even okay to just leave it nearly empty:
+Pretty simple. The `projectname` needs to be unique in all the projects you are using. At name automatically defaults to the project's folder name. If that okay it's even possible to just leave this info out and make the JSON file nearly empty:
 
 ```js
 {}
@@ -109,9 +116,9 @@ A more complex `jasyproject.json` might look like this:
 }
 ```
 
-## Build Script
+### Build Script
 
-The most trivial example of a build script
+The most trivial example of a build script (`jasyscript.py`)
 
 ```python
 @task("Help Text")
@@ -124,7 +131,7 @@ def simple():
     storeCompressed("build/simple.js", classes)
 ```
 
-## Fields
+### Fields
 
 Fields allow for configuration flags in projects. They are shared by all projects e.g. an application using a library project also inherits all fields defined by this library. Conflicts result in an exception during session initialization time. Be careful on how you name your fields. It is not uncommon to prefix library specific fields with the project name e.g. `richtext.table` instead of just `table`. There is nothing enforced here, though, as there might be also common useful names like `debug`. Please note that you can override default values or test classes in your build script.
 
