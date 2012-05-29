@@ -12,8 +12,30 @@ JavaScript source code must have the extension `js` and export a single classes.
 
 ## Configuration
 
-* *Config* - Configure the project (`jasyproject.json`): [[Project Config]]
-* *Tasks* - Define build targets: (`jasyscript.py`): [[Build Script]]
-* *Sprites* - Setup image sprites: (`jasysprite.json`): [[Image Sprites]]
-* *Animations* - Setup frame based image animations: (`jasyanimation.json`): [[Image Animations]]
+### *Config* - Configure the project
+  
+* File: `jasyproject.json`
+* Occurrences: 1x
+* Location: Root folder
+* Docs: [[Project Config]]
 
+### *Tasks* - Define build targets
+
+* File: `jasyscript.py`
+* Occurrences: 1x
+* Location: Root folder
+* Docs: [[Build Script]]
+
+### *Sprites* - Setup image sprites: 
+
+* File: `jasysprite.json`
+* Occurrences: multiple times
+* Location: Inside asset folder
+* Docs: [[Image Sprites]]
+
+### *Animations* - Setup frame based image animations 
+
+* File: `jasyanimation.json`
+* Occurrences: multiple times
+* Location: Inside asset folder
+* Docs: [[Image Animations]]
