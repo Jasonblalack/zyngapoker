@@ -14,7 +14,7 @@ A simple `jasyproject.json` might look like:
 
 Pretty simple. The `projectname` needs to be unique in all the projects you are using (otherwise the previous project with that name is overridden). The name automatically defaults to the project's folder name. If that okay it's even possible to just leave this information out:
 
-```js
+```json
 {}
 ```
 
@@ -43,7 +43,7 @@ Requirements can work with simple folder structures inside or outside your proje
 
 Requirements can be either defined as folder references or as repository references (currently limited to Git). These types can be mixed in any order:
 
-```json 
+```json
 {
   ...
   "requires" : 
@@ -61,7 +61,7 @@ Requirements can be either defined as folder references or as repository referen
 For repository it's also possible to define the version one wants to checkout:
 
 
-```json 
+```json
 {
   ...
   "requires" : 
@@ -83,7 +83,7 @@ For supporting the version info we introduce another inner object to configure `
 
 It's possible to inline the configuration of 3rd party code into the main project's configuration. This way it's possible to use non-Jasy ready 3rd party code without hassle. Once configured all Jasy benefits like automatic dependency tracking works fine. To add manual configuration for underscore the code needs to be changed like this:
 
-```json 
+```json
 {
   ...
   "requires" : 
