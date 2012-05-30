@@ -2,7 +2,7 @@
 
 ## Basic Configuration
 
-Each project must have a configuration. Typically this is stored in the `jasyproject.json`. This file defines the name of the project and optionally a few other things like other required projects, supported fields (to pass data from build to the client), etc.
+Each Jasy project must have a configuration file. Typically this is stored in the `jasyproject.json` (or defined by another projects config). This file defines the name of the project, the exported package (namespace) and optionally a few other things like other required projects, supported fields (to pass data from build to the client), etc.
 
 A simple `jasyproject.json` might look like:
 
@@ -119,25 +119,29 @@ A shallow repository has a number of limitations. You cannot clone or fetch from
 *Warning*: Every execution of `jasy` resets these clones to their origin state. If you make changes inside be sure to copy them over to protect them. Otherwise they will be lost after executing `jasy` the next time.
 
 
-### Requirements vs. Git Submodules
-
-You can use Git Submodules and requirements (using folder directives) together but typically it's easier to omit submodules all together and just use requirements. You have the benefit of easy recursive dependencies. You have always up-to-date builds using the `jasy` command without the hassle of keeping submodules (recursively) up-to-date manually. Updating these requirements will also automatically update them for all other developers on the next time they execute `jasy`. No need to inform each other to call `git submodule update --recursively` after changing requirements.
-
-
 ### Recursive Dependencies
 
-Jasy supports recursive dependencies. If you have a project `A` which requires a project `B` and project `B` which requires project `C` than during the initialization of project `A`, project `C` will be added/cloned as well. 
+Jasy supports recursive dependencies. If you have a project `A` which requires a project `B` and project `B` which requires project `C` than during the initialization of project `A`, project `C` will be added/cloned as well.
+
+
+### Requirements vs. Git Submodules
+
+You can use Git Submodules and requirements (using classical folder directives) together but typically it is easier to omit submodules all together and just use requirements. You have some benefits in doing so:
+
+- less complexity
+- simply to use recursive dependencies
+- easily switch between different versions of requirements
+- always up-to-date builds using the `jasy` command 
+
+BTW: Updating requirements will also automatically update them for all other developers on the next time they execute `jasy`. No need to inform each other to call `git submodule update --recursively` after changing requirements.
 
 
 ### Overriding Projects
 
-Projects can be overridden by their unique identifier. Let's say you are using a company wide JavaScript library which has a requirement to a 3rd party library called `awesome`. Under some condition it might be required to use a more up-to-date version of that exact library. By adding it to the local `requires` section one can override the requirement of the company wide library and make use of that version instead. Just keep in mind that this works with minor changes only. This version of `awesome` still needs to be compatible to the version required by your company's shared library.
+Projects can be overridden by their unique identifier (the projects `name`). Let's say you are using a company wide JavaScript library which has a requirement to a 3rd party library called `awesome`. Under some condition it might be required to use a more up-to-date version of that exact library. By adding it to the local `requires` section one can override the requirement of the company wide library and make use of that version instead. Just keep in mind that this works with minor changes only. This version of `awesome` still needs to be compatible to the version required by your company's shared library.
 
 
 ## Setup Fields
 
 Have a look at the separate documentation: [[Fields]].
-
-
-## Manual Layout
 
