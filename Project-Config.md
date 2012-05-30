@@ -55,6 +55,8 @@ Requirements can be either defined as folder references or as repository referen
 }
 ```
 
+The clones for repository are stored inside a folder "external" created in the project's root folder. There will all externals be stored - even the ones required by required projects.
+
 
 ### Checking out a specific version
 
@@ -94,12 +96,8 @@ It's possible to inline the configuration of 3rd party code into the main projec
       "version" : "1.3.1",
       "config" :
       {
-        "content" :
-        {
-          "_" : [
-            "underscore.js"
-          ]
-        }
+        "name" : "_",
+        ...
       }
     },
     "git://github.com/dperini/nwevents.git"
@@ -107,7 +105,7 @@ It's possible to inline the configuration of 3rd party code into the main projec
 }
 ```
 
-Using this additional configuration we can define that there is a class `_` in the Underscore library which is defined by the file `underscore.js` in the top-level. The `config` section supports all keys supported by `jasyproject.json`.
+The `config` section supports all keys supported by `jasyproject.json` and allows making external or 3rd party projects Jasy-ready.
 
 
 ### Shallow Clones
@@ -145,3 +143,56 @@ Projects can be overridden by their unique identifier (the projects `name`). Let
 
 Have a look at the separate documentation: [[Fields]].
 
+
+## Manual Layout
+
+Sometimes there are libraries which use a custom structure and which you are not able to modify (time or organizational reasons). Then there is the option to define it's structure manually using the `content` section of the `jasyproject.json` or the inlined `config` section in a `requires` section of the parent project.
+
+```json
+{
+  ...
+  "content" :
+  {
+    "_" : [
+      "underscore.js"
+    ]
+  }
+}
+```
+
+Using this additional configuration we can define that there is a class `_` in the Underscore library which is defined by the file `underscore.js` in the top-level. As you can see the value of the "_" is an array. This allows you to concat multiple files into a single exported name. Here is an example of how to use this approach (as it works for the Hogan.js library):
+
+```json
+{
+  ...
+  "content" :
+  {
+    "Hogan" : 
+    [
+      "lib/template.js",
+      "lib/compiler.js"
+    ]
+  }
+}
+```
+
+The two files concatenated in the given order export the name `Hogan`. To include both scripts just use the exported name `Hogan` somewhere in another class. You can also define assets for being included in you build using the normal Jasy way via `core.io.Asset`. Here an example as used by QUnit:
+
+```json
+{
+  ...
+  "content" :
+  {
+    "QUnit" : [
+      "qunit/qunit.js"
+    ],
+
+    "qunit-xyz.css" : [
+      "qunit/qunit.css"
+    ]
+  }
+}
+
+You simple mix classes and assets into one list. Just keep in mind that the key is always the file identifier in Jasy. For classes this is a simple optionally dot-separated name without extension. For assets it's the full file name with extension.
+
+For more examples on how to use manual layouts take a look at the [Jasy Compat Project](https://github.com/zynga/jasy-compat).
