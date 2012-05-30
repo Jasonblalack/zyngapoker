@@ -192,6 +192,7 @@ The two files concatenated in the given order export the name `Hogan`. To includ
     ]
   }
 }
+```
 
 You simple mix classes and assets into one list. Just keep in mind that the key is always the file identifier in Jasy. For classes this is a simple optionally dot-separated name without extension. For assets it's the full file name with extension.
 
