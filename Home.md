@@ -3,6 +3,7 @@ Jasy - Web Tooling Framework
 
 * [[About]]
 * [[Installation]]
+* [[Installation using VirtualEnv]]
 * [[FAQ]]
 
 * [[Documentation]]
