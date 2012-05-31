@@ -1,7 +1,5 @@
 # Migration 0.6 to 0.7
 
-## AssetManager
-
 The asset handling was revamped by major extend to make it more flexible, modular and efficient:
 
 - flexible: multiple roots are supported through the usage of profiles
@@ -30,3 +28,18 @@ There are pre-configured methods for dealing with typical source/build scenarios
 * `session.getAssetManager().addBuildProfile(urlPrefix="asset", override=False)`: Configure all known assets to being loaded from the local e.g. asset folder.
 
 For more information on the new feature consult the official documentation.
+
+The signature of `storeCompressed` and `storeLoader` has been modified a bit. The list of classes has been moved to the front:
+
+```python
+storeCompressed(fileName, sortedClasses, bootCode)
+storeLoader(fileName, sortedClasses, bootCode)
+```
+
+you now use:
+
+```python
+storeCompressed(resolver, fileName, bootCode)
+storeCompressed(resolver, fileName, bootCode)
+```
+
