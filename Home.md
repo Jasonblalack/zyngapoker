@@ -2,13 +2,12 @@ Jasy - Web Tooling Framework
 ============================
 
 * [[About]]
+* [[FAQ]]
 
 * Installation
   * [[Installation]]
   * [[Installation Using VirtualEnv]]
   * [[Installation Using Binary Packages]]
-
-* [[FAQ]]
 
 * [[Documentation]]
   * [[Project Config]]: Configure your project settings
