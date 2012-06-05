@@ -1,8 +1,8 @@
 # Installation Packages for Mac and Windows
 
-Those packages bundle all dependencies Jasy needs to work on a Mac or Windows without the need to install or compile required dependencies such as Python3, Misaki etc.
+Those packages bundle all Jasy features (incl. optional packages) to work on Mac or Windows without the need to install or compile anything (Python itself, binary packages like msgpack, misaka, etc.). 
 
-[Download Page](https://github.com/zynga/jasy/downloads)
+* [Download Page](https://github.com/zynga/jasy/downloads)
 
 ## Installing the Mac Package
 
