@@ -10,7 +10,7 @@ Those packages bundle all dependencies Jasy needs to work on a Mac or Windows wi
 2. run ./install.sh which will copy everything to /opt and adds a single line into your ~/.profile
 3. restart terminal and type 'jasy' to verify it worked 
 
-h4. Installing the Windows Package
+## Installing the Windows Package
 
 1. download and unzip 
 2. run activate.bat which sets the correct paths
