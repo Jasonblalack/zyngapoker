@@ -54,3 +54,17 @@ Rename global `formatting`/`optimization` objects with `js` prefix:
 * `formatting` => `jsFormatting`
 * `optimization` => `jsOptimization`
 
+## Sorting classes
+
+The `Sorter` class is not available to the jasyscript environment anymore. Just call `getSortedClasses` on the `Resolver` instance instead.
+
+```python
+resolver = Resolver().addClassName("foo.Bar")
+classes = Sorter(resolver).getSortedClasses()
+```
+
+to
+
+```python
+classes = Resolver().addClassName("foo.Bar").getSortedClasses()
+```
