@@ -54,7 +54,7 @@ you now use:
 
 ```python
 storeCompressed(sortedClasses, "script/my.js", bootCode)
-storeCompressed(sortedClasses, "script/my.js", bootCode)
+storeLoader(sortedClasses, "script/my.js", bootCode)
 ```
 
 ## Formatting/Optimization
