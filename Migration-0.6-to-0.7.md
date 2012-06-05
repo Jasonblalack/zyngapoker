@@ -1,5 +1,7 @@
 # Migration 0.6 to 0.7
 
+## Asset Handling
+
 The asset handling was revamped by major extend to make it more flexible, modular and efficient:
 
 - flexible: multiple roots are supported through the usage of profiles
@@ -29,6 +31,8 @@ There are pre-configured methods for dealing with typical source/build scenarios
 
 For more information on the new feature consult the official documentation.
 
+## Store Loader/Compressed
+
 The signature of `storeCompressed` and `storeLoader` has been modified a bit. The list of classes has been moved to the front:
 
 ```python
@@ -42,4 +46,11 @@ you now use:
 storeCompressed(resolver, fileName, bootCode)
 storeCompressed(resolver, fileName, bootCode)
 ```
+
+## Formatting/Optimization
+
+Rename global `formatting`/`optimization` objects with `js` prefix:
+
+* `formatting` => `jsFormatting`
+* `optimization` => `jsOptimization`
 
