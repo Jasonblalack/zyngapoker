@@ -80,7 +80,3 @@ to
 ```python
 classes = Resolver().addClassName("foo.Bar").getSortedClasses()
 ```
-
-## Cleanups
-
-* Removed typically unused `storeCombined()` method.
