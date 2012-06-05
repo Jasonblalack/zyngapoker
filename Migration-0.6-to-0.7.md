@@ -24,8 +24,8 @@ You have to configure the assets before building any of packages using `storeKer
 
 There are pre-configured methods for dealing with typical source/build scenarios:
 
-* `session.getAssetManager().addSourceProfile(urlPrefix="", override=False)`: Configure all known assets to being loaded from the source folders
-* `session.getAssetManager().addBuildProfile(urlPrefix="asset", override=False)`: Configure all known assets to being loaded from the local e.g. asset folder.
+* `assetManager.addSourceProfile(urlPrefix="", override=False)`: Configure all known assets to being loaded from the source folders
+* `assetManager.addBuildProfile(urlPrefix="asset", override=False)`: Configure all known assets to being loaded from the local e.g. asset folder.
 
 For more information on the new feature consult the official documentation.
 
