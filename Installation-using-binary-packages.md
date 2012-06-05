@@ -14,5 +14,5 @@ Those packages bundle all Jasy features (incl. optional packages) to work on Mac
 ## Installing the Windows Package
 
 1. download and unzip 
-2. run `activate.bat` which sets the correct paths
-3. restart terminal and type `jasy` to verify it worked 
+2. run `activate.bat` which sets the correct paths for the active console session
+3. type `jasy` to verify it worked 
