@@ -8,7 +8,7 @@ A trivial example of `jasyscript.py` might look like this:
 @task("This is the help text for the build task")
 def build():
     # Resolving classes
-    resolver = Resolver().addClassName("notebook.Application").getSortedClasses()
+    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
     storeCompressed(classes, "simple.js")
