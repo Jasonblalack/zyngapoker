@@ -50,4 +50,15 @@ def build(formatting="off"):
     storeCompressed(classes, "simple.js")
 ```
 
-When you run the command you are able to see that classes are reprocessed for compression. The Jasy cache is modular and stores very specific entries e.g. the exact set of formatting, optmization, etc. of that exact class.
+These parameters should define default values to make it possible to leave them out. Requiring these arguments is typically not a good idea.
+
+When you run the `jasy` command you are able to see that all classes are reprocessed for compression. The Jasy cache is modular and stores very specific entries e.g. the exact set of formatting, optmization, etc. of that exact class. So after calling `jasy` you know have two compressed results of every class in the cache.
+
+## Clearing the cache
+
+Typically it's not needed to clear the cache at all. Jasy is pretty good at invalidating the cache whenever changes occur. And Jasy automatically clears cache files whenever a version change of Jasy is detected. This means other than for cleaning up there is no real requirement to cleanup the caches at all.
+
+```python
+@task clean():
+    session.clean()
+```
