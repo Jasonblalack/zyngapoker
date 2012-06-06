@@ -29,6 +29,7 @@ This is plain and simple Python code to detect the dependencies of `notebook.App
 * The return value of `getSortedClasses()` and `getIncludedClasses()` is a Python `list` with Jasy `Class` objects. These objects allow easy access to things like dependencies, meta data, compressed code, etc.
 * The compressor uses a global configuration defined via the `jsFormatting` and `jsOptimization` objects. You can configure these objects anywhere in your code via `enable("feature")` and `disable("feature")`.
 
+
 ## Passing arguments to tasks
 
 You are able to pass (string) arguments from the outside to any jasy task:
@@ -58,6 +59,7 @@ These parameters should define default values to make it possible to leave them 
 
 When you run the `jasy` command you are able to see that all classes are reprocessed for compression. The Jasy cache is modular and stores very specific entries e.g. the exact set of formatting, optmization, etc. of that exact class. So after calling `jasy` you know have two compressed results of every class in the cache.
 
+
 ## Clearing the cache
 
 Typically it's not needed to clear the cache at all. Jasy is pretty good at invalidating the cache whenever changes occur. And Jasy automatically clears cache files whenever a version change of Jasy is detected. This means other than for cleaning up there is no real requirement to cleanup the caches at all.
@@ -67,6 +69,7 @@ Typically it's not needed to clear the cache at all. Jasy is pretty good at inva
 def clean():
     session.clean()
 ```
+
 
 ## Working with assets
 
@@ -87,13 +90,51 @@ This so-called "asset" hint defines that all assets of the project "notebook" in
 
 Including asset means to add information about the existence of these assets to the client side JavaScript. This is especially useful for preloading assets like images, knowing about image sizes before actually loading them, etc. Asset management also simplifies access to assets and unifies their usage inside the application code. You don't work with absolute or relative paths anymore, but just use assets by the project's name they belong to independently of their current location.
 
+
 ### Configuring Profiles
 
 To make loading actually working in your project you have to attach profile(s) to your assets to let them know where to find them. This makes it possible to load assets from different locations, servers, CDNs etc. without changing a single line in your application code. 
 
 To use assets in our current project we add a call to `assetManager.addBuildProfile()` to our `jasyscript.py`:
 
-```
+```python
 assetManager.addBuildProfile()
 ```
+
+This adds data to your assets so that they will be loaded from a local folder (called `asset` by default). This means even assets from other projects will be expected to be loaded from there aka all assets are merged into this single folder. As adding the data is not enough, you also need to copy these assets around. You don't have to do this manually though. 
+
+```python
+assetManager.deploy(classList)
+```
+
+As you can see `deploy` needs the list of classes for deployment as well. So we can share it. This is how the build script can look like now:
+
+```python
+@task("This is the help text for the build task")
+def build(formatting="off"):
+    # Resolving classes
+    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
+
+    # Use assets from local asset folder
+    assetManager.addBuildProfile()
+    
+    # Copy over all used assets to local asset folder
+    assetManager.deploy(classes)
+  
+    # Enable formatting of code when user passes parameter
+    if formatting == "on":
+        jsFormatting.enable("semicolon")
+        jsFormatting.enable("comma")
+
+    # Write compressed classes
+    storeCompressed(classes, "simple.js")
+
+@task("Cleaning the cache files")
+def clean():
+    session.clean()
+```
+
+
+
+
 
