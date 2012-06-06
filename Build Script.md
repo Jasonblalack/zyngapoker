@@ -1,5 +1,7 @@
 # Build Script
 
+[[_TOC_]]
+
 The build script is called `jasyscript.py` and should be placed in the root folder of the project. This file is only needed in projects which define own tasks but is not required in library projects which you are including.
 
 ## Showing help
