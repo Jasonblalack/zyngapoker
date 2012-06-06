@@ -27,12 +27,21 @@ This is plain and simple Python code to detect the dependencies of `notebook.App
 
 ## Passing arguments to tasks
 
+You are able to pass (string) arguments from the outside to any jasy task:
+
+```bash
+$ jasy build --formatting on
+```
+
+To make this possible you have to change your build task a little:
+
 ```python
 @task("This is the help text for the build task")
 def build(formatting="off"):
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
+    # Enable formatting of code when user passes parameter
     if formatting == "on":
         jsFormatting.enable("semicolon")
         jsFormatting.enable("comma")
@@ -40,3 +49,5 @@ def build(formatting="off"):
     # Write compressed classes
     storeCompressed(classes, "simple.js")
 ```
+
+When you run the command you are able to see that classes are reprocessed for compression. The Jasy cache is modular and stores very specific entries e.g. the exact set of formatting, optmization, etc. of that exact class.
