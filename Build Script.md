@@ -8,11 +8,10 @@ The most trivial example of `jasyscript.py` might look like this:
 @task("Help Text")
 def build():
     # Resolving classes
-    resolver = Resolver().addClassName("notebook.Application")
-    classes = Sorter(resolver).getSortedClasses()
+    resolver = Resolver().addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
-    storeCompressed("simple.js", classes)
+    storeCompressed(classes, "simple.js")
 ```
 
 This is plain and simple Python code to detect the dependencies of `notebook.Application` and compress all relevant code into `build/simple.js`.
