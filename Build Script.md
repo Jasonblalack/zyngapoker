@@ -2,6 +2,10 @@
 
 The build script is called `jasyscript.py` and should be placed in the root folder of the project. This file is only needed in projects which define own tasks but is not required in library projects which you are including.
 
+## Showing help
+
+Whenever you call `jasy` without arguments or with an explicit `-h`/`--help` you will be presented the help screen. The help screen will list you all possible options and available tasks with their description.
+
 ## Simple Example
 
 A trivial example of `jasyscript.py` might look like this:
@@ -59,6 +63,7 @@ When you run the `jasy` command you are able to see that all classes are reproce
 Typically it's not needed to clear the cache at all. Jasy is pretty good at invalidating the cache whenever changes occur. And Jasy automatically clears cache files whenever a version change of Jasy is detected. This means other than for cleaning up there is no real requirement to cleanup the caches at all.
 
 ```python
-@task clean():
+@task("Cleaning the cache files")
+def clean():
     session.clean()
 ```
