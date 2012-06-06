@@ -1,7 +1,5 @@
 # Build Script
 
-[[_TOC_]]
-
 The build script is called `jasyscript.py` and should be placed in the root folder of the project. This file is only needed in projects which define own tasks but is not required in library projects which you are including.
 
 ## Showing help
@@ -182,4 +180,57 @@ def clean():
 ```
 
 The modification copied over the file `source/index.html` to `build/index.html`. As already mentioned the destination folder is typically auto prepended based on the name of the current task e.g. `build`. 
+
+
+## Using Fields/Permutations
+
+One of the nice features of Jasy is integrated handling for fields and permutations. This means you can pass arbitrary information from the build script to the client and also build different output scripts or structures for different environments/devices/locales.
+
+### Accessing fields
+
+You can access fields by APIs of the Core Framework:
+
+* `core.Env.getValue("fieldName")` => `var`
+* `core.Env.isSet("fieldName", expectedValue)` => `bool`
+* `core.Env.isSet("fieldName")` => `bool`
+* `core.Env.select("fieldName", {expectedValue1: result1, expectedValue2: result2})` => `var`
+
+The values will be automatically injected by Jasy like that:
+
+```
+if (core.Env.isSet("debug", true)) {
+  console.log("VAR: ", myvar);
+}
+```
+
+If you set `debug` to `true` that's the result:
+
+```
+if (true) {
+  console.log("VAR: ", myvar);
+}
+```
+
+But that's not all. The dead code optimizer removes all un-reachable code and optimizes all `true` cases automatically as well. So the final result for the compressor looks like:
+
+```
+console.log("VAR: ", myvar);
+```
+
+### Setting fields
+
+Fields can only be set inside `jasyscript.py` and not on the client side anymore. To configure a field you have two approaches:
+
+* `setField("fieldname", fieldvalue)`
+* `permutateField("fieldname")`
+
+The first sets the value of the field to exactly the given value. The second one cycles through all possible values. Possible values could be defined by the `jasyproject.json` which defines the field or can be defined in the `jasyscript.py`:
+
+`permutateField("fieldname", valueList, detectionClass, defaultValue)`
+
+* `valueList`: A list of values to build e.g. `["desktop", "phone", "tablet"]`
+* `detectionClass`: Class to detect the value of the given field on the client.
+* `defaultValue`: Value to use when `detectionClass` is not configured or fails with detection.
+
+
 
