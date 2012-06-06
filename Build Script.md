@@ -24,3 +24,19 @@ This is plain and simple Python code to detect the dependencies of `notebook.App
 * There is an alternative to `getSortedClasses()` called `getIncludedClasses()` which works without sorting. That's somewhat faster and might be relevant in cases where you require a simple list, but the order is not important.
 * The return value of `getSortedClasses()` and `getIncludedClasses()` is a Python `list` with Jasy `Class` objects. These objects allow easy access to things like dependencies, meta data, compressed code, etc.
 * The compressor uses a global configuration defined via the `jsFormatting` and `jsOptimization` objects. You can configure these objects anywhere in your code via `enable("feature")` and `disable("feature")`.
+
+## Passing arguments to tasks
+
+```python
+@task("This is the help text for the build task")
+def build(formatting="off"):
+    # Resolving classes
+    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
+
+    if formatting == "on":
+        jsFormatting.enable("semicolon")
+        jsFormatting.enable("comma")
+
+    # Write compressed classes
+    storeCompressed(classes, "simple.js")
+```
