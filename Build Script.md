@@ -67,3 +67,20 @@ Typically it's not needed to clear the cache at all. Jasy is pretty good at inva
 def clean():
     session.clean()
 ```
+
+## Registering assets
+
+Jasy can pass data about assets to your generated JavaScript files. This happens somewhat automatically based on the needs to the classes. A class which requires specific assets can do this via simple documentation comments:
+
+```javascript
+/**
+ * #asset(notebook/css/*)
+ */
+MyClass = function() {
+  core.io.Asset.load(["notebook/css/main.css"], function() {
+    alert("CSS files was loaded and applied");
+  });
+};
+```
+
+The so-called "asset" hint defines that all assets of the project "notebook" in the folder "css" should be added whenever this class is included. After the 
