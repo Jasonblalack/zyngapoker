@@ -5,7 +5,7 @@ The build script is called `jasyscript.py` and should be placed in the root fold
 A trivial example of `jasyscript.py` might look like this:
 
 ```python
-@task("Help Text")
+@task("This is the help text for the build task")
 def build():
     # Resolving classes
     resolver = Resolver().addClassName("notebook.Application").getSortedClasses()
