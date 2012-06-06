@@ -68,9 +68,9 @@ def clean():
     session.clean()
 ```
 
-## Registering assets
+## Working with assets
 
-Jasy can pass data about assets to your generated JavaScript files. This happens somewhat automatically based on the needs to the classes. A class which requires specific assets can do this via simple documentation comments:
+Jasy can pass data about assets (images, styles, fonts, etc.) to your generated JavaScript files. This happens somewhat automatically based on the needs to the classes. A class which requires specific assets can do this via simple documentation comments:
 
 ```javascript
 /**
@@ -83,4 +83,11 @@ MyClass = function() {
 };
 ```
 
-The so-called "asset" hint defines that all assets of the project "notebook" in the folder "css" should be added whenever this class is included. After the 
+This so-called "asset" hint defines that all assets of the project "notebook" in the folder "css" should be added whenever this class is included. This happens via the already used method `storeCompressed` (and also `storeLoader` and `storeKernel`). 
+
+Including asset means to add information about the existence of these assets to the client side JavaScript. This is especially useful for preloading assets like images, knowing about image sizes before actually loading them, etc. Asset management also simplifies access to assets and unifies their usage inside the application code. You don't work with absolute or relative paths anymore, but just use assets by the project's name they belong to independently of their current location.
+
+
+
+
+
