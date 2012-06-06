@@ -87,7 +87,13 @@ This so-called "asset" hint defines that all assets of the project "notebook" in
 
 Including asset means to add information about the existence of these assets to the client side JavaScript. This is especially useful for preloading assets like images, knowing about image sizes before actually loading them, etc. Asset management also simplifies access to assets and unifies their usage inside the application code. You don't work with absolute or relative paths anymore, but just use assets by the project's name they belong to independently of their current location.
 
+### Configuring Profiles
 
+To make loading actually working in your project you have to attach profile(s) to your assets to let them know where to find them. This makes it possible to load assets from different locations, servers, CDNs etc. without changing a single line in your application code. 
 
+To use assets in our current project we add a call to `assetManager.addBuildProfile()` to our `jasyscript.py`:
 
+```
+assetManager.addBuildProfile()
+```
 
