@@ -134,7 +134,50 @@ def clean():
     session.clean()
 ```
 
+If you run that task you now should have the following structure in your project's `build` folder:
 
+```
+- build
+  - script
+    - kernel.js
+  - asset
+    - notebook
+      - css
+        main.css
+```
 
+- `kernel.js` contains all classes required by `notebook.Application`
+- the `asset` folder contains all assets required to run that application class
 
+This means you have an fully standalone, deploy-ready application inside the `build` folder now. What might be missing is some kind of `HTML` file you are using to open your application from inside the browser. Typically that file is placed in the root folder of your `source` folder. You need to copy over that file to the build folder:
+
+```python
+@task("This is the help text for the build task")
+def build(formatting="off"):
+    # Resolving classes
+    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
+
+    # Use assets from local asset folder
+    assetManager.addBuildProfile()
+    
+    # Copy over all used assets to local asset folder
+    assetManager.deploy(classes)
+    
+    # Copy over HTML file(s)
+    updateFile("source/index.html", "index.html")
+  
+    # Enable formatting of code when user passes parameter
+    if formatting == "on":
+        jsFormatting.enable("semicolon")
+        jsFormatting.enable("comma")
+
+    # Write compressed classes
+    storeCompressed(classes, "simple.js")
+
+@task("Cleaning the cache files")
+def clean():
+    session.clean()
+```
+
+The modification copied over the file `source/index.html` to `build/index.html`. As already mentioned the destination folder is typically auto prepended based on the name of the current task e.g. `build`. 
 
