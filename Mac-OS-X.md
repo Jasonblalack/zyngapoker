@@ -99,7 +99,7 @@ Note: zlib was already available on my MacBook Pro.
 4. Edit setup.py
 ```python
 FREETYPE_ROOT = libinclude("/usr/X11")
-JPEG_ROOT = libinclude("/Users/mjaquish/.homebrew/Cellar/jpeg/8d")
+JPEG_ROOT = libinclude("<yourLocalPath>/jpeg/8d")
 ```
 5. python3 setup.py build_ext -i
 6. python3 selftest.py
