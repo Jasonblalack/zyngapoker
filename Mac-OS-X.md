@@ -87,3 +87,20 @@ Try the following command on your console/terminal after installation is complet
     $ jasy
 
 There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working.
+
+Optional: Installing PIL for sprite sheet generation
+----------------------------------------------------
+
+Note: zlib was already available on my MacBook Pro.
+
+1. Install libjpeg using your favorite method (Homebrew, etc).
+2. Clone the git repo: https://github.com/sloonz/pil-py3k.git
+3. cd pil-py3k
+4. Edit setup.py
+```python
+FREETYPE_ROOT = libinclude("/usr/X11")
+JPEG_ROOT = libinclude("/Users/mjaquish/.homebrew/Cellar/jpeg/8d")
+```
+5. python3 setup.py build_ext -i
+6. python3 selftest.py
+7. python3 setup.py install
