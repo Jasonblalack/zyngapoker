@@ -93,10 +93,10 @@ Optional: Installing PIL for sprite sheet generation
 
 Note: zlib was already available on my MacBook Pro.
 
-1. Install libjpeg using your favorite method (Homebrew, etc).
+1. Install libjpeg using your favorite method (Homebrew, [MacPorts](https://github-ca.corp.zynga.com/stg-js/darwin-js/issues), etc).
 2. Clone the git repo: https://github.com/sloonz/pil-py3k.git
 3. cd pil-py3k
-4. Edit setup.py
+4. (`Skip this step if you installed libjpeg using MacPorts`) Edit setup.py
 ```python
 FREETYPE_ROOT = libinclude("/usr/X11")
 JPEG_ROOT = libinclude("<yourLocalPath>/jpeg/8d")
