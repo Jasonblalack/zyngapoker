@@ -50,3 +50,12 @@ This should print out some messages about dependencies which are being installed
     jasy
 
 There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. 
+
+
+Optional: Installing PIL for sprite sheet generation
+----------------------------------------------------
+
+1. Go to this [Page](http://www.lfd.uci.edu/~gohlke/pythonlibs/)
+2. Look for PIL
+3. Download the `.exe` corresponding to your platform (32 vs 64 bits) and Python runtime (3.2 vs 3.3)
+4. Install it!
