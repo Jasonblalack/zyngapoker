@@ -108,5 +108,5 @@ JPEG_ROOT = libinclude("<yourLocalPath>/jpeg/8d")
 or (Simpler approach)
 
 1. Install libjpeg using [MacPorts](https://github-ca.corp.zynga.com/stg-js/darwin-js/issues)
-2. use pip to install a python3 port of PIL
+2. use pip to install a python3 port of PIL :
 `sudo pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil`
