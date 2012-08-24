@@ -13,16 +13,18 @@ Python3 :
 
     $ apt-get install python3
 
-Python3 PIP : 
+Installing PIP (for Python3)
+----------------------------
+
+Python3 PIP :
 
     $ apt-get install python3-pip
 
-Note : Ubuntu <= 12.04 doesn't have a python3-pip package in its `universe` repos. One can be found [here](http://ubuntu.mirror.cambrium.nl/ubuntu//pool/universe/p/python-pip/python3-pip_1.1-3_all.deb)
+_NOTE_ : Ubuntu <= 12.04 doesn't have a python3-pip package in its `universe` repos. One can be found [here](http://ubuntu.mirror.cambrium.nl/ubuntu//pool/universe/p/python-pip/python3-pip_1.1-3_all.deb)
 
-Installing Setuptools (On non-Ubuntu systems)
----------------------------------------------
+### Alternative method for other distributions : Installing Setuptools
 
-Execute the following commands to install D^istribute and PIP.
+Execute the following commands to install Distribute and PIP.
 
     $ wget -qO- http://python-distribute.org/distribute_setup.py | sudo python3
     $ wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
