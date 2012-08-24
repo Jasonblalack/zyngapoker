@@ -30,7 +30,7 @@ We suggest building and installing Python3 via Homebrew. That installs a Python3
 
 Python 3 is installed in parallel to Python2 (which is included in Mac OS since 10.5) and is made available on the command line as `python3`. 
 
-Scripts like `jasy` are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available. For details have a look at this documentation: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python:
+Scripts like `jasy` are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available.
 
     $ echo 'export PATH="/usr/local/share/python3:$PATH"' >> ~/.profile
 
