@@ -9,7 +9,7 @@ The installation process on Mac OS X includes the installation of:
 Installing XCode
 ----------------
 
-Before installing Jasy you must install XCode to have all relevant developer tools like the GNU compilers ready on your system. XCode is available via the Mac App Store.
+Before installing Jasy you must install XCode to have all relevant developer tools like the GNU compilers ready on your system. XCode is available via the [Mac App Store](http://itunes.apple.com/de/app/xcode/id497799835?mt=12).
 
 Installing Homebrew
 -------------------
@@ -70,5 +70,4 @@ Install `libjpeg` using Homebrew and PIL via `pip`:
 
     $ brew install libjpeg
     $ pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil
-
 
