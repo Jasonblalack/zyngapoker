@@ -2,7 +2,7 @@ The installation process on Mac OS X includes the installation of:
 
 1. XCode (AppStore)
 2. Homebrew
-3. Python3 + Distribute + PIP
+3. Python3
 4. Jasy 
 
 
@@ -18,7 +18,7 @@ Homebrew is an easy to use package manager for Mac OS X. You can easily install 
 
     $ ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 
-You should not use `sudo` for installing Homebrew. This makes tons of problems. Homebrew installs itself into `/usr/local`, so make sure the directory rights are set correctly. All further installations with Homebrew should happen **without `sudo`** as well!
+You should not use `sudo` for installing Homebrew. This makes tons of problems. Homebrew installs itself into `/usr/local`, so make sure the directory rights are set correctly (`chmod -R a+w /usr/local`). All further installations with Homebrew should happen **without `sudo`** as well!
 
 
 Installing Python3
