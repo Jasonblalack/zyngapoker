@@ -4,15 +4,23 @@ The installation process on Linux includes the installation of:
 2. Python Setuptools (Distribute and PIP)
 3. Jasy Installation using PIP
 
-Installing Python3
-------------------
+Installing Python3 && PIP
+-------------------------
 
 To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation. 
 
-Normally there is also a package "Python3 Setup Tools". Currently this does not seem to work because of a transition of `setuptools` to Python3. A working alternative is the method using `distribute` and `pip` as explained below.
+Python3 : 
 
-Installing Setuptools
----------------------
+    $ apt-get install python3
+
+Python3 PIP : 
+
+    $ apt-get install python3-pip
+
+Note : Ubuntu <= 12.04 doesn't have a python3-pip package in its `universe` repos. One can be found [here](http://ubuntu.mirror.cambrium.nl/ubuntu//pool/universe/p/python-pip/python3-pip_1.1-3_all.deb)
+
+Installing Setuptools (On non-Ubuntu systems)
+---------------------------------------------
 
 Execute the following commands to install D^istribute and PIP.
 
@@ -20,11 +28,6 @@ Execute the following commands to install D^istribute and PIP.
     $ wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
 
 Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
-
-Installing Cython
----------------
-    $ pip-3.2 install cython
-
 
 Installing Jasy
 ---------------
