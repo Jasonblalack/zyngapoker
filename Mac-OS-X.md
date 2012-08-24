@@ -66,9 +66,9 @@ Use pip to install Misaka:
 Optional: Installing PIL for sprite sheet generation
 ----------------------------------------------------
 
-1. Install libjpeg using Homebrew
-2. Use `pip` to install a python3 port of PIL
+Install `libjpeg` using Homebrew and PIL via `pip`:
 
     $ brew install libjpeg
     $ pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil
+
 
