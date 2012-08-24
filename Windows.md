@@ -2,8 +2,7 @@ The installation process on Windows includes the installation of:
 
 1. Python3
 2. Python Setuptools (Distribute and PIP)
-3. Binary Packages for Modules (Misaka and Msgpack)
-4. Jasy Installation using PIP
+3. Jasy
 
 Installing Python3
 ------------------
