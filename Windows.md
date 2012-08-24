@@ -27,17 +27,6 @@ Open the "Admin Console", change the working directory to the download location 
     python get-pip.py
 
 
-
-
-Installing Binary Packages
---------------------------
-
-On Windows you typically don't have any C compiler installed. To ease the installation process please download the following binary installers and execute them:
-
-* [Misaka Binary Installer](http://pypi.python.org/packages/3.2/m/misaka/misaka-0.4.1.win32-py3.2.msi#md5=2c99bf3926a1c768a66d5b52084923ba)
-* [Msgpack Binary Installer](http://www.lfd.uci.edu/~gohlke/pythonlibs/fj2ir7sn/msgpack-python-0.1.12.win32-py3.2.exe)
-
-
 Installing Jasy
 ---------------
 
@@ -45,11 +34,23 @@ Jasy should finally be installed using the Python package manager "PIP" which ha
 
     pip-3.2 install jasy
 
-This should print out some messages about dependencies which are being installed like "polib" and "pygments". After the command is executed you should be able to execute "jasy":
+This should print out some messages about dependencies which are being installed like "polib" and "pygments". 
+
+
+Testing Installation
+--------------------
+
+Try the following command on your console after installation is complete:
 
     jasy
 
-There should be an error message `Cannot find any Jasy script with task definitions (jasyscript.py)!` which is in fact a success message showing you that Jasy is working. 
+This should print out the help screen.
+
+
+Optional: Installing Misaka for generating JavaScript API docs
+--------------------------------------------------------------
+
+TODO
 
 
 Optional: Installing PIL for sprite sheet generation
@@ -59,3 +60,4 @@ Optional: Installing PIL for sprite sheet generation
 2. Look for PIL
 3. Download the `.exe` corresponding to your platform (32 vs 64 bits) and Python runtime (3.2 vs 3.3)
 4. Install it!
+
