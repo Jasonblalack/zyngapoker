@@ -28,13 +28,11 @@ We suggest building and installing Python3 via Homebrew. That installs a Python3
 
     $ brew install python3
 
-Python 3 is installed in parallel to Python2 (which is included in Mac OS since 10.5) and is made available on the command line as `python3`. Scripts like `jasy` are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available. For details have a look at this documentation: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python. 
+Python 3 is installed in parallel to Python2 (which is included in Mac OS since 10.5) and is made available on the command line as `python3`. 
 
-You need to install the package manager "PIP" to install Python packages. PIP requires Distribute being installed first. (See also: http://www.pip-installer.org/en/latest/installing.html). Execute the following commands in order for installation:
+Scripts like `jasy` are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available. For details have a look at this documentation: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python:
 
-    $ cd ~/Downloads
-    $ curl http://python-distribute.org/distribute_setup.py | python3
-    $ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python3
+    $ echo 'export PATH="/usr/local/share/python3:$PATH"' >> ~/.profile
 
 
 Installing Jasy
@@ -42,7 +40,7 @@ Installing Jasy
 
 Now you should be able to install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
-    $ pip install jasy
+    $ pip-3.2 install jasy
 
 
 
@@ -62,7 +60,7 @@ Optional: Installing Misaka for generating JavaScript API docs
 
 Use pip to install Misaka: 
 
-    $ pip install misaka
+    $ pip-3.2 install misaka
 
 
 Optional: Installing PIL for sprite sheet generation
@@ -72,4 +70,5 @@ Optional: Installing PIL for sprite sheet generation
 2. Use `pip` to install a python3 port of PIL
 
     $ brew install libjpeg
-    $ pip install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil`
+    $ pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil
+
