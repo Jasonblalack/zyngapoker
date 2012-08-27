@@ -21,9 +21,9 @@ Installing PIP
 $ apt-get install python3-pip
 ```
 
-_NOTE_ : Ubuntu <= 12.04 doesn't have a python3-pip package in its `universe` repos. One can be found [here](http://ubuntu.mirror.cambrium.nl/ubuntu//pool/universe/p/python-pip/python3-pip_1.1-3_all.deb)
+_Note_ : Ubuntu <= 12.04 doesn't have a python3-pip package in its "universe" repos. One can be found [here](http://ubuntu.mirror.cambrium.nl/ubuntu//pool/universe/p/python-pip/python3-pip_1.1-3_all.deb)
 
-### Alternative method for other distributions : Installing Setuptools
+### Alternative method for other distributions
 
 Execute the following commands to install Distribute and PIP.
 

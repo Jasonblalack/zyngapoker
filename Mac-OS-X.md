@@ -11,7 +11,7 @@ Installing XCode
 
 Before installing Jasy you must install XCode to have all relevant developer tools like the GNU compilers ready on your system. XCode is available via the [Mac App Store](http://itunes.apple.com/de/app/xcode/id497799835?mt=12).
 
-Alternative: Install the "Command Line Tools for Xcode package" instead from [Apple's develper portal](http://developer.apple.com/downloads) (Requires a free Apple ID)
+_Alternative_: Install the "Command Line Tools for Xcode package" instead from [Apple's develper portal](http://developer.apple.com/downloads) (Requires a free Apple ID)
 
 
 Installing Homebrew
