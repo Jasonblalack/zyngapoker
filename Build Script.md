@@ -4,15 +4,17 @@ The build script is called `jasyscript.py` and should be placed in the root fold
 
 ## Showing help
 
-Whenever you call `jasy` without arguments or with an explicit `-h`/`--help` you will be presented the help screen. The help screen will list you all possible options and available tasks with their description.
+Whenever you call `jasy` without arguments or with an explicit `-h`/`--help` you will be presented the help screen. The help screen will list you all possible options and available tasks with their description and arguments.
 
 ## Simple Example
 
 A trivial example of `jasyscript.py` might look like this:
 
 ```python
-@task("This is the help text for the build task")
+@task
 def build():
+    """This is the help text for the build task"""
+
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
@@ -41,8 +43,10 @@ $ jasy build --formatting on
 To make this possible you have to change your build task a little:
 
 ```python
-@task("This is the help text for the build task")
+@task
 def build(formatting="off"):
+    """This is the help text for the build task"""
+
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
@@ -65,8 +69,10 @@ When you run the `jasy` command you are able to see that all classes are reproce
 Typically it's not needed to clear the cache at all. Jasy is pretty good at invalidating the cache whenever changes occur. And Jasy automatically clears cache files whenever a version change of Jasy is detected. This means other than for cleaning up there is no real requirement to cleanup the caches at all.
 
 ```python
-@task("Cleaning the cache files")
+@task
 def clean():
+    """Cleaning the cache files"""
+
     session.clean()
 ```
 
@@ -110,8 +116,10 @@ assetManager.deploy(classList)
 As you can see `deploy` needs the list of classes for deployment as well. So we can share it. This is how the build script can look like now:
 
 ```python
-@task("This is the help text for the build task")
+@task
 def build(formatting="off"):
+    """This is the help text for the build task"""
+
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
@@ -152,8 +160,10 @@ If you run that task you now should have the following structure in your project
 This means you have an fully standalone, deploy-ready application inside the `build` folder now. What might be missing is some kind of `HTML` file you are using to open your application from inside the browser. Typically that file is placed in the root folder of your `source` folder. You need to copy over that file to the build folder:
 
 ```python
-@task("This is the help text for the build task")
+@task
 def build(formatting="off"):
+    """This is the help text for the build task"""
+    
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
