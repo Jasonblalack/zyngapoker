@@ -137,8 +137,10 @@ def build(formatting="off"):
     # Write compressed classes
     storeCompressed(classes, "simple.js")
 
-@task("Cleaning the cache files")
+@task
 def clean():
+    """Cleaning the cache files"""
+    
     session.clean()
 ```
 
@@ -163,7 +165,7 @@ This means you have an fully standalone, deploy-ready application inside the `bu
 @task
 def build(formatting="off"):
     """This is the help text for the build task"""
-    
+
     # Resolving classes
     classes = Resolver().addClassName("notebook.Application").getSortedClasses()
 
@@ -184,8 +186,10 @@ def build(formatting="off"):
     # Write compressed classes
     storeCompressed(classes, "simple.js")
 
-@task("Cleaning the cache files")
+@task
 def clean():
+    """Cleaning the cache files"""
+
     session.clean()
 ```
 
