@@ -19,7 +19,7 @@ Installing Homebrew
 
 Homebrew is an easy to use package manager for Mac OS X. You can easily install Homebrew via:
 
-```
+```bash
 $ ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 ```
 
