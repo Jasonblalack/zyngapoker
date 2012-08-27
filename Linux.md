@@ -1,17 +1,19 @@
 The installation process on Linux includes the installation of:
 
 1. Python3
-2. Python Setuptools (Distribute and PIP)
-3. Jasy Installation using PIP
+2. PIP
+3. Jasy
 
-Installing Python3 && PIP
--------------------------
+
+Installing Python3
+------------------
 
 To install Python 3 use your package manager on that system. On Debian based systems like Ubuntu you typically use `apt-get` for the installation. 
 
 Python3 : 
 
     $ apt-get install python3
+
 
 Installing PIP (for Python3)
 ----------------------------

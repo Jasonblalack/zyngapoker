@@ -1,6 +1,7 @@
-# Installation using VirtualEnv
+Installation using VirtualEnv
+-----------------------------
 
-Be sure to install Python3 and VirtualEnv for Python3 first. Then create a new environment for your Jasy work:
+Be sure to install Python 3 and VirtualEnv for Python 3 first. Then create a new environment for your Jasy work:
 
 ```bash
 $ virtualenv jasy
@@ -19,16 +20,8 @@ $ source bin/activate
 
 Your prompt should now have been changed with a prefix called "(jasy)".
 
-Then continue with the installation of Jasy.
+Then continue with the normal installation of Jasy and optional modules like Misaka and PIL as described on the main installation pages.
 
 ```bash
 $ pip install jasy
 ```
-
-There are some optional dependencies you might want to install now. You can easily do this by using `pip` again:
-
-```bash
-$ pip install -r doc/jasy-$INSTALLED_VERSION/requirements.txt
-```
-
-Keep in mind that for some of the C-extensions you need to have a C compiler installed.

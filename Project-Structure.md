@@ -14,16 +14,23 @@ JavaScript source code must have the extension `js` and export a single classes.
 
 ### *Cache* - Cache results
 
-* File: `jasycache.xxx`
+* File: `jasycache`/`jasycache.db`
 * Occurrences: one
 * Location: Root folder
 
-### *Config* - Configure the project
+### *Project Configuration* - Configure the project
   
-* File: `jasyproject.json`
+* File: `jasyproject.json`/`jasyproject.yaml`
 * Occurrences: one
 * Location: Root folder
 * Docs: [[Project Config]]
+
+### *Task Configuration* - Configure the build targets
+  
+* File: `jasyscript.json`/`jasyscript.yaml`
+* Occurrences: one
+* Location: Root folder
+* Docs: [[Build Script]]
 
 ### *Tasks* - Define build targets
 
@@ -32,16 +39,37 @@ JavaScript source code must have the extension `js` and export a single classes.
 * Location: Root folder
 * Docs: [[Build Script]]
 
+### *Library* - Offer shared methods
+
+* File: `jasylibrary.py`
+* Occurrences: one
+* Location: Root folder
+* Docs: [[Sharing Methods]]
+
+### *Web Server Lock* - Local web server
+
+* File: `jasylock-http-xxx` (xxx = Port being used)
+* Occurrences: few
+* Location: Root folder
+* Docs: [[Web Server]]
+
+### *Web Mirror Cache* - Included mirroring functionality of web server
+
+* File: `jasymirror-xxx` (xxx = Route being mirrored)
+* Occurrences: few
+* Location: Root folder
+* Docs: [[Web Server]]
+
 ### *Sprites* - Setup image sprites: 
 
-* File: `jasysprite.json` + `jasysprite_xxx.png`
-* Occurrences: many
+* File: `jasysprite.json`/`jasysprite.yaml` + `jasysprite_xxx.png`
+* Occurrences: few
 * Location: Inside asset folder
 * Docs: [[Image Sprites]]
 
 ### *Animations* - Setup frame based image animations 
 
-* File: `jasyanimation.json`
-* Occurrences: many
+* File: `jasyanimation.json`/`jasyanimation.yaml`
+* Occurrences: few
 * Location: Inside asset folder
 * Docs: [[Image Animations]]
