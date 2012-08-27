@@ -49,7 +49,9 @@ This should print out the help screen.
 Optional: Installing Misaka for generating JavaScript API docs
 --------------------------------------------------------------
 
-TODO
+Unfortunately not supported at the moment. 
+
+There is an old [Misaka 0.4.1](http://pypi.python.org/pypi/misaka/0.4.1) build available on PyPI - but that's not officially supported and might have bugs. Featurewise it's pretty much identical to the 1.0.x releases.
 
 
 Optional: Installing PIL for sprite sheet generation
