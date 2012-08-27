@@ -55,13 +55,13 @@ This should print out the help screen.
 Optional Packages
 -----------------
 
-## Misaka for generating JavaScript API docs
+### Misaka for generating JavaScript API docs
 
 Use pip to install Misaka: 
 
     $ pip-3.2 install misaka
 
-## PIL for sprite sheet generation
+### PIL for sprite sheet generation
 
 Install `libjpeg` using Homebrew and PIL via `pip`:
 
