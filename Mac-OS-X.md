@@ -45,11 +45,6 @@ Now you should be able to install the current stable version of Jasy using _pip_
 
     $ pip-3.2 install jasy
 
-
-
-Testing Installation
---------------------
-
 Try the following command on your console/terminal after installation is complete:
 
     $ jasy

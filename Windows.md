@@ -25,6 +25,8 @@ Open the "Admin Console", change the working directory to the download location 
     python distribute_setup.py
     python get-pip.py
 
+_Alternative_: Using binary installers for Distribute and PIP from this page: http://www.lfd.uci.edu/~gohlke/pythonlibs/
+
 
 Installing Jasy
 ---------------
@@ -33,13 +35,7 @@ Jasy should finally be installed using the Python package manager "PIP" which ha
 
     pip-3.2 install jasy
 
-This should print out some messages about dependencies which are being installed like "polib" and "pygments". 
-
-
-Testing Installation
---------------------
-
-Try the following command on your console after installation is complete:
+Try the following command on your "Console" after installation is complete:
 
     jasy
 
@@ -57,8 +53,11 @@ There is an old [Misaka 0.4.1](http://pypi.python.org/pypi/misaka/0.4.1) build a
 Optional: Installing PIL for sprite sheet generation
 ----------------------------------------------------
 
-1. Go to this [Page](http://www.lfd.uci.edu/~gohlke/pythonlibs/)
-2. Look for PIL
-3. Download the `.exe` corresponding to your platform (32 vs 64 bits) and Python runtime (3.2 vs 3.3)
-4. Install it!
+1. Go to this [Page](http://www.lfd.uci.edu/~gohlke/pythonlibs/) and look for "PIL"
+2. Download and execute the installer corresponding to your platform (32 vs 64 bits) and Python runtime (2.7 vs 3.2)
 
+
+Optional: Install High-Speed YAML implementation
+------------------------------------------------
+
+There is a pre-built PyYaml implementation ready for download. This one is linked against the C implementation of Yaml and should be somewhat faster. It can be found [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/).

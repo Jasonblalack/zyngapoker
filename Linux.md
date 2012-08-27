@@ -15,8 +15,8 @@ Python3 :
     $ apt-get install python3
 
 
-Installing PIP (for Python3)
-----------------------------
+Installing PIP
+--------------
 
 Python3 PIP :
 
@@ -33,19 +33,13 @@ Execute the following commands to install Distribute and PIP.
 
 Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
 
+
 Installing Jasy
 ---------------
 
 You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
     $ pip-3.2 install jasy
-
-_NOTE:_ You may get some encoding errors with polib during jasy installation. If that happens, you need to find the directory containing the files with the encoding errors, back them up, and replace them with empty files of the same name. Then retry the jasy install and it should work.
-
-
-
-Testing Installation
---------------------
 
 Try the following command on your console/terminal after installation is complete:
 
