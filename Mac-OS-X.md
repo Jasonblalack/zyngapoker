@@ -52,17 +52,16 @@ Try the following command on your console/terminal after installation is complet
 This should print out the help screen.
 
 
+Optional Packages
+-----------------
 
-Optional: Installing Misaka for generating JavaScript API docs
---------------------------------------------------------------
+## Misaka for generating JavaScript API docs
 
 Use pip to install Misaka: 
 
     $ pip-3.2 install misaka
 
-
-Optional: Installing PIL for sprite sheet generation
-----------------------------------------------------
+## PIL for sprite sheet generation
 
 Install `libjpeg` using Homebrew and PIL via `pip`:
 

@@ -42,22 +42,20 @@ Try the following command on your "Console" after installation is complete:
 This should print out the help screen.
 
 
-Optional: Installing Misaka for generating JavaScript API docs
---------------------------------------------------------------
+Optional Packages
+-----------------
+
+## Misaka for generating JavaScript API docs
 
 Unfortunately not supported at the moment. 
 
 There is an old [Misaka 0.4.1](http://pypi.python.org/pypi/misaka/0.4.1) build available on PyPI - but that's not officially supported and might have bugs. Featurewise it's pretty much identical to the 1.0.x releases.
 
-
-Optional: Installing PIL for sprite sheet generation
-----------------------------------------------------
+## PIL for sprite sheet generation
 
 1. Go to this [Page](http://www.lfd.uci.edu/~gohlke/pythonlibs/) and look for "PIL"
 2. Download and execute the installer corresponding to your platform (32 vs 64 bits) and Python runtime (2.7 vs 3.2)
 
-
-Optional: Install High-Speed YAML implementation
-------------------------------------------------
+## C-based YAML implementation
 
 There is a pre-built PyYaml implementation ready for download. This one is linked against the C implementation of Yaml and should be somewhat faster. It can be found [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/).
