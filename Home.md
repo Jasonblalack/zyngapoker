@@ -2,7 +2,6 @@ Jasy - Web Tooling Framework
 ============================
 
 * [[About]]
-* [[FAQ]]
 
 * **Installation**
   * [[Installation]]
