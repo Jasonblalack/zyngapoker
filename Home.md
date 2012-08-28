@@ -8,8 +8,10 @@ Jasy - Web Tooling Framework
   * [[Installation Using VirtualEnv]]
 
 * **Documentation**
+  * [[New Application]]: How to use skeletons for creating new applications
   * [[Project Structure]]: Files and folders in your project
   * [[Project Config]]: Configure your project settings
+  * [[Develop Skeletons]]: How to create new skeletons
   * [[Build Script]]: Configure tasks for your application
   * [[Names]]: How files are named on file system and inside the application
   * [[Fields]]: Pass data from the build script to the application and permutate code for different output scenarios
