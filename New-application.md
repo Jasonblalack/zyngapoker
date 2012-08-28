@@ -22,3 +22,11 @@ The scaffolding offers three major features during creating new application from
 * **Configuration**: Stores a configuration `jasyscript.yaml` based on questions/flags defined in the skeleton (`jasycreate.yaml/json`). 
 * **Scripting**: Acustom `jasycreate.py` script to further ask questions of modify the created application further (e.g. renaming folders, loading remote data, etc.)
 
+The process during application creation follows this order:
+
+1. Finding skeleton in origin (eventually after automatic cloning)
+2. Copying a files from skeleton
+3. Patches all files with available data
+4. Ask questions defined by `jasycreate.yaml/json`
+5. Ask questions and do scripting implemented in `jasycreate.py`
+
