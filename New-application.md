@@ -18,7 +18,7 @@ All parameters to `jasy create` are optional:
 
 The scaffolding offers three major features during creating new application from skeletons:
 
-* Replaces $${varname} placeholders with the actual values inside all files
-* Stores a configuration `jasyscript.yaml` based on questions/flags defined in the skeleton (`jasycreate.yaml/json`)
-* Offers a custom `jasycreate.py` script to further ask questions of modify the created application further (e.g. renaming folders, loading remote data, etc.)
+* **Patching**: Replaces `$${varname}` placeholders with the actual values inside all files
+* **Configuration**: Stores a configuration `jasyscript.yaml` based on questions/flags defined in the skeleton (`jasycreate.yaml/json`). 
+* **Scripting**: Acustom `jasycreate.py` script to further ask questions of modify the created application further (e.g. renaming folders, loading remote data, etc.)
 
