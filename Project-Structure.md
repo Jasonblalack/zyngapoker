@@ -7,7 +7,7 @@ Jasy supports different kind of projects. A project is something like your very 
 
 ## Files
 
-JavaScript source code must have the extension `js` and export a single classes. Don't put multiple class declarations into one file. Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in Gettext `po` format. One language per file e.g. `fr.po`.
+JavaScript source code must have the extension `js` and export a single class per file (Single exported symbol per file - Don't put multiple declarations into one file). Assets of arbitrary types are supported (Image size handling supported for `png`, `gif` and `jpeg` only). Translations must be written in Gettext `po` format. One language per file e.g. `fr.po`.
 
 
 ## Configuration
