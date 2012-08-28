@@ -30,3 +30,4 @@ The process during application creation follows this order:
 4. Ask questions defined by `jasycreate.yaml/json`
 5. Ask questions and do scripting implemented in `jasycreate.py`
 
+*Note*: The `jasycreate.*` files are removed from the final application during creating the application. These are not relevant for the execution of the application nor any `jasy` commands.
