@@ -21,7 +21,35 @@ There are a few pre-defined fields available for your skeleton:
 
 ### Questions
 
+The simplest way to add more fields for being stored in configuration or being replaced in your skeletons is to add them to a configuration file called either `jasycreate.yaml` or `jasycreate.json`. A typical file might look like:
 
+```yaml
+- name: user.name
+  question: What's your name
+  accept: String
+- name: user.age
+  question: How old are you
+  accept: Integer
+- name: pi
+  question: What's PI
+  default: 3.14
+  required: false
+  accept: Float
+- name: incr
+  question: Increment from 1..3
+  accept: List
+```
+
+### Supported types
+
+* `primitive`: either strings, booleans or numbers
+* `integer`/`int`: non floating point numbers
+* `float`: requires floating point numbers
+* `number`/`num`: any number
+* `string`/`str`: any string
+* `boolean`/bool`: needs to be Python-ish `True` or `False`
+* `dict`/`map`: key/value data structure
+* `array`/`list`: can be defined as tuples as well aka 0,2 without braces
 
 ### Scripting
 
@@ -64,6 +92,7 @@ config.ask() is pretty much identical to what you can achieve via the question f
 
 ## Command Line Arguments
 
-The user is able to pre-fill values asked for in the question files or scripting via the command line just by adding `--name value` to the command line of `jasy create`.
+The user is able to pre-fill values asked for in the question files or from scripting via the command line just by adding `--name value` to the command line of `jasy create`. This is useful for testing skeletons automatically e.g. via Travis.ci.
 
-Every additional command line argument is automatically added to the configuration. This is useful for testing skeletons automatically e.g. via Travis.ci.
+* *Note*: Command line values are not checked by the types defined in question files or scripts right now as they are stored before this data is being made available.
+* *Note*: Every additional command line argument is added to the configuration and therefore also patched into files when the fields are being used anywhere. This means that typos on the command line are also not detected right now.
