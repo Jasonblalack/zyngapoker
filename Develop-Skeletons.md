@@ -64,4 +64,6 @@ config.ask() is pretty much identical to what you can achieve via the question f
 
 ## Command Line Arguments
 
+The user is able to pre-fill values asked for in the question files or scripting via the command line just by adding `--name value` to the command line of `jasy create`.
+
 Every additional command line argument is automatically added to the configuration. This is useful for testing skeletons automatically e.g. via Travis.ci.
