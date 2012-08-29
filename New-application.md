@@ -1,4 +1,4 @@
-Creating new Jasy-enabled projects is easy. In involves executing a single line command (using the built-in `create` command` in the Console:
+Creating new Jasy-enabled projects is easy. It involves executing a single line command (using the built-in `create` command in the Console):
 
 ```bash
 $ jasy create --name APPNAME --origin ORIGIN --skeleton SKELETON
