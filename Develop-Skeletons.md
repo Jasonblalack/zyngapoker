@@ -2,7 +2,9 @@ Creating skeletons is pretty easy. Basically it's just a project where some name
 
 ## Placeholders
 
-Every project can use place
+Every skeleton can use placeholders to making it possible to replace sections in files with new dynamic content which is defined by the application being created. Placeholders should be formatted as `$${name}`. This somewhat complex placeholder is used to prevent conflicts with existing template formats so that the skeleton support also works across files like Smarty or Handlebars templates.
+
+Jasy automatically figures out the files which it is able to patch. It intelligently omits binary files as fast as it is possible. It prefers UTF-8 encoding but should also work with other encodings as long as the actual placeholder name is ASCII or UTF-8 compatible.
 
 ## Automatic values
 
