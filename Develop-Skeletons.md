@@ -21,7 +21,7 @@ There are a few pre-defined fields available for your skeleton:
 
 ### Questions
 
-The simplest way to add more fields for being stored in configuration or being replaced in your skeletons is to add them to a configuration file called either `jasycreate.yaml` or `jasycreate.json`. A typical file might look like:
+The simplest way to add more fields to be stored in the skeleton configuration or be replaced in your skeletons is to add them to a configuration file called either `jasycreate.yaml` or `jasycreate.json`. A typical file might look like:
 
 ```yaml
 - name: user.name
