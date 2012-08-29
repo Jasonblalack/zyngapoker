@@ -16,12 +16,16 @@ There are a few pre-defined fields available for your skeleton:
 
 ## Skeleton Specific Files
 
-* `jasycreate.yaml/json`: Questions to ask the user. Support pre-filling fields via command line as well.
-* `jasycreate.py`: Custom scripting executed after files have been copied and questions from YAML/JSON files have been answered.
+* **Questions**: `jasycreate.yaml/json`: Questions to ask the user. Support pre-filling fields via command line as well.
+* **Scripting**: `jasycreate.py`: Custom scripting executed after files have been copied and questions from YAML/JSON files have been answered.
 
-## Questions
+### Questions
 
-## Scripting
+
+
+### Scripting
+
+A typical `jasyscript.py` might look like that:
 
 ```python
 # Custom questions
@@ -34,6 +38,26 @@ config.ask("Increment from 1..3", "incr", "List")
 # Moving file
 file.mv("placeholder.xcode", config.get("name") + ".xcode")
 ```
+
+config.ask() is pretty much identical to what you can achieve via the question files. Other than that you are able to hardly set values to the configuration and interact with it. So you could even ask different questions based on previous input etc.
+
+* `config.export()`:  
+Returns a flat representation of all data
+* `config.readQuestions(fileName)`:  
+Manually read question file 
+* `config.executeScript(fileName)`:  
+Execute another script like the current one
+* `config.has(name)`:  
+Whether the given field is set
+* `config.get(name, default?)`:  
+Returns the value of the given field or `default` when it is not set
+* `config.ask(question, name, accept?, required?, default?, force?, parse?)`:  
+Asks the user the given question if not value was set yet (overwrite via `force=True`)
+* `config.set(name, value, accept?, parse?)`:  
+Sets the given field to the given value. Supports optional type checking and value parsing.
+
+* file.mv 
+
 
 ## Command Line Arguments
 
