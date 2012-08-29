@@ -41,16 +41,18 @@ file.mv("placeholder.xcode", config.get("name") + ".xcode")
 
 config.ask() is pretty much identical to what you can achieve via the question files. Other than that you are able to hardly set values to the configuration and interact with it. So you could even ask different questions based on previous input etc.
 
+#### Configuration API
+
 * `config.set(name, value, accept?, parse?)`: Sets the given field to the given value. Supports optional type checking and value parsing.
 * `config.has(name)`: Whether the given field is set
 * `config.get(name, default?)`: Returns the value of the given field or `default` when it is not set
 * `config.ask(question, name, accept?, required?, default?, force?, parse?)`: Asks the user the given question if not value was set yet (overwrite via `force=True`)
-
 * `config.export()`: Returns a flat representation of all data
 * `config.write(fileName, indent?, encoding?)`: Writes the data to a config file. Supports JSON and YAML. File format is auto chosen by the file extension.
-
 * `config.readQuestions(fileName)`: Manually read question file 
 * `config.executeScript(fileName)`: Execute another script like the current one
+
+#### File API
 
 * `file.cp(src, dst)`: Copies the given file
 * `file.cpdir(src, dst)`: Copies the given directory
