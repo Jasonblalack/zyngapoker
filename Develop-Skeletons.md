@@ -53,7 +53,7 @@ The simplest way to add more fields to be stored in the skeleton configuration o
 
 ### Scripting
 
-A typical `jasyscript.py` might look like that:
+A typical `jasycreate.py` might look like that:
 
 ```python
 # Custom questions
