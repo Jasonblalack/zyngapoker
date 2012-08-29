@@ -6,6 +6,8 @@ Every skeleton can use placeholders to making it possible to replace sections in
 
 Jasy automatically figures out the files which it is able to patch. It intelligently omits binary files as fast as it is possible. It prefers UTF-8 encoding but should also work with other encodings as long as the actual placeholder name is ASCII or UTF-8 compatible.
 
+*Note*: Placeholders are being required to be replaced. There will be an error when a placeholder is being found with a field name which does not exists.
+
 ## Automatic values
 
 There are a few pre-defined fields available for your skeleton:
