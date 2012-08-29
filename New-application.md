@@ -15,6 +15,8 @@ All parameters to `jasy create` are optional:
 - **Name**: `name` defines the name of the project. It must consists of lowercase characters only. When `name` is missing Jasy automatically uses `myproject`
 - **Origin**: `origin` defines the source project which offers skeletons. This could be a local folder or a Git URL. If it is missing Jasy checks whether the current working directory is actually a Jasy project it can use.
 - **Skeleton**: `skeleton` defines the name of the skeleton being used. It defaults to the first sub folder inside `skeleton` of the `origin` if it is not defined by the user.
+- **Version**: `version` defines a version of the origin project to clone. This is only relevant when auto-cloning the origin from Git.
+- **Destination**: `destination` defines the output directory. Normally the output directory is just a folder in the current working directory named like `name`. This allows overriding this mechanics.
 
 The scaffolding offers three major features during creating new application from skeletons:
 
