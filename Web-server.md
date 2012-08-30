@@ -28,6 +28,17 @@ def server():
 * `port`: Supports any valid port. If you run this script as a user with normal privileges (recommended), you might not have access to start a port on a low port number. Low port numbers are reserved for the administrator/superuser (root).
 * `host`: Any valid IP to bind to. Defaults to `127.0.0.1` which means that `localhost` is supported as well. Use `0.0.0.0` or your external IP address to bind to all addresses and making your server reachable from other computers as well.
 
+*Example*:
+
+```python
+@task
+def server():
+  serve(routes = {
+    "github" : {...},
+    "api" : {...}
+  }, host = "0.0.0.0", port = 1234)
+```
+
 
 ## Routes
 
@@ -89,7 +100,7 @@ Just pass the headers to the proxy. It will forward them 1:1 to the proxied serv
 
 #### Enabling Basic Authentification
 
-There are two way to enable Basic Auth for remote hosts. Either you can define a header `X-Proxy-Authorization` on every request or define the authentication data inside the route via the `auth` key (a dict with the keys `user` and `password`). The header `X-Proxy-Authorization` is automatically mapped to `Authorization` on the mirrored request and must qualify for the normal Basic Auth criteria (username and password in a single string which is base64 encoded).
+There are two way to enable Basic Auth for remote hosts. Either you can define a header `X-Proxy-Authorization` on every request or define the authentication data inside the route via the `auth` key (a dict with the keys `method` (should be `basic`), `user` and `password`). The header `X-Proxy-Authorization` is automatically mapped to `Authorization` on the mirrored request and must qualify for the normal Basic Auth criteria (username and password in a single string which is base64 encoded).
 
 
 #### Resetting the mirror
