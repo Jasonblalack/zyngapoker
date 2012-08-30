@@ -2,13 +2,14 @@ Jasy comes with a built-in web server for delivering content easily without sett
 
 ## Features
 
-* Custom top-level routes
-* Aliasing local folders via routes feature
-* Delivering static local files
 * Super easy setup and usage
+* Custom top-level routes
+* Delivering static local files
+* Aliasing local folders via routes feature
+* Proxying requests to remote server via local route
 * Mirroring feature to fasten delivery from slower remote servers (GET requests only)
 * Offline support to send `404` when files are not mirrored
-* Integrated BasicAuth support via headers or route configuration
+* Integrated Basic Authentification support via headers or route configuration
 * All responses are *CORS* enabled for cross domain usage
 * Integrated into Jasy logging infrastructure
 
