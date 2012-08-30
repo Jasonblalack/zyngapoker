@@ -26,7 +26,6 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Names]]: How files are named on file system and inside the application
 * [[Fields]]: Pass data from the build script to the application and permutate code for different output scenarios
 * [[Web Server]]: Usage of the integrated web server
-* [[File Watcher]]: Usage of the build daemon
 * [[Image Sprites]]: Setup image sprites for your application
 * [[Image Animations]]: Tooling for image based animations
 
