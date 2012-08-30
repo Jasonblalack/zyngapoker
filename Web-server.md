@@ -12,7 +12,7 @@ Jasy comes with a built-in web server for delivering content easily without sett
 * All responses are *CORS* enabled for cross domain usage
 * Integrated into Jasy logging infrastructure
 
-## Usage
+## Basic Usage
 
 Just call the globally available `serve()` method. There are no required parameters. By default (when no custom routes are configured) it just delivers all files from the project's root folder. In the simplest use case just add a task like that one:
 
@@ -22,13 +22,35 @@ def server():
   serve()
 ```
 
-### Parameters
+## Parameters
 
-* `routes`: Configure the routes. A map/dict where the key is the top-level name (e.g. `myroute` => `http://localhost/myroute`) of the route and the value holds the configuration options.
+* `routes`: Configure the routes. A map/dict where the key is the top-level name (e.g. `myroute` → `http://localhost/myroute`) of the route and the value holds the configuration options.
 * `port`: Supports any valid port. If you run this script as a user with normal privileges (recommended), you might not have access to start a port on a low port number. Low port numbers are reserved for the administrator/superuser (root).
 * `host`: Any valid IP to bind to. Defaults to `127.0.0.1` which means that `localhost` is supported as well. Use `0.0.0.0` or your external IP address to bind to all addresses and making your server reachable from other computers as well.
 
 
-### Routes
+## Routes
 
-These are the valid configuration parameters for each route.
+### Static Routes
+
+These are the valid configuration parameters:
+
+* `debug`: Enable debug mode
+
+
+
+### Proxy Routes
+
+These are the valid configuration parameters:
+
+* `host`: Defines the host name / address to mirror
+* `auth`: Use the given basic auth data
+* `debug`: Enable debug mode
+* `mirror`: Enable dynamic mirroring of all remotely loaded files (`GET` only). Leads to the creation of a file "jasymirror-ROUTENAME" inside the root folder of the application.
+* `offline`: Don't load files from the remote host - only deliver files from mirror cache
+
+#### Enable Basic Auth
+
+There are two way to enable Basic Auth for remote hosts. Either you can define a header `X-Proxy-Authorization` on every request or define the authentication data inside the route via the `auth` key (a dict with the keys `user` and `password`).
+
+
