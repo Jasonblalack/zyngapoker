@@ -35,9 +35,19 @@ def server():
 
 These are the valid configuration parameters:
 
-* `debug`: Enable debug mode
+* `root`: Define the folder to map to the given route e.g. `"api/v08"`
+* `debug` (`=False`): Enable debug mode
 
+*Example*:
 
+```python
+"api" : {
+  "root" : "api/v08",
+  "debug" : True
+}
+```
+
+When debugging is enabled every request is logged and printed out to the console.
 
 ### Proxy Routes
 
@@ -49,9 +59,9 @@ These are the valid configuration parameters:
 * `mirror` (`=False`): Enable dynamic mirroring of all remotely loaded files (`GET` only). Leads to the creation of a file "jasymirror-ROUTENAME" inside the root folder of the application.
 * `offline` (`=False`): Don't load files from the remote host - only deliver files from mirror cache
 
-*Note*: SSL verification is disabled for the mirroring so that all mirrored server answers are regarded as okay even if the certificate is invalid. This is because most test servers don't have valid SSL certificates and the Jasy web server is not planned being used in production anyway.
+*Note*: *SSL* verification is disabled for the proxying so that all proxied server answers are regarded as okay even if the certificate is invalid. This is because most test servers don't have valid *SSL* certificates and the Jasy web server is not planned being used in production anyway.
 
-Example:
+*Example:*
 
 ```python
 "github" : {
@@ -67,9 +77,21 @@ Example:
 }
 ```
 
-#### Enable Basic Auth
+This route forwards all requests from ˚http://localhost/github/*` to `https://api.github.com/*` and uses the authentication data configured for the route. It automatically mirrors all data from `GET` requests.
+
+When debugging is enabled every request is logged and printed out to the console.
+
+
+#### Using HTTP headers
+
+Just pass the headers to the proxy. It will forward them 1:1 to the proxied server.
+
+
+#### Enabling Basic Authentification
 
 There are two way to enable Basic Auth for remote hosts. Either you can define a header `X-Proxy-Authorization` on every request or define the authentication data inside the route via the `auth` key (a dict with the keys `user` and `password`). The header `X-Proxy-Authorization` is automatically mapped to `Authorization` on the mirrored request and must qualify for the normal Basic Auth criteria (username and password in a single string which is base64 encoded).
 
 
+#### Resetting the mirror
 
+To clear the mirror cache you can delete the `jasymirror-ROUTENAME` (e.g. `jasymirror-github`) from the root folder of your application. Stop the server first to do so.
