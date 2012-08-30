@@ -1,7 +1,7 @@
 Jasy - Web Tooling Framework
 ============================
 
-Jasy is a construction tool for web projects. Think of Jasy as a replacement for the classic make utility heavily inspired by modern tools like SCons (Used by V8, MongoDB, ...), Waf (Used by Samba, NodeJS, ...) and Maven. Jasy is based on the learnings through creating the "generator" for the qooxdoo JavaScript framework.
+Jasy is a construction tool for web projects. Think of Jasy as a replacement for the classic [make](http://www.gnu.org/software/make/) utility heavily inspired by modern tools like [SCons](http://www.scons.org/) (Used by V8, MongoDB, ...), [Waf](http://code.google.com/p/waf/) (Used by Samba, NodeJS, ...) and [Maven](http://maven.apache.org/). Jasy is based on the learnings through creating the "generator" for the [qooxdoo](http://qooxdoo.org) JavaScript framework.
 
 * [[About]]
 * [[Features]]
