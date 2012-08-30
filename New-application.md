@@ -20,7 +20,7 @@ The scaffolding offers three major features during creating new application from
 
 * **Patching**: Replaces `$${varname}` placeholders with the actual values inside all files
 * **Configuration**: Stores a configuration `jasyscript.yaml` based on questions/flags defined in the skeleton (`jasycreate.yaml/json`). 
-* **Scripting**: Acustom `jasycreate.py` script to further ask questions of modify the created application further (e.g. renaming folders, loading remote data, etc.)
+* **Scripting**: A custom `jasycreate.py` script to further ask questions of modify the created application further (e.g. renaming folders, loading remote data, etc.)
 
 The process during application creation follows this order:
 
