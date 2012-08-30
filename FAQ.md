@@ -1,3 +1,6 @@
+## Why is Jasy based on Python3?
+
+Python is great for tools. It's used at Google for a lot of administration tasks. It has tons of built-in modules and feature. Python offers nice OO capabilities as well as functional programming paradigms. Python 3 is basically a cleanup version of the previous Python 2.x iterations. While not being used that widely yet, more and more modules are able being used in Python 3. Python 3 has got a lot of cleanups and was streamlined a lot regarding dealing with strings, unicode and binary data and makes it far easier to use for string heavy tooling aspects. Python 3 is a great choice for tooling and scripting. It's easy to learn, easy to extend and is able to run cross platform easily.
 
 ## Why not use Make?
 
@@ -16,7 +19,6 @@ Tooling systems which are based on a [DSL](http://en.wikipedia.org/wiki/Domain-s
 - Two different project build variants (source and build) offer the right features for developing and deployment phase of an application. The so-named "source" version loads the original class files which is useful during the development phase of an application. The build version puts all compiled into one (or multiple) optimized code bundles to minimize transfer size and runtime performance.
 - Highly effective single file binary cache (with integrated memory cache). This solution is very fast on all operating systems (much faster than single file lookups with legacy build tools.
 - Integrated permutation supports allow for complex output scenarios (debug=on/off, device=tablet/desktop/mobile, locale=en/fr/de, ...) and access the selected variant using a simple JavaScript API.
-
 
 
 
