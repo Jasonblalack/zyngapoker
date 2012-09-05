@@ -16,11 +16,11 @@ A typical `jasyanimation.json` looks like:
 
 	"explosion.png" : {
 		"columns": 25
-	}
+	},
 
 	"rocks/rockexplosion.png" : {
 		"columns": 10
-	},
+	}
 }
 
 ```
