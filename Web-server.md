@@ -4,6 +4,7 @@ Jasy comes with a built-in web server for delivering content easily without sett
 
 * Super easy setup and usage
 * Custom top-level routes
+* Custom defining of content types (MIME-types) 
 * Delivering static local files
 * Aliasing local folders via routes feature
 * Proxying requests to remote server via local route
@@ -26,6 +27,7 @@ def server():
 ## Parameters
 
 * `routes`: Configure the routes. A map/dict where the key is the top-level name (e.g. `myroute` → `http://localhost/myroute`) of the route and the value holds the configuration options.
+* `customContentTypes`: Configure the custom content/MIME -types. A map/dict where the key is the file extension and the value holds the custom content type.
 * `port`: Supports any valid port. If you run this script as a user with normal privileges (recommended), you might not have access to start a port on a low port number. Low port numbers are reserved for the administrator/superuser (root).
 * `host`: Any valid IP to bind to. Defaults to `127.0.0.1` which means that `localhost` is supported as well. Use `0.0.0.0` or your external IP address to bind to all addresses and making your server reachable from other computers as well.
 
@@ -37,6 +39,10 @@ def server():
   serve(routes = {
     "github" : {...},
     "api" : {...}
+  },
+  customContentTypes = {
+    "manifest": "text/cache-manifest",
+    "js": "application/javascript"
   }, host = "0.0.0.0", port = 1234)
 ```
 
