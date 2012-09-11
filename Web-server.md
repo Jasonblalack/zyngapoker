@@ -28,15 +28,16 @@ def server():
 
 * `routes`: Configure the routes. A map/dict where the key is the top-level name (e.g. `myroute` → `http://localhost/myroute`) of the route and the value holds the configuration options.
 * `customContentTypes`: Configure the custom content/MIME -types. A map/dict where the key is the file extension and the value holds the custom content type.
-* `port`: Supports any valid port. If you run this script as a user with normal privileges (recommended), you might not have access to start a port on a low port number. Low port numbers are reserved for the administrator/superuser (root).
-* `host`: Any valid IP to bind to. Defaults to `127.0.0.1` which means that `localhost` is supported as well. Use `0.0.0.0` or your external IP address to bind to all addresses and making your server reachable from other computers as well.
+* `port`: Supports any valid port. If you run this script as a user with normal privileges (recommended), you might not have access to starting the server on a low port number (< 1024). Low port numbers are reserved for the administrator/superuser (root).
+* `host`: Any valid IP to bind to. Defaults to `127.0.0.1` which means that `localhost` is supported as well. Use `0.0.0.0` to bind to all interfaces, or a specific IP address to bind to a particular interface, and make your server reachable from non-local clients as well.
 
 *Example*:
 
 ```python
 @task
 def server():
-  serve(routes = {
+  serve(
+  routes = {
     "github" : {...},
     "api" : {...}
   },
