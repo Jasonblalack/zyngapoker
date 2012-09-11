@@ -44,7 +44,10 @@ def server():
   customContentTypes = {
     "manifest": "text/cache-manifest",
     "js": "application/javascript"
-  }, host = "0.0.0.0", port = 1234)
+  }, 
+  host = "0.0.0.0", 
+  port = 1234
+  )
 ```
 
 
