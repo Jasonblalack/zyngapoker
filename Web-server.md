@@ -4,7 +4,7 @@ Jasy comes with a built-in web server for delivering content easily without sett
 
 * Super easy setup and usage
 * Custom top-level routes
-* Custom defining of content types (MIME-types) 
+* Custom content types (MIME-types) 
 * Delivering static local files
 * Aliasing local folders via routes feature
 * Proxying requests to remote server via local route
