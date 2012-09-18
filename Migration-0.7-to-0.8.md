@@ -31,8 +31,8 @@ def mytask():
 
 There are only two pre-defined objects inside `jasyscript.py`: `session` and `config`. 
 
-* `session`: Instance of `jasy.core.Session` automatically 
-
+* `session`: Instance of `jasy.core.Session` pre-filled with all projects required by the current project
+* `config`: Instance of `jasy.core.Config` pre-loaded with configuration data in `jasyscript.yaml`/`jasyscript.json`
 
 
 ## File Handling
