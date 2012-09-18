@@ -1,9 +1,11 @@
-Jasy 0.8 is a major rework of a lot of internal APIs in Jasy. While keeping most approaches the usage of the actual APIs changed by some extend. The goals were:
+Jasy 0.8 is a major rework of a lot of internal APIs in Jasy. While keeping most approaches the usage of the actual APIs changed by some extend. Beside the new features of 0.8 there were some other goals which are basically the reasoning for these changes:
 
 * Less pre defined objects in `jasyscript.py`
 * Fully sandboxed environment in `jasyscript.py`
 * Possibility to run multiple tasks in sequence without unwanted side effects
 * Cleanup of prefix handling to use less magic
+* Reducing cross imports (using from x import y) to fix issues with Sphinx
+
 
 ## Example
 
