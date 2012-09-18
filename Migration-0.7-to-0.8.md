@@ -43,6 +43,7 @@ Instead of writing to e.g. `index.html` you now write to `$prefix/index.html` wh
 
 ```python
 storeKernel("script/kernel.js") => storeKernel("$prefix/script/kernel.js")
+updateFile("source/index.html", "index.html") => updateFile("source/index.html", "$prefix/index.html")
 
 ```
 
