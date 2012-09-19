@@ -141,7 +141,7 @@ def build(formatting="off"):
     classes = Resolver(session).addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
-    outputManager.storeCompressed(classes, "simple.js")
+    outputManager.storeCompressed(classes, "$prefix/simple.js")
 
 @task
 def clean():
@@ -172,30 +172,33 @@ This means you have an fully standalone, deploy-ready application inside the `bu
 def build(formatting="off"):
     """This is the help text for the build task"""
 
-    # Resolving classes
-    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
-
     # Use assets from local asset folder
+    assetManager = AssetManager(session)
     assetManager.addBuildProfile()
-    
-    # Copy over all used assets to local asset folder
-    assetManager.deploy(classes)
-    
-    # Copy over HTML file(s)
-    updateFile("source/index.html", "index.html")
-  
+
     # Enable formatting of code when user passes parameter
     if formatting == "on":
-        jsFormatting.enable("semicolon")
-        jsFormatting.enable("comma")
+        outputManager = OutputManager(session, assetManager, compressionLevel=0, formattingLevel=1)
+    else:
+        outputManager = OutputManager(session, assetManager, compressionLevel=2, formattingLevel=0)
+
+    # Copy over all used assets to local asset folder
+    outputManager.deployAssets(["notebook.Application"])
+
+    # Copy over files
+    fileManager = FileManager(session)
+    fileManager.updateFile("source/index.html", "$prefix/index.html")
+
+    # Resolving classes
+    classes = Resolver(session).addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
-    storeCompressed(classes, "simple.js")
+    outputManager.storeCompressed(classes, "$prefix/simple.js")
 
 @task
 def clean():
     """Cleaning the cache files"""
-
+    
     session.clean()
 ```
 
@@ -210,15 +213,15 @@ One of the nice features of Jasy is integrated handling for fields and permutati
 
 You can access fields by APIs of the Core Framework:
 
-* `core.Env.getValue("fieldName")` => `var`
-* `core.Env.isSet("fieldName", expectedValue)` => `bool`
-* `core.Env.isSet("fieldName")` => `bool`
-* `core.Env.select("fieldName", {expectedValue1: result1, expectedValue2: result2})` => `var`
+* `jasy.Env.getValue("fieldName")` => `var`
+* `jasy.Env.isSet("fieldName", expectedValue)` => `bool`
+* `jasy.Env.isSet("fieldName")` => `bool`
+* `jasy.Env.select("fieldName", {expectedValue1: result1, expectedValue2: result2})` => `var`
 
 The values will be automatically injected by Jasy like that:
 
 ```
-if (core.Env.isSet("debug", true)) {
+if (jasy.Env.isSet("debug", true)) {
   console.log("VAR: ", myvar);
 }
 ```
@@ -241,15 +244,14 @@ console.log("VAR: ", myvar);
 
 Fields can only be set inside `jasyscript.py` and not on the client side anymore. To configure a field you have two approaches:
 
-* `setField("fieldname", fieldvalue)`
-* `permutateField("fieldname")`
+* `session.setField("fieldname", fieldvalue)`
+* `session.permutateField("fieldname")`
 
 The first sets the value of the field to exactly the given value. The second one cycles through all possible values. Possible values could be defined by the `jasyproject.json` which defines the field or can be defined in the `jasyscript.py`:
 
-`permutateField("fieldname", valueList, detectionClass, defaultValue)`
+`session.permutateField("fieldname", valueList, detectionClass, defaultValue)`
 
 * `valueList`: A list of values to build e.g. `["desktop", "phone", "tablet"]`
 * `detectionClass`: Class to detect the value of the given field on the client.
 * `defaultValue`: Value to use when `detectionClass` is not configured or fails with detection.
-
 
