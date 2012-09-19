@@ -162,7 +162,7 @@ The new way looks a little cleaner:
 
 ```python
 outputManager.storeKernel("script/kernel.js")
-resolver = Resolver(session).addClassName("myproject.Main").excludeClasses(includedByKernel)
+resolver = Resolver(session).addClassName("myproject.Main")
 outputManager.storeCompressed(resolver.getSortedClasses(), "$prefix/script/myproject.js", "new myproject.Main;")
 ```
 
