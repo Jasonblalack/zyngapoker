@@ -210,7 +210,7 @@ This also offers to define a list of classes to deploy assets for, but typically
 
 ## Cleaning up
 
-Instead of manual calls to `removeFile()` and `removeDir()` you are now able to call `Repository.clean()` or `Repository.distclean()`. Be careful with these methods though as they might delete uncommited files from your folders, too e.g. the source folder.
+Instead of manual calls to `removeFile()` and `removeDir()` you are now able to call `Repository.clean()` or `Repository.distclean()`. Be careful with these methods though as they might delete uncommited files from your folders, too e.g. the source folder. For details on what these methods do, consult [the official API docs](http://packages.python.org/jasy/), please.
 
 
 
