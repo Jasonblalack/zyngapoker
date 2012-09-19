@@ -221,3 +221,5 @@ Core was improved to better separate between features required and used by Jasy 
 * `core.Env` was renamed to `jasy.Env`. Best is to globally patch this change to all your files.
 * `core.io.Asset` was splitted. The most essential and generic features are now implemented in `jasy.Asset`: `toUri()`, `has()` and `getType()`. All loading feature remain in the `core.io.Asset` which makes sense for a class placed inside the `io` namespace.
 * `core.locale.Translate` was splitted so that basic data interaction and reading entries has been moved to `jasy.Translation`. This should not have any side effect for projects.
+
+Also have a look at the [Core Changelog](https://github.com/zynga/core/blob/master/changelog.md).
