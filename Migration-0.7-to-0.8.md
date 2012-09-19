@@ -219,5 +219,5 @@ Instead of manual calls to `removeFile()` and `removeDir()` you are now able to 
 Core was improved to better separate between features required and used by Jasy and ones which are basically usable without.
 
 * `core.Env` was renamed to `jasy.Env`. Best is to globally patch this change to all your files.
-* `core.io.Asset` was splitted. Some features are now implemented in `jasy.Asset` but are aliased to `core.io.Asset` for convenience reasons.
+* `core.io.Asset` was splitted. The most essential and generic features are now implemented in `jasy.Asset`: `toUri()`, `has()` and `getType()`. All loading feature remain in the `core.io.Asset` which makes sense for a class placed inside the `io` namespace.
 * `core.locale.Translate` was splitted so that basic data interaction and reading entries has been moved to `jasy.Translation`. This should not have any side effect for projects.
