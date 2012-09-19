@@ -16,15 +16,15 @@ def build():
     """This is the help text for the build task"""
 
     # Resolving classes
-    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
+    classes = Resolver(session).addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
-    storeCompressed(classes, "simple.js")
+    OutputManager(session).storeCompressed(classes, "$prefix/simple.js")
 ```
 
 This is plain and simple Python code to detect the dependencies of `notebook.Application` and compress all relevant classes into `build/simple.js`. 
 
-* The task name is prepended automatically to all destination file names. This is the reason `simple.js` is transformed into `build/simple.js` automatically when the task is called `build`.
+* The `$prefix` is a placeholder to inject the current prefix (typically the name of the task) into the filenames.
 * The dependency handling starts with the classes added via `addClassName` and processes classes based on unresolved names in each file until no more relevant files are required for inclusion.
 * Dependency tracking works by full references to other classes. It does not work when classes are accessed using `[]`, via strings e.g. `my["ui"].Button` or via variables e.g. `var myui = mylib.ui; var btn = myui.Button();` does not figure out that you use `mylib.ui.Button`.
 * There is an alternative to `getSortedClasses()` called `getIncludedClasses()` which works without sorting. That's somewhat faster and might be relevant in cases where you require a simple list, but the order is not important.
@@ -48,15 +48,16 @@ def build(formatting="off"):
     """This is the help text for the build task"""
 
     # Resolving classes
-    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
+    classes = Resolver(session).addClassName("notebook.Application").getSortedClasses()
 
     # Enable formatting of code when user passes parameter
     if formatting == "on":
-        jsFormatting.enable("semicolon")
-        jsFormatting.enable("comma")
+        outputManager = OutputManager(session, compressionLevel=0, formattingLevel=1)
+    else:
+        outputManager = OutputManager(session, compressionLevel=2, formattingLevel=0)
 
     # Write compressed classes
-    storeCompressed(classes, "simple.js")
+    outputManager.storeCompressed(classes, "$prefix/simple.js")
 ```
 
 These parameters should define default values to make it possible to leave them out. Requiring these arguments is typically not a good idea.
@@ -85,14 +86,14 @@ Jasy can pass data about assets (images, styles, fonts, etc.) to your generated 
 /**
  * #asset(notebook/css/*)
  */
-MyClass = function() {
+notebook.Application = function() {
   core.io.Asset.load(["notebook/css/main.css"], function() {
     alert("CSS files was loaded and applied");
   });
 };
 ```
 
-This so-called "asset" hint defines that all assets of the project "notebook" in the folder "css" should be added whenever this class is included. This happens via the already used method `storeCompressed` (and also `storeLoader` and `storeKernel`). 
+This so-called "asset" hint defines that all assets of the project "notebook" in the folder "css" should be added whenever this class is included. This happens via the already used method `storeCompressed` (and also `storeLoader`). 
 
 Including asset means to add information about the existence of these assets to the client side JavaScript. This is especially useful for preloading assets like images, knowing about image sizes before actually loading them, etc. Asset management also simplifies access to assets and unifies their usage inside the application code. You don't work with absolute or relative paths anymore, but just use assets by the project's name they belong to independently of their current location.
 
@@ -104,38 +105,43 @@ To make loading actually working in your project you have to attach profile(s) t
 To use assets in our current project we add a call to `assetManager.addBuildProfile()` to our `jasyscript.py`:
 
 ```python
+assetManager = AssetManager(session)
 assetManager.addBuildProfile()
+
+outputManager = OutputManager(session, assetManager)
 ```
 
 This adds data to your assets so that they will be loaded from a local folder (called `asset` by default). This means even assets from other projects will be expected to be loaded from there aka all assets are merged into this single folder. As adding the data is not enough, you also need to copy these assets around. You don't have to do this manually though. 
 
 ```python
-assetManager.deploy(classList)
+outputManager.deployAssets(["notebook.Application"])
 ```
 
-As you can see `deploy` needs the list of classes for deployment as well. So we can share it. This is how the build script can look like now:
+As you can see `deployAssets` needs the list of main application classes for deployment. This is how the build script can look like now:
 
 ```python
 @task
 def build(formatting="off"):
     """This is the help text for the build task"""
 
-    # Resolving classes
-    classes = Resolver().addClassName("notebook.Application").getSortedClasses()
-
     # Use assets from local asset folder
+    assetManager = AssetManager(session)
     assetManager.addBuildProfile()
-    
-    # Copy over all used assets to local asset folder
-    assetManager.deploy(classes)
-  
+
     # Enable formatting of code when user passes parameter
     if formatting == "on":
-        jsFormatting.enable("semicolon")
-        jsFormatting.enable("comma")
+        outputManager = OutputManager(session, assetManager, compressionLevel=0, formattingLevel=1)
+    else:
+        outputManager = OutputManager(session, assetManager, compressionLevel=2, formattingLevel=0)
+
+    # Copy over all used assets to local asset folder
+    outputManager.deployAssets(["notebook.Application"])
+
+    # Resolving classes
+    classes = Resolver(session).addClassName("notebook.Application").getSortedClasses()
 
     # Write compressed classes
-    storeCompressed(classes, "simple.js")
+    outputManager.storeCompressed(classes, "simple.js")
 
 @task
 def clean():
@@ -245,6 +251,5 @@ The first sets the value of the field to exactly the given value. The second one
 * `valueList`: A list of values to build e.g. `["desktop", "phone", "tablet"]`
 * `detectionClass`: Class to detect the value of the given field on the client.
 * `defaultValue`: Value to use when `detectionClass` is not configured or fails with detection.
-
 
 
