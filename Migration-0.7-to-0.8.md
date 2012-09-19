@@ -50,7 +50,7 @@ Jasy 0.8 moves a lot of methods into modules which where previously global to th
 * `OutputManager(session, assetManager)`: writes kernel, compressed files, deploys assets
 * `FileManager(session)`: offers lower level file handling for writing, copying and deleting files.
 
-This means that these objects are typically all unique for every task and could redo there work when executing multiple tasks in a row without influencing each other. This is much better than previously.
+This means that these objects are typically all unique for every task and could redo their work when executing multiple tasks in a row without influencing each other.
 
 
 ## Lazy Scanning
