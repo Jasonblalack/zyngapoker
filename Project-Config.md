@@ -2,7 +2,7 @@
 
 ## Basic Configuration
 
-Each Jasy project must have a configuration file. Typically this is stored in the `jasyproject.json` (or defined by another projects config). This file defines the name of the project, the exported package (namespace) and optionally a few other things like other required projects, supported fields (to pass data from build to the client), etc.
+Each Jasy project must have a configuration file. Typically this is stored in the `jasyproject.json`/`jasyproject.yaml`. This file defines the name of the project, the exported package (namespace) and optionally a few other things like other required projects, supported fields (to pass data from build to the client), etc.
 
 A simple `jasyproject.json` might look like:
 
@@ -12,7 +12,7 @@ A simple `jasyproject.json` might look like:
 }
 ```
 
-Pretty simple. The `projectname` needs to be unique in all the projects you are using (otherwise the previous project with that name is overridden). The name automatically defaults to the project's folder name. If that okay it's even possible to just leave this information out:
+Pretty simple. The `projectname` needs to be unique in all the projects you are using (otherwise the previous project with that name is overridden). The name automatically defaults to the name of the projects root folder. If that okay it's even possible to just leave this information out (but might be unsafe for other users):
 
 ```json
 {}
@@ -23,11 +23,11 @@ Pretty simple. The `projectname` needs to be unique in all the projects you are 
 
 There is a number of top-level keys which are supported:
 
-* **name**: The unique name of the project (defaults to the basename of the project folder)
-* **package**: By default the package is identical to the name of the project. See also: [[Naming]]
-* **requires**: List of folders or repository URLs which are required. 
-* **fields**: Client side configuration values / build permutations. See also: [[Fields]]
-* **content**: Manual definition of files with custom naming (if Jasy conventions could not be applied)
+* **name** (str): The unique name of the project (defaults to the basename of the project folder)
+* **package** (str): By default the package is identical to the name of the project. See also: [[Naming]]
+* **requires** (list): List of folders or repository URLs which are required. 
+* **fields** (dict): Client side configuration values / build permutations. See also: [[Fields]]
+* **content** (dict): Manual definition of files with custom naming (if Jasy conventions could not be applied)
 
 
 ## Name vs. Package
