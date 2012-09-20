@@ -12,13 +12,7 @@ JavaScript source code must have the extension `js` and export a single class pe
 
 ## Configuration
 
-### *Cache* - Cache results
-
-* File: `jasycache`/`jasycache.db`
-* Occurrences: one
-* Location: Root folder
-
-### *Project Configuration* - Configure the project
+### *Project Configuration* - Information about the project
   
 * File: `jasyproject.json`/`jasyproject.yaml`
 * Occurrences: one
@@ -39,26 +33,12 @@ JavaScript source code must have the extension `js` and export a single class pe
 * Location: Root folder
 * Docs: [[Build Script]]
 
-### *Library* - Offer shared methods
+### *Library* - Offer shared methods for other projects
 
 * File: `jasylibrary.py`
 * Occurrences: one
 * Location: Root folder
 * Docs: [[Sharing Methods]]
-
-### *Web Server Lock* - Local web server
-
-* File: `jasylock-http-xxx` (xxx = Port being used)
-* Occurrences: few
-* Location: Root folder
-* Docs: [[Web Server]]
-
-### *Web Mirror Cache* - Included mirroring functionality of web server
-
-* File: `jasymirror-xxx` (xxx = Route being mirrored)
-* Occurrences: few
-* Location: Root folder
-* Docs: [[Web Server]]
 
 ### *Sprites* - Setup image sprites: 
 
@@ -73,3 +53,23 @@ JavaScript source code must have the extension `js` and export a single class pe
 * Occurrences: few
 * Location: Inside asset folder
 * Docs: [[Image Animations]]
+
+### *Cache* - Cache results
+
+* File: `./jasy/cache*`
+* Occurrences: one
+* Location: Root folder
+
+### *Web Server Lock* - Local web server
+
+* File: `.jasy/server-xxx` (xxx = Port being used)
+* Occurrences: few
+* Location: Root folder
+* Docs: [[Web Server]]
+
+### *Web Mirror Cache* - Included mirroring functionality of web server
+
+* File: `.jasy/mirror-xxx` (xxx = Route being mirrored)
+* Occurrences: few
+* Location: Root folder
+* Docs: [[Web Server]]
