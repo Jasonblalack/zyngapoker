@@ -18,16 +18,24 @@ We have different tutorials for installing Jasy specific to the operating system
 
 ## Documentation
 
+### Basics
+
 * [[New Application]]: How to use skeletons for creating new applications
 * [[Project Structure]]: Files and folders in your project
 * [[Project Config]]: Configure your project settings
-* [[Develop Skeletons]]: How to create new skeletons
-* [[Build Script]]: Configure tasks for your application
 * [[Names]]: How files are named on file system and inside the application
-* [[Fields]]: Pass data from the build script to the application and permutate code for different output scenarios
+* [[Build Script]]: Configure tasks for your application
 * [[Web Server]]: Usage of the integrated web server
+
+### Advanced
+
+* [[Fields]]: Pass data from the build script to the application and permutate code for different output scenarios
 * [[Image Sprites]]: Setup image sprites for your application
 * [[Image Animations]]: Tooling for image based animations
+* [[Develop Skeletons]]: How to create new skeletons
+* [[Sharing Methods]]: How to share Python features with other projects
+* [[Locales]]: How to use locale support in your projects
+* [[Translation]]: How to translate your projects
 
 ## Migration
 
