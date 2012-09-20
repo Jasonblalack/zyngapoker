@@ -35,7 +35,8 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Develop Skeletons]]: How to create new skeletons
 * [[Sharing Methods]]: How to share Python features with other projects
 * [[Locales]]: How to use locale support in your projects
-* [[Translation]]: How to translate your projects
+* [[Translations]]: How to translate your projects
+* [[Writing API Docs]]: How to document your code
 
 ## Migration
 
