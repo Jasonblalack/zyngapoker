@@ -14,6 +14,8 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Mac OS X]]
 * [[Linux]]
 
+*Doctor*: There is a built-in task called "doctor" which can be used to easily verify an environment. Just call `jasy doctor` when installed or `bin/jasy doctor` in your repository clone.
+
 *Python Experts*: If you already have a Python3 installation and want to install Jasy in parallel you could follow our [[Installation using VirtualEnv]] guide.
 
 ## Documentation
