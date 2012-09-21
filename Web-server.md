@@ -129,7 +129,7 @@ Just pass the headers to the proxy. It will forward them 1:1 to the proxied serv
 
 ```js
 $.ajax({
-  url: "http://fiddle.jshell.net/favicon.png",
+  url: "localhost:8080/github",
   beforeSend: function (xhr) {
     xhr.headers["X-My-Header"] = "foo-bar"
   }
