@@ -135,4 +135,4 @@ There are two way to enable Basic Auth for remote hosts. Either you can define a
 
 #### Resetting the mirror
 
-To clear the mirror cache you can delete the `jasymirror-ROUTENAME` (e.g. `jasymirror-github`) from the root folder of your application. Stop the server first to do so.
+To clear the mirror cache you can delete the `.jasy/mirror-ROUTENAME` (e.g. `.jasy/mirror-github`) from the root folder of your application. Stop the server first to do so.
