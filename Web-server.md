@@ -125,7 +125,16 @@ When debugging is enabled every request is logged and printed out to the console
 
 #### Using HTTP headers
 
-Just pass the headers to the proxy. It will forward them 1:1 to the proxied server.
+Just pass the headers to the proxy. It will forward them 1:1 to the proxied server. This can be used e.g. via the jQuery `headers` object during `beforeSend`:
+
+```js
+$.ajax({
+  url: "http://fiddle.jshell.net/favicon.png",
+  beforeSend: function (xhr) {
+    xhr.headers["X-My-Header"] = "foo-bar"
+  }
+}).done(function(data) { ... });
+```
 
 
 #### Enabling Basic Authentification
