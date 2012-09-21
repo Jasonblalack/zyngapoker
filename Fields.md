@@ -32,22 +32,22 @@ Example:
     {
       "check" : "Boolean",
       "default" : false,
-      "detect" : "core.detect.Param"
+      "detect" : "jasy.detect.Param"
     },
     
     "engine" : 
     {
       "check" : ["webkit", "gecko", "trident", "presto"],
-      "detect" : "core.detect.Engine"
+      "detect" : "jasy.detect.Engine"
     }
   }
 }
 ```
 
-Two fields are defined. First one is boolean and called `debug`. It figures out it's value using the class `core.detect.Param`. This class implements a method `get` which is called with the name of the parameter to figure out:
+Two fields are defined. First one is boolean and called `debug`. It figures out it's value using the class `jasy.detect.Param`. This class implements a method `get` which is called with the name of the parameter to figure out:
 
 ```
-core.Module("core.detect.Param",
+jasy.Module("jasy.detect.Param",
 {
   get : function(name) 
   {
@@ -63,21 +63,21 @@ In this case no detection happens. This is good to inject values from the outsid
 
 ## Access via JavaScript
 
-Inside your JavaScript you have access to the fields configured in your fields using the `core.Env` class (inside the core project).
+Inside your JavaScript you have access to the fields configured in your fields using the `jasy.Env` class (inside the jasy project).
 
 ```js
 // read value for local variable
-var appTitle = core.Env.getValue("app-title");
+var appTitle = jasy.Env.getValue("app-title");
 
 // auto queries for a true value
-if (core.Env.isSet("debug")) { 
+if (jasy.Env.isSet("debug")) { 
   // debug code
 }
 
 // easy string/number compare
-if (core.Env.isSet("customer", "premium")) {
+if (jasy.Env.isSet("customer", "premium")) {
   // premium customer
-} else if (core.Env.isSet("customer", "plus")) {
+} else if (jasy.Env.isSet("customer", "plus")) {
   // plus customer
 } else {
   // free customer
@@ -95,7 +95,7 @@ Permutations build upon the field configuration. The idea is to combine separate
 
 Results in 2*4*3 => 24 files.
 
-Permutations are pretty fast to generate as Jasy keeps track of the fields (using `core.Env`) queried for in each file and caches it accordingly. So generating 40 or 200 makes not really so much difference. Best is to try it out yourself on a real application. Still, if you want to limit the number of files created keep in mind, to only permutate often used or fields with a huge impact to the file size (e.g. free vs. premium user).
+Permutations are pretty fast to generate as Jasy keeps track of the fields (using `jasy.Env`) queried for in each file and caches it accordingly. So generating 40 or 200 makes not really so much difference. Best is to try it out yourself on a real application. Still, if you want to limit the number of files created keep in mind, to only permutate often used or fields with a huge impact to the file size (e.g. free vs. premium user).
 
 These permutated fields might be loaded server-side e.g. when placing the name or the fields into the file. In the loop, where you are creating the permutations, you can ask each permutation object for specific field values e.g. the value of `debug` and inject this into the file name (`permutation.get("debug")`). 
 
@@ -103,13 +103,13 @@ The other, more scalable alternative, which also has better possibilities to fig
 
 ```js
 // Change this line
-core.io.Script.load(["myapp.js", ...]);
+jasy.io.Script.load(["myapp.js", ...]);
 
 // to this to include the computed checksum:
-var checksum = core.Env.CHECKSUM;
-core.io.Script.load(["myapp-" + checksum + ".js", ...]);
+var checksum = jasy.Env.CHECKSUM;
+jasy.io.Script.load(["myapp-" + checksum + ".js", ...]);
 ```
 
 On the Python side you can inject this checksum as well using `permutation.getChecksum()`. You can construct your filename based on this checksum during your build loop e.g. `"myapp-" + permutation.getChecksum() + ".js"`. Jasy has a built-in feature to generate a kernel script based on the permutated fields in the session. This kernel can be written to a file using the `storeKernel("kernel.js", assets)` command. In your HTML file you integrate the kernel script into the `head` element and load the file using the `Permutation.loadScripts()` command.
 
-Keep in mind that you can use fields without permutation as well e.g. for a version number etc. Fields need not to be permutated for being usable on the application side via `core.Env`.
+Keep in mind that you can use fields without permutation as well e.g. for a version number etc. Fields need not to be permutated for being usable on the application side via `jasy.Env`.
