@@ -24,6 +24,8 @@ A typical `jasyanimation.json` looks like:
 }
 
 ```
+Animations are usually stored in sprite-sheets. Use one sheet for one animation. With "columns" and "rows" you're able to define the grid settings of your sheet, "frames" defines how much sprites your animation sheet includes.
+
 
 This is the corresponding file system layout:
 
