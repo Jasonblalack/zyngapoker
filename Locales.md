@@ -1,0 +1,1 @@
+Jasy support CLDR based locales being used in any application. Using locales is super simple and works dynamically with data included in the Jasy distribution/install.
