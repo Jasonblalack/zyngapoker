@@ -2,7 +2,7 @@ You can easily enable translations in all Jasy projects by adding translation da
 
 ## Setup locales
 
-You have to setup and configure locale support in your Jasy project to make translations working. Take a look at the [Locales] documentation for details.
+You have to setup and configure locale support in your Jasy project to make translations working. Take a look at the [[Locales]] documentation for details.
 
 ## Adding translations
 
