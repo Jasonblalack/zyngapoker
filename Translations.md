@@ -129,8 +129,9 @@ Now you can refine the translation so that it matches the plural form. According
     msgstr[1] "%0 datoteke uklonjenih"
     msgstr[2] "%0 slika uklonjenih"
 
+For more details on plural forms also read the [official Gettext manual](http://www.gnu.org/software/gettext/manual/gettext.html#Plural-forms) on that topic.
+
 
 ## JavaScript API
 
 TODO
-
