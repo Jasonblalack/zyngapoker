@@ -79,4 +79,39 @@ You can also query the current locale being used using `jasy.Env.getValue("local
 
 ### Available classes
 
-
+- locale.calendar.gregorian.Date
+- locale.calendar.gregorian.Datetime
+- locale.calendar.gregorian.day.Abbreviated
+- locale.calendar.gregorian.day.Narrow
+- locale.calendar.gregorian.day.Wide
+- locale.calendar.gregorian.Field
+- locale.calendar.gregorian.month.Abbreviated
+- locale.calendar.gregorian.month.Narrow
+- locale.calendar.gregorian.month.Wide
+- locale.calendar.gregorian.quarter.Abbreviated
+- locale.calendar.gregorian.quarter.Narrow
+- locale.calendar.gregorian.quarter.Wide
+- locale.calendar.gregorian.relative.Day
+- locale.calendar.gregorian.relative.Month
+- locale.calendar.gregorian.relative.Week
+- locale.calendar.gregorian.relative.Year
+- locale.calendar.gregorian.Time
+- locale.CalendarPref
+- locale.Delimiter
+- locale.display.Key
+- locale.display.Language
+- locale.display.Measure
+- locale.display.Script
+- locale.display.Territory
+- locale.display.Type
+- locale.display.Variant
+- locale.Info
+- locale.key.Full
+- locale.key.Short
+- locale.Measurement
+- locale.number.CurrencyName
+- locale.number.CurrencySymbol
+- locale.number.Format
+- locale.number.Symbol
+- locale.Plural
+- locale.Week
