@@ -90,7 +90,7 @@ Such an entry can look like this:
 Here also, a context can be specified before `msgid`, like above.
 
 
-## Plural Forms
+## Advanced Plural Forms
 
 Suppose you are translating a PO file, and it contains an entry like this:
 
