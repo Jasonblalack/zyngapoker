@@ -115,3 +115,5 @@ You can also query the current locale being used using `jasy.Env.getValue("local
 - locale.number.Symbol
 - locale.Plural
 - locale.Week
+
+The available calendar data depends on the locale. There are different ones available like `buddhist`, `chinese`, `coptic`, `ethiopic`, `gregorian`, `hebrew`, `indian`, `islamic`, `japanese`, `persian` and `roc`. The classes under this package are basically the same in each locale e.g. `locale.calendar.<type>.month.Narrow`.
