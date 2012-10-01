@@ -37,12 +37,28 @@ Jasy dynamically translates the XML data offered by CLDR into Jasy-enabled proje
 To enable locales you have to enable the locales you want to use in your `jasyscript.py`:
 
 ```python
-session.setLocales(["de", "en"])
+session.setLocales(["de_AT", "en_US", "fr_FR"])
 ```
 
+This enables locales inside the permutation loop. It automatically creates locale projects and adds them to the project list automatically.
 
-## Locales vs. Translations
+```python
+for permutation in session.permutate():
+    <other code>
+```
 
-Unfortunately there is no clean way to figure out the exact locale of the system in the browser. The only thing you get is the language (using `navigator.userLanguage`). This means that for 100% exact locale support (following the conventions of the country the visitor lives in) you have to figure out the locale using a different approach. One such approach could be using the request headers from a HTTP request (contains Accept-Language header) and return that to the client as a response again. Alternatively you could also figure out the IP and match that IP via a IP database.
+**Note:** Locale projects are automatically created inside your application folder under `.jasy/locale/LOCALE`. To re-create them you need to delete the folder. These projects are using the normal project cache infrastructure and keep compiled results e.g. under that folder as well.
 
-Note: To support Jasy auto-selecting the locale on the client via built-in mechanisms (like `core.detect.Locale`) it is suggested to limit yourself to the language in `session.setLocales()` and not making use of full locales with country codes.
+### No Country Code on Client Side
+
+Unfortunately there is no clean way to figure out the exact locale of the system in the browser. The only thing you get is the language (using `navigator.userLanguage`). This means that for 100% exact locale support (following the conventions of the country the visitor lives in) you have to figure out the locale using a different approach:
+
+* Using the request headers from a HTTP request (contains Accept-Language header) and return that to the client as a response
+* Figure out the client's IP and match that IP via an IP database
+* Manually ask the user to select the country (and maybe language).
+
+Note: To support Jasy automatically selecting the locale on the client via built-in mechanisms (like `core.detect.Locale`) it is suggested to limit yourself to the language in `session.setLocales()` and not making use of full locales with country codes.
+
+```python
+session.setLocales(["de", "en", "fr"])
+```
