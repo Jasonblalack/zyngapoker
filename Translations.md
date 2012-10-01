@@ -60,7 +60,7 @@ It is also possible to have entries with a context specifier. They look like thi
     msgid untranslated-string
     msgstr translated-string
 
-The context serves to disambiguate messages with the same untranslated-string. It is possible to have several entries with the same untranslated-string in a PO file, provided that they each have a different context. Note that an empty context string and an absent msgctxt line do not mean the same thing.
+The context serves to disambiguate messages with the same untranslated-string. It is possible to have several entries with the same untranslated-string in a PO file, provided that they each have a different context. Note that an empty context string and an absent `msgctxt` line do not mean the same thing.
 
 ### Plural Forms
 
@@ -87,4 +87,4 @@ Such an entry can look like this:
      msgstr[0] "s'ha trobat %1 error fatal"
      msgstr[1] "s'han trobat %1 errors fatals"
 
-Here also, a context can be specified before msgid, like above.
+Here also, a context can be specified before `msgid`, like above.
