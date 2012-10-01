@@ -35,7 +35,7 @@ We suggest building and installing Python3 via Homebrew. That installs a Python3
 $ brew install python3
 ```
 
-Python 3 is installed in parallel to Python2 (which is included in Mac OS since 10.5) and is made available on the command line as `python3`. 
+Python 3 (currently 3.3.x) is installed in parallel to Python2 (which is included in Mac OS since 10.5) and is made available on the command line as `python3`. 
 
 Scripts like `jasy` are installed to `/usr/local/share/python3`. You need to add it to your `PATH` to make `jasy` easily available.
 
@@ -49,7 +49,7 @@ Installing Jasy
 Now you should be able to install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
 ```bash
-$ pip-3.2 install jasy
+$ pip-3.3 install jasy
 ```
 
 Try the following command on your console/terminal after installation is complete:
@@ -69,7 +69,7 @@ Optional Packages
 Use pip to install Misaka: 
 
 ```bash
-$ pip-3.2 install misaka
+$ pip-3.3 install misaka
 ```
 
 ### PIL for sprite sheet generation
@@ -78,6 +78,5 @@ Install `libjpeg` using Homebrew and PIL via `pip`:
 
 ```bash
 $ brew install libjpeg
-$ pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil
+$ pip-3.3 install git+git://github.com/sloonz/pil-py3k.git
 ```
-

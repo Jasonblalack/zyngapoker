@@ -32,7 +32,7 @@ $ wget -qO- http://python-distribute.org/distribute_setup.py | sudo python3
 $ wget -qO- https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
 ```
 
-Python 3 is installed in parallel to Python2 and is typically made available on the command line as `python3`.
+Python 3 (currently 3.3.x) is installed in parallel to Python2 and is typically made available on the command line as `python3`.
 
 
 Installing Jasy
@@ -41,7 +41,7 @@ Installing Jasy
 You can install the current stable version of Jasy using _pip_ . PIP is preferred over alternatives like `easy_install` as it supports uninstalls and upgrades etc. 
 
 ```bash
-$ pip-3.2 install jasy
+$ pip-3.3 install jasy
 ```
 
 Try the following command on your console/terminal after installation is complete:
@@ -61,7 +61,7 @@ Optional Packages
 Use pip to install Misaka: 
 
 ```bash
-$ pip-3.2 install misaka
+$ pip-3.3 install misaka
 ```
 
 ### Installing PIL for sprite sheet generation
@@ -69,5 +69,5 @@ $ pip-3.2 install misaka
 Use pip to install PIL from Git: 
 
 ```bash
-$ pip-3.2 install -e git+git://github.com/sloonz/pil-py3k.git#egg=pil
+$ pip-3.3 install git+git://github.com/sloonz/pil-py3k.git
 ```
