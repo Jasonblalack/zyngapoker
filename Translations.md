@@ -66,33 +66,71 @@ The context serves to disambiguate messages with the same untranslated-string. I
 
 A different kind of entries is used for translations which involve plural forms.
 
-     white-space
-     #  translator-comments
-     #. extracted-comments
-     #: reference...
-     #, flag...
-     #| msgid previous-untranslated-string-singular
-     #| msgid_plural previous-untranslated-string-plural
-     msgid untranslated-string-singular
-     msgid_plural untranslated-string-plural
-     msgstr[0] translated-string-case-0
-     ...
-     msgstr[N] translated-string-case-n
+    white-space
+    #  translator-comments
+    #. extracted-comments
+    #: reference...
+    #, flag...
+    #| msgid previous-untranslated-string-singular
+    #| msgid_plural previous-untranslated-string-plural
+    msgid untranslated-string-singular
+    msgid_plural untranslated-string-plural
+    msgstr[0] translated-string-case-0
+    ...
+    msgstr[N] translated-string-case-n
 
 Such an entry can look like this:
 
-     #: myapp.view.Sub.js:320
-     msgid "found %1 fatal error"
-     msgid_plural "found %1 fatal errors"
-     msgstr[0] "s'ha trobat %1 error fatal"
-     msgstr[1] "s'han trobat %1 errors fatals"
+    #: myapp.view.Sub.js:320
+    msgid "found %1 fatal error"
+    msgid_plural "found %1 fatal errors"
+    msgstr[0] "s'ha trobat %1 error fatal"
+    msgstr[1] "s'han trobat %1 errors fatals"
 
 Here also, a context can be specified before `msgid`, like above.
+
+
+## Plural Forms
+
+Suppose you are translating a PO file, and it contains an entry like this:
+
+    msgid "One file removed"
+    msgid_plural "%0 files removed"
+    msgstr[0] ""
+    msgstr[1] ""
+
+What does this mean? How do you fill it in?
+
+Such an entry denotes a message with plural forms, that is, a message where the text depends on a cardinal number. The general form of the message, in English, is the `msgid_plural` line. The `msgid` line is the English singular form, that is, the form for when the number is equal to `1`. 
+
+The locale support in Jasy contains a database of known plural formulas (using CLDR data) which is automatically used depending on the name of the PO file. The formula differs between different languages and maybe event country codes. The exact plural data is compiled into plain JavaScript in functions offered by the "Core" library. The class `jasy.locale.Translate` uses `locale.Plural` (from the locale support in Jasy) to build such a formula based on the current locale.
+
+Depending on the number of plural forms for each locale you have to ensure that the entry contains an `msgstr` line for each of the forms:
+
+    msgid "One file removed"
+    msgid_plural "%0 files removed"
+    msgstr[0] ""
+    msgstr[1] ""
+    msgstr[2] ""
+
+Then translate the `msgid_plural` line and fill it in into each `msgstr` line:
+
+    msgid "One file removed"
+    msgid_plural "%0 files removed"
+    msgstr[0] "%0 slika uklonjenih"
+    msgstr[1] "%0 slika uklonjenih"
+    msgstr[2] "%0 slika uklonjenih"
+
+Now you can refine the translation so that it matches the plural form. According to the formula, `msgstr[0]` might be used when the number ends in 1 but does not end in 11; `msgstr[1]` might be used when the number ends in 2, 3, 4, but not in 12, 13, 14; and `msgstr[2]` might be used in all other cases. With this knowledge, you can refine the translations:
+
+    msgid "One file removed"
+    msgid_plural "%0 files removed"
+    msgstr[0] "%0 slika je uklonjena"
+    msgstr[1] "%0 datoteke uklonjenih"
+    msgstr[2] "%0 slika uklonjenih"
+
 
 ## JavaScript API
 
 TODO
 
-## Plural Forms
-
-TODO
