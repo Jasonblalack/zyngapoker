@@ -16,9 +16,9 @@ Locales are also valid and possible to match against the system when the county 
 
 ## Unicode CLDR based
 
-Jasy's locale support is based on data offered by the Unicode CLDR repository.
+Jasy's locale support is based on data offered by the [Unicode CLDR repository](http://cldr.unicode.org).
 
-### About CLDR
+### About
 
 The Unicode CLDR provides key building blocks for software to support the world's languages, with the largest and most extensive standard repository of locale data available. This data is used by a wide spectrum of companies for their software internationalization and localization, adapting software to the conventions of different languages for such common software tasks as:
 
@@ -29,10 +29,10 @@ The Unicode CLDR provides key building blocks for software to support the world'
 
 ### Transformation
 
-Jasy dynamically translates the XML data offered by CLDR into Jasy-enabled projects. Based on the current locale the right project is added to the project list and classes inside that project are offered during e.g. dependency calculation.
+Jasy dynamically translates the XML data offered by CLDR into Jasy-enabled projects. Based on the current locale the correct project is added to the project list and classes inside that project are offered during e.g. dependency calculation. 
 
 
-## Using locales
+## Enabling locales
 
 To enable locales you have to enable the locales you want to use in your `jasyscript.py`:
 
@@ -64,3 +64,19 @@ Note: To support Jasy automatically selecting the locale on the client via built
 ```python
 session.setLocales(["de", "en", "fr"])
 ```
+
+## Using locales
+
+As locale projects are automatically added to the project list during the permutation loop you can easily use the data offered by locale projects using simple class name access in your other JavaScript code like:
+
+```javascript
+alert("Paper Size: " + locale.Measurement.PAPER_SIZE);
+alert("Percent Format: " + locale.number.Format.PERCENT);
+alert("Currency Format: " + locale.number.Format.CURRENCY);
+```
+
+You can also query the current locale being used using `jasy.Env.getValue("locale")`.
+
+### Available classes
+
+
