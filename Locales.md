@@ -1,4 +1,4 @@
-Jasy support CLDR based locales being used in any application. Using locales is super simple and works dynamically with data included in the Jasy distribution/install.
+Jasy support CLDR based locales being used in any application. Using locales is super simple and works dynamically with data included in the Jasy distribution/install. There is no need for any other installations or new requirements when locales should be enabled.
 
 ## What is a locale?
 
@@ -31,10 +31,9 @@ The Unicode CLDR provides key building blocks for software to support the world'
 
 Jasy dynamically translates the XML data offered by CLDR into Jasy-enabled projects. Based on the current locale the correct project is added to the project list and classes inside that project are offered during e.g. dependency calculation. 
 
-
 ## Enabling locales
 
-To enable locales you have to enable the locales you want to use in your `jasyscript.py`:
+To enable locales you have to enable the locales you want to use in your `jasyscript.py` (before the permutation loop):
 
 ```python
 session.setLocales(["de_AT", "en_US", "fr_FR"])
@@ -116,4 +115,4 @@ You can also query the current locale being used using `jasy.Env.getValue("local
 - `locale.Plural`
 - `locale.Week`
 
-The available calendar data depends on the locale. There are different ones available like `buddhist`, `chinese`, `coptic`, `ethiopic`, `gregorian`, `hebrew`, `indian`, `islamic`, `japanese`, `persian` and `roc`. The classes under this package are basically the same in each locale e.g. `locale.calendar.<type>.month.Narrow`.
+The available calendar data depends on the locale. There are different ones available like `buddhist`, `chinese`, `coptic`, `ethiopic`, `gregorian`, `hebrew`, `indian`, `islamic`, `japanese`, `persian` and `roc`. The classes under this package are basically the same in each locale e.g. `locale.calendar.<type>.month.Narrow`. The `<type>` can be resolved by querying `locale.CalendarPref.ORDERING` first. This is an sorted array of calendar types to use in that locale.
