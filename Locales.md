@@ -47,6 +47,8 @@ for permutation in session.permutate():
     <other code>
 ```
 
+The locale system uses the field name `locale` internally. You can query the current locale during the permutation loop using `permutation.get("locale")`.
+
 **Note:** Locale projects are automatically created inside your application folder under `.jasy/locale/LOCALE`. To re-create them you need to delete the folder. These projects are using the normal project cache infrastructure and keep compiled results e.g. under that folder as well.
 
 ### No Country Code on Client Side
