@@ -54,8 +54,6 @@ It is also possible to have entries with a context specifier. They look like thi
     #. extracted-comments
     #: reference...
     #, flag...
-    #| msgctxt previous-context
-    #| msgid previous-untranslated-string
     msgctxt context
     msgid untranslated-string
     msgstr translated-string
@@ -71,8 +69,6 @@ A different kind of entries is used for translations which involve plural forms.
     #. extracted-comments
     #: reference...
     #, flag...
-    #| msgid previous-untranslated-string-singular
-    #| msgid_plural previous-untranslated-string-plural
     msgid untranslated-string-singular
     msgid_plural untranslated-string-plural
     msgstr[0] translated-string-case-0
