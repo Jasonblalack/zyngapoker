@@ -88,3 +88,11 @@ Such an entry can look like this:
      msgstr[1] "s'han trobat %1 errors fatals"
 
 Here also, a context can be specified before `msgid`, like above.
+
+## JavaScript API
+
+TODO
+
+## Plural Forms
+
+TODO
