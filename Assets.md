@@ -46,8 +46,6 @@ These asset tags work as a list which is used to build a single regular expressi
 ```javascript
 /**
  * This is my class.
- *
- * #asset(my/css/main.css)
  */
 core.Class("my.Class", {
 
