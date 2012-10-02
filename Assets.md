@@ -15,5 +15,21 @@ In Jasy we think of assets as objects being required by JavaScript classes. Ther
 * Main controller with requirements to configuration files
 * View instances with requirements to markup templates files
 
-This has another major benefit: Jasy only includes assets for meta data and during deployment which are actually used by a JavaScript class in the dependency tree.
+This has another major benefit: Jasy only includes assets for meta data and during deployment which are actually used by a JavaScript class in the dependency tree. Including a new class also adds its assets to the list, while removing it, would also remove the assets uniquely used by that exact class. This keeps deployment and meta data inside each app minimal.
 
+### Defining Asset Requirements
+
+Assets have to be required by JavaScript classes to be included. As Jasy does not have any possibility to savely figure out which assets are used, the developer has to add hints to the JavaScript classes. This happens inside documentation comments using tags:
+
+```javascript
+/**
+ * This is my class.
+ *
+ * #asset(my/css/main.css)
+ */
+core.Class("my.Class", {
+
+});
+```
+
+The class `my.Class` uses an asset `my/main.css` (an asset from the same project called `css/main.css`).
