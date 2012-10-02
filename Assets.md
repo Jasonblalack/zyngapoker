@@ -32,4 +32,11 @@ core.Class("my.Class", {
 });
 ```
 
-The class `my.Class` uses an asset `my/main.css` (an asset from the same project called `css/main.css`).
+The class `my.Class` uses an asset `my/main.css` (an asset from the same project called `css/main.css`). The `asset()` tag also support file system type wildcards e.g. `#asset(my/css/*.css)` is perfectly valid as well. These are the pattern placeholders supported:
+
+- `*`: matches everything
+- `?`: matches any single character
+- `[seq]`: matches any character in seq
+- `[!seq]`: matches any character not in seq
+
+**Note:** Asset tags make use of unix style file system paths but work cross platform e.g. on Windows using backslash instead of slash.
