@@ -130,4 +130,21 @@ For more details on plural forms also read the [official Gettext manual](http://
 
 ## JavaScript API
 
-TODO
+There is a JavaScript API for using translation in the [Core](http://github.com/zynga/core) JavaScript library. It implements the typical Gettext relevant methods under `core.locale.Translate`: 
+
+- `tr(message, varargs)`: Simple translation
+- `trc(context, message, varargs)`: Translation with context hint
+- `trn(messageSingular, messagePlural, number, varargs)`: Singular/Plural translation
+
+Every of these methods supports basic placeholder support. The actual values for these placeholders come from the `varargs` parameter you can find for every one of these methods. 
+
+
+
+## Optimization
+
+Jasy support two variants of bringing the translated texts to the client:
+
+1. Injecting a dictionary object into the code where the key is the original text
+2. Replacing the original text in-place with the translated text
+
+The second variant is the more advanced one, but requires code compilation - like in typical built tasks. This has two benefits: It reduces the actual code needed and improves performance because additional method calls and lookups are reduced.
