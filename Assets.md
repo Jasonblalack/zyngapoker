@@ -40,3 +40,24 @@ The class `my.Class` uses an asset `my/main.css` (an asset from the same project
 - `[!seq]`: matches any character not in seq
 
 **Note:** Asset tags make use of unix style file system paths but work cross platform e.g. on Windows using backslash instead of slash.
+
+These asset tags work as a list which is used to build a single regular expression against what all asset IDs are matched. You can easily combine multiple asset tags in one or multiple lines or even in different comments. This makes it possible to place the asset comment exactly at the position where the asset is needed/included/loaded. This is better for keeping code easily maintainable.
+
+```javascript
+/**
+ * This is my class.
+ *
+ * #asset(my/css/main.css)
+ */
+core.Class("my.Class", {
+
+  construct: function() {
+
+    /** #asset(my/css/main.css) #asset(my/css/normalize.css) */
+    core.io.Asset.load(["my/css/main.css", "my/css/normalize.css"]);
+
+  }
+
+});
+```
+
