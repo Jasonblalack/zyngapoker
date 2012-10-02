@@ -140,7 +140,7 @@ Every of these methods supports basic placeholder support. The actual values for
 
 
 
-## Optimization
+## Client Transfer
 
 Jasy support two variants of bringing the translated texts to the client:
 
@@ -148,3 +148,5 @@ Jasy support two variants of bringing the translated texts to the client:
 2. Replacing the original text in-place with the translated text
 
 The second variant is the more advanced one, but requires code compilation - like in typical built tasks. This has two benefits: It reduces the actual code needed and improves performance because additional method calls and lookups are reduced.
+
+The second case works absolutely easy for `tr()` and `trc()` but needs some help by actual JavaScript code to support plurals when using `trn()`. This is the reason why almost all translation calls are removed from the optimized code but there is a new method `trnc()` being called. This method is basically a reduced version of `trn()` with injected translated texts instead of original texts.
