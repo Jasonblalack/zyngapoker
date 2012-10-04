@@ -1,4 +1,4 @@
-'[[_TOC_]]
+[[_TOC_]]
 
 Jasy has built-in support for asset managment. Assets is the name we use for all files of these groups:
 
