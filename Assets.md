@@ -69,14 +69,14 @@ Generally you can use pretty wide-including wildcards in some classes vs. exactl
 
 Keep in mind though that if you like to modulize your application later on e.g. post-pone loading of specific features it makes sense to include the assets required only by specific features in the JS files generated for these. To make this possible you have to use pretty specific asset tags in most files. At least there have to be one definition for each "entry point" e.g. a specific dialog inside your application, a level of your game, etc. An example for this approach:
 
-* `mygame.level.Level1` => `#asset(mygame/level/level1)`
-* `mygame.level.Level2` => `#asset(mygame/level/level2)`
+* `mygame.level.Level1` => `#asset(mygame/level/level1/*)`
+* `mygame.level.Level2` => `#asset(mygame/level/level2/*)`
 * ...
 
 or
 
-* `myapp.dialog.Preferences` => `#asset(myapp/dialog/preferences)`
-* `myapp.dialog.Accounts` => `#asset(myapp/dialog/accounts)`
+* `myapp.dialog.Preferences` => `#asset(myapp/dialog/preferences/*)`
+* `myapp.dialog.Accounts` => `#asset(myapp/dialog/accounts/*)`
 * ...
 
 
@@ -128,9 +128,16 @@ By default this not only adds the profile to the list of profiles, but also mark
 
 As you might have seen the profile system is pretty scalable and also offers support for far more complex hosting situations regarding your assets e.g. having different domains for distributed loading, using checksums for better caching/invalidation, etc. Custom profile make all these things possible, easily.
 
-Each profile has a name and a unique ID. This unique ID is just a incremented number and is assigned to asset items later on. This means that the length of the name has no negative impact on the size of the exported meta data.
+**Note:** Each profile has a name and a unique ID. This unique ID is just a incremented number and is assigned to asset items later on. This means that the length of the name has no negative impact on the size of the exported meta data.
+
+Adding a new profile called `cdn`:
+
+```python
+assetManager.addProfile("cdn", root="http://akamai.
+```
 
 
+Profiles can be added together with a list of assets to update. This is useful for
 
 
 ### Delegates
@@ -152,7 +159,6 @@ Each profile has a name and a unique ID. This unique ID is just a incremented nu
 ### Batch Loading
 
 ### Section Loading
-
 
 
 
