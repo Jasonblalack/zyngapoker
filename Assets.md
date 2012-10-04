@@ -207,9 +207,9 @@ Both methods have a optional parameter `assetFolder` to define the name of the a
 
 This copies assets from different projects using their asset ID instead of the original file system location. In consequence this means that manually defined assets (using a custom content section) get the name of the ID defined in the configuration instead of the original filesystem path. All asset IDs are generated with the prefix of the "package" of the project they rely to. For most application/libraries this is identical to the "name" of the project. 
 
-* `myapp/source/asset/main.css` => `myapp/build/asset/myapp/main.css`
-* `myapp/external/normalize/normalize.css` => `myapp/build/asset/normalize/normalize.css`
-* `myapp/external/glyphicons/reload.png` => `myapp/build/asset/glyphicons/reload.png`
+* `myapp/source/asset/main.css` &rarr; `myapp/build/asset/myapp/main.css`
+* `myapp/external/normalize/normalize.css` &rarr; `myapp/build/asset/normalize/normalize.css`
+* `myapp/external/glyphicons/reload.png` &rarr; `myapp/build/asset/glyphicons/reload.png`
 * ...
 
 As you can see all assets from the different projects are merged under `myapp/build/asset` in folders identical to project package (which is identical to the project name in most cases).
@@ -221,19 +221,19 @@ As you can see all assets from the different projects are merged under `myapp/bu
 
 In Jasy powered projects assets are used by their unique asset ID and not by their URL or file system location. To translate asset IDs to URLs there are methods in the *Core* library which offers connectors to the data Jasy exports.
 
-* `jasy.Asset.has(assetId)` => e.g. `true`
-* `jasy.Asset.getType(assetId)` => e.g. `"image"`
-* `jasy.Asset.toUri(assetId)` => e.g. `"http://myapp.com/asset/some/useful/file.css"`
-* `jasy.Asset.resolve(assetId)` => the entry stored for that asset (object)
+* `jasy.Asset.has(assetId)` &rarr; e.g. `true`
+* `jasy.Asset.getType(assetId)` &rarr; e.g. `"image"`
+* `jasy.Asset.toUri(assetId)` &rarr; e.g. `"http://myapp.com/asset/some/useful/file.css"`
+* `jasy.Asset.resolve(assetId)` &rarr; the entry stored for that asset (object)
 
 ### Loading Assets
 
-* `core.io.Asset.preloadSection(section, recursive, callback, context, random)` => Preloads all assets from the given section and executes callback. Keeps all loaded files in cache (DOM nodes from images for `getImage` etc.)
-* `core.io.Asset.load(assetIds, callback, context, random)` => Loads all given assets and executes callback with resulting data
+* `core.io.Asset.preloadSection(section, recursive, callback, context, random)` &rarr; Preloads all assets from the given section and executes callback. Keeps all loaded files in cache (DOM nodes from images for `getImage` etc.)
+* `core.io.Asset.load(assetIds, callback, context, random)` &rarr; Loads all given assets and executes callback with resulting data
 
 ### Querying Image Details
 
-* `core.io.Asset.getImage(assetId)` => returns all image relevant data (plus DOM node when image is preloaded)
-* `core.io.Asset.getImageSize(assetId)` => returns the image size as array `[width, height]`
-* `core.io.Asset.getFrame(assetId, frameNumber)` => returns location and size of given frame of the given image
+* `core.io.Asset.getImage(assetId)` &rarr; returns all image relevant data (plus DOM node when image is preloaded)
+* `core.io.Asset.getImageSize(assetId)` &rarr; returns the image size as array `[width, height]`
+* `core.io.Asset.getFrame(assetId, frameNumber)` &rarr; returns location and size of given frame of the given image
 * `core.io.Asset.getFrameNumber(assetId)` &rarr; returns the number of frames of an image animation
