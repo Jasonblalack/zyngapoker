@@ -166,7 +166,7 @@ Don't use any of these for your custom asset data. For some inspiration here is 
 
 ## Delegates
 
-Delegates are used to define custom URL resolvers based on additional data added to the profiles. There are two built-in resolvers for the `source` and `build` profiles in *Core*. For other use cases one is able to define new delegates assigned to a specific asset profile. 
+Delegates are used to define custom URL resolvers based on additional data added to the profiles. There is some simple URL resolving included in *Core* which basically just prepends the asset ID after the configured profile root. For other use cases one is able to define new delegate functions assigned to a specific asset profile:
 
 ```js
 jasy.Asset.registerDelegate("cdn", function(profileData, assetId, assetEntry) { return URL; })
