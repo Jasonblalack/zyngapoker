@@ -1,5 +1,3 @@
-[[_TOC_]]
-
 Jasy has built-in support for asset managment. Assets is the name we use for all files of these groups:
 
 * Images and Animations
@@ -84,7 +82,7 @@ or
 
 ## Meta Data
 
-Jasy automatically adds meta data to all assets it finds. This makes some things on the client side easier like rendering or preloading. Each meta data entry contains the following information:
+Jasy automatically adds meta data to all assets it finds and manages. This makes some things on the client side easier like rendering or preloading. Each meta data entry contains the following information:
 
 * File Type + File Type Specific Data
 * URL Profile + URL Profile Specific Data
@@ -152,6 +150,8 @@ This adds a new profile called "cdn" and assigns that profile to all items given
 
 ## Meta Data Structure
 
+Jasy stores meta data in a compact way to reduce the overhead of data which is needed for transportation to the client. Each asset has a hash map of data to be easy and fast to access while still being compact. This is the list of built-in keys used by Jasy internal methods and functionality:
+
 * `t` used to store the asset type.
 * `d` used to store asset type related data e.g. image sizes.
 * `p` used to assign the profile to assets. 
@@ -166,9 +166,19 @@ Don't use any of these for your custom asset data. For some inspiration here is 
 
 ## Delegates
 
+Delegates are used to define custom URL resolvers based on additional data added to the profiles. There are two built-in resolvers for the `source` and `build` profiles in *Core*. For other use cases one is able to define new delegates assigned to a specific asset profile. 
 
+```js
+jasy.Asset.registerDelegate("cdn", function(profileData, assetId, assetEntry) { return URL; })
+```
 
+As you can see this is JavaScript code for the client side. This is great for better flexibility e.g. random CDN hosts, account specific URL prefixes, etc. Each profile can define a separate delegate. If no delegate is used it falls back to the `source`/`build` patterns automatically. 
 
+Notes for the delegate method:
+
+* It has to return a fully qualified URL.
+* It also needs to prepend the `profileData.root` when this is needed. This is not done automatically with a custom asset profile delegate.
+* It has full access to all data inside the asset entry e.g. a custom defined checksum in `c` etc.
 
 
 
@@ -179,5 +189,4 @@ Don't use any of these for your custom asset data. For some inspiration here is 
 ### Batch Loading
 
 ### Section Loading
-
 
