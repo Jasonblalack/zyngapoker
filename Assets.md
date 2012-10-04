@@ -87,9 +87,7 @@ Jasy automatically adds meta data to all assets it finds. This makes some things
 * File Type + File Type Specific Data
 * URL Profile + URL Profile Specific Data
 
-### File Types
-
-Jasy groups files into different file categories. This means that the type information is no exact type, but more a categorization. Currently these types are supported:
+Jasy groups files into different file type categories. This means that the type information is no exact type (mime type), but more like a categorization. Currently these types are supported:
 
 * Image e.g. `.png`
 * Audio e.g. `.mp3`
@@ -101,7 +99,9 @@ Jasy groups files into different file categories. This means that the type infor
 
 All file types might add specific data to the meta data which is then exported to the client as well. At the moment this only is being used for images for the `width` and `height` or each image.
 
-### Profiles
+
+
+## Profiles
 
 Profiles are used to define groups of assets and their origin related to the application. There are two built-in profiles called `source` and `build` which are actually typically used inside the same named tasks in Jasy projects.
 
@@ -112,8 +112,7 @@ While it's possible for different assets to use different profiles, each asset c
 
 **Note:** Be sure to assign profiles to assets before exporting them into JavaScript data. Otherwise the client has no information how to resolve URLs and to load them.
 
-
-#### Built-in Profiles
+### Built-in Profiles
 
 * Enable the `source` asset profile using `assetManager.addSourceProfile()`. 
 * Enable the `build` asset profile using `assetManager.addBuildProfile()`.
@@ -123,8 +122,7 @@ By default this not only adds the profile to the list of profiles, but also mark
 * To override existing asset profiles add the option `override=True`.
 * To prepend a specific URL prefix before all relative URLs add the option `urlPrefix="http://localhost:8081/myapp/"`.
 
-
-#### Custom Profile
+### Custom Profile
 
 As you might have seen the profile system is pretty scalable and also offers support for far more complex hosting situations regarding your assets e.g. having different domains for distributed loading, using checksums for better caching/invalidation, etc. Custom profile make all these things possible, easily.
 
@@ -150,7 +148,7 @@ assetManager.addProfile("cdn", root="http://akamai.mycompany.com/myapp/", items=
 This adds a new profile called "cdn" and assigns that profile to all items given. The `c` field in this case is used for some kind of checksum. 
 
 
-### Internal Data
+## Meta Data Structure
 
 * `t` used to store the asset type.
 * `d` used to store asset type related data e.g. image sizes.
@@ -164,7 +162,7 @@ Don't use any of these for your custom asset data. For some inspiration here is 
 * `m` to store the modification date
 
 
-### Delegates
+## Delegates
 
 
 
