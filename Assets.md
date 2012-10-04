@@ -8,6 +8,13 @@ Jasy has built-in support for asset managment. Assets is the name we use for all
 * Data Structures
 * Configurations
 
+## Benefits
+
+* The main advantage of the asset system is to bring ID based asset loading to the application code. So instead of referring to exact URLs all over your code or using a custom management/database you just use globally unique asset IDs and pass them to the methods offered by the *Core* library.
+* The asset system supports passing specific meta data e.g. image dimensions, play duration, file sizes, etc. for assets to the client.
+* Dependencies based on what the actually included JavaScript files require. Features which are excluded from the build (deployed version) also do not deliver the assets with them which are uniquely used by these features.
+
+
 ## Dependencies
 
 In Jasy we think of assets as objects being required by JavaScript classes. There is no asset depedency handling included (yet), but the approach is more regarding making JavaScript classes depend on specific assets. This makes a lot of sense in e.g. these cases:
@@ -206,6 +213,12 @@ This copies assets from different projects using their asset ID instead of the o
 * ...
 
 As you can see all assets from the different projects are merged under `myapp/build/asset` in folders identical to project package (which is identical to the project name in most cases).
+
+
+## Resolving URLs
+
+The
+
 
 ## Loading
 
