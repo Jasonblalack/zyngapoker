@@ -31,15 +31,15 @@ We have different tutorials for installing Jasy specific to the operating system
 
 ### Advanced
 
-* [[Fields]]: Pass data from the build script to the application and permutate code for different output scenarios
+* [[Fields]]: Pass data from the build script to the application and permutate original code
 * [[Image Sprites]]: Setup image sprites for your application
 * [[Image Animations]]: Tooling for image based animations
 * [[Develop Skeletons]]: How to create new skeletons
 * [[Sharing Methods]]: How to share Python features with other projects
-* [[Locales]]: How to use locale support in your projects
-* [[Translations]]: How to translate your projects
-* [[Assets]]: Managing assets
-* [[API Docs]]: How to document your code
+* [[Locales]]: How to use locale support in your projects via CLDR support.
+* [[Translations]]: How to translate your projects using get text methods
+* [[Assets]]: Managing assets, custom profiles/url handling, client side APIs
+* [[API Docs]]: How to document your code properly.
 
 ## Migration
 
