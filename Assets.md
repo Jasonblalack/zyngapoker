@@ -133,11 +133,35 @@ As you might have seen the profile system is pretty scalable and also offers sup
 Adding a new profile called `cdn`:
 
 ```python
-assetManager.addProfile("cdn", root="http://akamai.
+assetManager.addProfile("cdn", root="http://akamai.mycompany.com/myapp/")
 ```
 
+Profiles can be added together with a list of assets to update. This is useful for directly updating a specific assets from e.g. data delivered by your company central asset management system:
 
-Profiles can be added together with a list of assets to update. This is useful for
+```python
+items = {
+  "myapp/main.css" : { "c" : "3043fac03929d030" }
+  "myapp/splash.png" : { "c" : "abe4729f9230d0a0" }
+}
+
+assetManager.addProfile("cdn", root="http://akamai.mycompany.com/myapp/", items=items)
+```
+
+This adds a new profile called "cdn" and assigns that profile to all items given. The `c` field in this case is used for some kind of checksum. 
+
+
+### Internal Data
+
+* `t` used to store the asset type.
+* `d` used to store asset type related data e.g. image sizes.
+* `p` used to assign the profile to assets. 
+* `u` used to keep the relative asset URI for the `source` profile. 
+
+Don't use any of these for your custom asset data. For some inspiration here is a list of often used choices for custom asset data and their fields:
+
+* `c` to store the checksum of a file e.g. *SHA1*
+* `l` to store the length of a file (e.g. play duration, encoding, ...)
+* `m` to store the modification date
 
 
 ### Delegates
@@ -145,11 +169,7 @@ Profiles can be added together with a list of assets to update. This is useful f
 
 
 
-### Image Sizes
 
-### Image Sprites
-
-### Image Animations
 
 
 ## Loading
@@ -159,7 +179,6 @@ Profiles can be added together with a list of assets to update. This is useful f
 ### Batch Loading
 
 ### Section Loading
-
 
 
 
