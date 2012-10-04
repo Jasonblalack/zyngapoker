@@ -82,7 +82,61 @@ or
 
 ## Meta Data
 
-### File Type
+Jasy automatically adds meta data to all assets it finds. This makes some things on the client side easier like rendering or preloading. Each meta data entry contains the following information:
+
+* File Type + File Type Specific Data
+* URL Profile + URL Profile Specific Data
+
+### File Types
+
+Jasy groups files into different file categories. This means that the type information is no exact type, but more a categorization. Currently these types are supported:
+
+* Image e.g. `.png`
+* Audio e.g. `.mp3`
+* Video e.g. `.mp4`
+* Font e.g. `.ttf`
+* Text e.g. `.html`
+* Binary e.g. `.swf`
+* Other e.g. `.gtd`
+
+All file types might add specific data to the meta data which is then exported to the client as well. At the moment this only is being used for images for the `width` and `height` or each image.
+
+### Profiles
+
+Profiles are used to define groups of assets and their origin related to the application. There are two built-in profiles called `source` and `build` which are actually typically used inside the same named tasks in Jasy projects.
+
+* `source`: Load assets from there original location without copying them around
+* `build`: Load assets from merged self-contained asset folder (assets are copied over) in build directory
+
+While it's possible for different assets to use different profiles, each asset can only be assigned to exactly one profile. 
+
+**Note:** Be sure to assign profiles to assets before exporting them into JavaScript data. Otherwise the client has no information how to resolve URLs and to load them.
+
+
+#### Built-in Profiles
+
+* Enable the `source` asset profile using `assetManager.addSourceProfile()`. 
+* Enable the `build` asset profile using `assetManager.addBuildProfile()`.
+
+By default this not only adds the profile to the list of profiles, but also marks all assets which are not yet assigned to a profile to use the `source`/`build` profile. 
+
+* To override existing asset profiles add the option `override=True`.
+* To prepend a specific URL prefix before all relative URLs add the option `urlPrefix="http://localhost:8081/myapp/"`.
+
+
+#### Custom Profile
+
+As you might have seen the profile system is pretty scalable and also offers support for far more complex hosting situations regarding your assets e.g. having different domains for distributed loading, using checksums for better caching/invalidation, etc. Custom profile make all these things possible, easily.
+
+Each profile has a name and a unique ID. This unique ID is just a incremented number and is assigned to asset items later on. This means that the length of the name has no negative impact on the size of the exported meta data.
+
+
+
+
+### Delegates
+
+
+
 
 ### Image Sizes
 
@@ -101,10 +155,5 @@ or
 
 
 
-## Profiles
 
-### Source Profile
 
-### Build Profile
-
-### Custom Profile
