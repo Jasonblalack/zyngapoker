@@ -215,7 +215,9 @@ This copies assets from different projects using their asset ID instead of the o
 As you can see all assets from the different projects are merged under `myapp/build/asset` in folders identical to project package (which is identical to the project name in most cases).
 
 
-## Resolving URLs
+## Client Side API
+
+### Basic Data
 
 In Jasy powered projects assets are used by their unique asset ID and not by their URL or file system location. To translate asset IDs to URLs there are methods in the *Core* library which offers connectors to the data Jasy exports.
 
@@ -224,10 +226,14 @@ In Jasy powered projects assets are used by their unique asset ID and not by the
 * `jasy.Asset.toUri(assetId)` => e.g. `"http://myapp.com/asset/some/useful/file.css"`
 * `jasy.Asset.resolve(assetId)` => the entry stored for that asset (object)
 
-## Loading
+### Loading Assets
 
-### Loader Handling
+* `core.io.Asset.preloadSection(section, recursive, callback, context, random)` => Preloads all assets from the given section and executes callback. Keeps all loaded files in cache (DOM nodes from images for `getImage` etc.)
+* `core.io.Asset.load(assetIds, callback, context, random)` => Loads all given assets and executes callback with resulting data
 
-### Batch Loading
+### Querying Image Details
 
-### Section Loading
+* `core.io.Asset.getImage(assetId)` => returns all image relevant data (plus DOM node when image is preloaded)
+* `core.io.Asset.getImageSize(assetId)` => returns the image size as array `[width, height]`
+* `core.io.Asset.getFrame(assetId, frameNumber)` => returns location and size of given frame of the given image
+* `core.io.Asset.getFrameNumber(assetId)` => returns the number of frames of an image animation
