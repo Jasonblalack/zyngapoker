@@ -78,3 +78,33 @@ or
 * `myapp.dialog.Preferences` => `#asset(myapp/dialog/preferences)`
 * `myapp.dialog.Accounts` => `#asset(myapp/dialog/accounts)`
 * ...
+
+
+## Meta Data
+
+### File Type
+
+### Image Sizes
+
+### Image Sprites
+
+### Image Animations
+
+
+## Loading
+
+### Loader Handling
+
+### Batch Loading
+
+### Section Loading
+
+
+
+## Profiles
+
+### Source Profile
+
+### Build Profile
+
+### Custom Profile
