@@ -19,7 +19,7 @@ In Jasy we think of assets as objects being required by JavaScript classes. Ther
 
 This has another major benefit: Jasy only includes assets for meta data and during deployment which are actually used by a JavaScript class in the dependency tree. Including a new class also adds its assets to the list, while removing it, would also remove the assets uniquely used by that exact class. This keeps deployment and meta data inside each app minimal.
 
-## Defining Requirements
+### Defining Requirements
 
 Assets have to be required by JavaScript classes to be included. As Jasy does not have any possibility to savely figure out which assets are used, the developer has to add hints to the JavaScript classes. This happens inside documentation comments using tags:
 
@@ -61,11 +61,11 @@ core.Class("my.Class", {
 });
 ```
 
-## Organization
+### Organization
 
 Generally you can use pretty wide-including wildcards in some classes vs. exactly matching asset tags in separate files. For libraries it typically makes sense to be pretty explicit on which assets a single feature requires. Applications are typically easier and want to include all assets of that application. 
 
-### Modularization
+#### Modularization
 
 Keep in mind though that if you like to modulize your application later on e.g. post-pone loading of specific features it makes sense to include the assets required only by specific features in the JS files generated for these. To make this possible you have to use pretty specific asset tags in most files. At least there have to be one definition for each "entry point" e.g. a specific dialog inside your application, a level of your game, etc. An example for this approach:
 
@@ -75,7 +75,6 @@ Keep in mind though that if you like to modulize your application later on e.g. 
 
 or
 
-* `mygame.dialog.Preferences` => `#asset(mygame/dialog/preferences)`
-* `mygame.dialog.Accounts` => `#asset(mygame/dialog/accounts)`
+* `myapp.dialog.Preferences` => `#asset(myapp/dialog/preferences)`
+* `myapp.dialog.Accounts` => `#asset(myapp/dialog/accounts)`
 * ...
-
