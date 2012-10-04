@@ -217,8 +217,12 @@ As you can see all assets from the different projects are merged under `myapp/bu
 
 ## Resolving URLs
 
-The
+In Jasy powered projects assets are used by their unique asset ID and not by their URL or file system location. To translate asset IDs to URLs there are methods in the *Core* library which offers connectors to the data Jasy exports.
 
+* `jasy.Asset.has(assetId)` => e.g. `true`
+* `jasy.Asset.getType(assetId)` => e.g. `"image"`
+* `jasy.Asset.toUri(assetId)` => e.g. `"http://myapp.com/asset/some/useful/file.css"`
+* `jasy.Asset.resolve(assetId)` => the entry stored for that asset (object)
 
 ## Loading
 
