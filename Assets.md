@@ -186,19 +186,26 @@ Notes for the delegate method:
 
 Assets can be easily deployed using either the `AssetManager` or `OutputManager`. The last one is preferred as it automatically resolves classes.
 
-```
+```python
 outputManager.deployAssets(["myapp.Main"])
 ```
 
 Alternative using `AssetManager` directly:
 
+```python
+assetManager.deploy(Resolver(session).addClassName("myapp.Main").getIncludedClasses())
 ```
-assetManage.deploy(Resolver(session).addClassName("myapp.Main").getIncludedClasses())
-```
 
-Both methods have a optional parameter `assetFolder` to define the name of the asset folder (default to `"asset"`).
+Both methods have a optional parameter `assetFolder` to define the name of the asset folder (defaults to `"asset"`).
 
+This copies assets from different projects using their asset ID instead of the original file system location. In consequence this means that manually defined assets (using a custom content section) get the name of the ID defined in the configuration instead of the original filesystem path. All asset IDs are generated with the prefix of the "package" of the project they rely to. For most application/libraries this is identical to the "name" of the project. 
 
+* `myapp/source/asset/main.css` => `myapp/build/asset/myapp/main.css`
+* `myapp/external/normalize/normalize.css` => `myapp/build/asset/normalize/normalize.css`
+* `myapp/external/glyphicons/reload.png` => `myapp/build/asset/glyphicons/reload.png`
+* ...
+
+As you can see all assets from the different projects are merged under `myapp/build/asset` in folders identical to project package (which is identical to the project name in most cases).
 
 ## Loading
 
