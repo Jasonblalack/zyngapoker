@@ -1,3 +1,5 @@
+'[[_TOC_]]
+
 Jasy has built-in support for asset managment. Assets is the name we use for all files of these groups:
 
 * Images and Animations
@@ -177,6 +179,5 @@ Don't use any of these for your custom asset data. For some inspiration here is 
 ### Batch Loading
 
 ### Section Loading
-
 
 
