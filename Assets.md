@@ -236,4 +236,4 @@ In Jasy powered projects assets are used by their unique asset ID and not by the
 * `core.io.Asset.getImage(assetId)` => returns all image relevant data (plus DOM node when image is preloaded)
 * `core.io.Asset.getImageSize(assetId)` => returns the image size as array `[width, height]`
 * `core.io.Asset.getFrame(assetId, frameNumber)` => returns location and size of given frame of the given image
-* `core.io.Asset.getFrameNumber(assetId)` => returns the number of frames of an image animation
+* `core.io.Asset.getFrameNumber(assetId)` &rarr; returns the number of frames of an image animation
