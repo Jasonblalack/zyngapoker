@@ -182,6 +182,24 @@ Notes for the delegate method:
 
 
 
+## Deployment
+
+Assets can be easily deployed using either the `AssetManager` or `OutputManager`. The last one is preferred as it automatically resolves classes.
+
+```
+outputManager.deployAssets(["myapp.Main"])
+```
+
+Alternative using `AssetManager` directly:
+
+```
+assetManage.deploy(Resolver(session).addClassName("myapp.Main").getIncludedClasses())
+```
+
+Both methods have a optional parameter `assetFolder` to define the name of the asset folder (default to `"asset"`).
+
+
+
 ## Loading
 
 ### Loader Handling
@@ -189,4 +207,3 @@ Notes for the delegate method:
 ### Batch Loading
 
 ### Section Loading
-
