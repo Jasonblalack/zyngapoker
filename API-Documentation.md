@@ -482,14 +482,26 @@ There are also some Jasy internal tags to control pass meta data to the dependen
 
 ### Built-in types
 
-* String
-* Number
-* Boolean
-* Array
-* Object
-* Map
+These types can be used for parameter types, return types etc. as they are built into cleanups.
 
+* `Object`
+* `String`
+* `Number`
+* `Boolean`
+* `Array`
+* `Function`
+* `RegExp`
+* `Date`
 
+There are also some other built in "pseudo" types available:
+
+* `true`
+* `false`
+* `var`: any kind of type
+* `null`: explicit null. Typically used in conjuction with "OR" cascades like `{String | null}` for return values.
+* `undefined`: nothing
+* `this`: Typically used for function return types e.g. to document that this method is chainable.
+* `arguments`: Expects an arguments object (Array like)
 
 
 
