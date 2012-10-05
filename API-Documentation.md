@@ -6,11 +6,11 @@ Generating API docs in Jasy is a cooperation of three projects:
 
 ## Philosophy
 
-### Don't repeat yourself
+### Be smart
 
 At developing the API data generator in Jasy we did not like the approach done by other tools to add tons of comments to the code just to fulfill the needs of the documentation system (e.g. telling a method that it's a member of a class). We preferred adding intrinsic support for specific class and module declarations instead and make supporting them automatically our priority.
 
-### Shorter but better comments
+### Better comments
 
 We felt that JSDoc repeat a lot of text. This gets especially annoying with short methods and trivial function signatures and documentation tasks. One has to typically write a lot of stuff here as well, just to correctly document things.
 
