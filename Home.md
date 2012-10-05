@@ -36,10 +36,10 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Image Animations]]: Tooling for image based animations
 * [[Develop Skeletons]]: How to create new skeletons
 * [[Sharing Methods]]: How to share Python features with other projects
-* [[Locales]]: How to use locale support in your projects via CLDR support.
+* [[Locales]]: How to use locale support in your projects via CLDR support
 * [[Translations]]: How to translate your projects using get text methods
 * [[Assets]]: Managing assets, custom profiles/url handling, client side APIs
-* [[API Documentation]]: How to document your code properly.
+* [[API Documentation]]: Understanding the documentation system and how to document your code properly
 
 ## Migration
 
