@@ -10,7 +10,7 @@ Generating API docs in Jasy is a cooperation of three projects:
 
 At developing the API data generator in Jasy we did not like the approach done by other tools to add tons of comments to the code just to fulfill the needs of the documentation system (e.g. telling a method that it's a member of a class). We preferred adding intrinsic support for specific class and module declarations instead and make supporting them automatically our priority.
 
-### Less but better comments
+### Shorter but better comments
 
 We felt that JSDoc repeat a lot of text. This gets especially annoying with short methods and trivial function signatures and documentation tasks. One has to typically write a lot of stuff here as well, just to correctly document things.
 
@@ -191,6 +191,111 @@ function sum(x, y) { return x+y; }
 
 Defining these hints directly inside the written sentence makes comments a lot more compact and far easier to read. And it also omits duplicating the work of creating and maintaining these information.
 
+#### Multiple Types
+
+In both, parameters and return types are *OR* connection of different types is supported. This is done using the pipe `|` symbol:
+
+```js
+/** 
+ * {Number} Returns the sum of @x {Number|String} and @y {Number|String}
+ */
+function sum(x, y) { return x+y; }
+```
+
+White spaces are not important. Same result with:
+
+```js
+/** 
+ * {Number} Returns the sum of @x { Number | String } and @y { Number | String }
+ */
+function sum(x, y) { return x+y; }
+```
+
+
+
+#### Optional Parameters
+
+This is as easy as putting a `?` after the type definition
+
+```js
+/** 
+ * {Number} Calculates and returns the sum of @x {Number} and @y {Number?}
+ */
+function sum(x, y) { return x + (y || 0); }
+```
+
+#### Default values
+
+For parameters which are optional you often like to define a default value. The default value itself needs to be written like a typical JS expression (string with quotes, numbers as numbers, etc.):
+
+```js
+/** 
+ * {Number} Calculates and returns the sum of @x {Number} and @y {Number?0}
+ */
+function sum(x, y) { return x + (y || 0); }
+```
+
+Here again white spaces are not important:
+
+```js
+/** 
+ * {Number} Calculates and returns the sum of @x { Number } and @y { Number  ? 0 }
+ */
+function sum(x, y) { return x + (y || 0); }
+```
+
+And with a string type default value:
+
+```js
+/** 
+ * {String} Concats and returns @x {String} and @y {String ? ""}.
+ */
+function concat(x, y) { return x + (y || ""); }
+```
+
+
+#### Dynamic arguments
+
+For params it's also possible to mark them as dynamic length params using an ellipsis symbol `...` (three dots). This sequence needs to be placed at the end of the curly braces section. An example:
+
+```js
+/** 
+ * {String} Concats and returns all @strings {String...}.
+ */
+function concat(strings) 
+{ 
+  result = [];
+  for (var i=0, l=arguments.length; i<l; i++) {
+    result.push(arguments[i]);
+  }
+  return result.join("");
+}
+```
+
+This also works in combination of static arguments:
+
+```js
+/** 
+ * {String} Concats and returns all @strings {String...}. 
+ * Uses @divider {String?"|"} for separating the incoming strings.
+ */
+function concat(divider, strings) 
+{ 
+  result = [];
+  for (var i=1, l=arguments.length; i<l; i++) {
+    result.push(arguments[i]);
+  }
+
+  return result.join(divider || "|");
+}
+```
+
+**Note:** Best approach is to place these dynamic arguments lists to the end of the functions signature. This might be documented right when done otherwise, but this is not directly good supported in JavaScript. You have to access the value of `divider` not by its variable name then, but by the position in the arguments list.
+
+
+
+
+
 
 ### Return Types
 
@@ -210,7 +315,53 @@ core.Module("my.Module",
 
 ```
 
-
 ### Links
+
+Linking works via the same kind of curly braces.
+
+#### Modules / Classes / Interfaces
+
+To link to other files just use the unique file ID aka class name in the curly braces.
+
+```js
+/** 
+ * Main controller of my application. Connects {my.View} with {my.Data}.
+ */
+core.Module("my.Controller", {
+  ...
+});
+```
+#### Statics / Members / Events / Properties
+
+Internal links to other members/properties/events work but just using a hash symbol `#` in front.
+
+```js
+core.Module("my.Module", 
+{
+  /**
+   * {=Date} Start date. Also take a look at {#stop}.
+   */
+  start : new Date(),
+
+  /** 
+   * {=Date} Stop date.
+   */
+  stop : null
+});
+```
+
+#### Conflicts / Explicit Type Links
+
+Sometimes there might be different items with the same name in a class e.g. a method `update` and an event `update`. To qualify which target the link should follow you can specify the exact type to link to using prefixes:
+
+* `static:` link to statics section
+* `member:` link to members section
+* `event:` link to events section
+* `property:` link to properties section
+
+Example: `{event:#update}` will link to the event `update` even when there is an identically named member.
+
+
+#### Combinations
 
 ### Tags
