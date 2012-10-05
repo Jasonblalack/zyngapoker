@@ -76,10 +76,10 @@ The folder is self-contained an can be moved/copied anywhere easily.
 * Exporting
   * Generated separate files for dynamic loading of class data
   * Meta data index for building a tree/list of all classes
-* Search: Generating word index for client side search logic
 * Error Handling
   * Detect and collect documentation errors during generating API data
   * Verify links between classes or to members/events/properties
+* Search: Generating word index for client side search logic
 * Basic variable resolving logic when using assignments in class declaration
 * Private/Internal: Mark private/internal methods and hide them by default
 * Caching: Cache API data for all unmodified JavaScript files
@@ -96,6 +96,13 @@ At developing the API data generator in Jasy we did not like the approach done b
 
 We felt that JSDoc repeat a lot of text. This gets especially annoying with short methods and trivial function signatures and documentation tasks. One has to typically write a lot of stuff here as well, just to correctly document things.
 
+### Markdown for the win
+
+The API system uses Markdown for everything text. Markdown makes writing readable text easy and could be easily transformed into HTML. It supports injecting code blocks via indenting or via so-called fenced blocks.
+
+### Integrated syntax highlighter
+
+All code blocks are automatically highlighted. Language to highlight can be specified in fenced code blocks (e.g. support for PHP, Python, etc. is included). The default highlighting is JavaScript.
 
 
 ## Formats
@@ -133,7 +140,7 @@ New styles which should be added must also conform to these two groups for makin
 
 ## Documenting
 
-Code comments are formatted using normal JSDoc like comment styles.
+Code comments are formatted using normal JSDoc like comment styles. Both formats, the compact and verbose, produce the same results. Verbose allows for multiline code blocks, lists, headers and other Markdown features.
 
 ### Compact Formatting
 
@@ -144,7 +151,7 @@ function calc() {}
 /** {Number} Returns the result */
 function calc() { return this.x1 + this.x2; }
 
-/** {Number} Calculates the sum of @x and @y */
+/** {Number} Calculates and returns the sum of @x and @y */
 function sum(x, y) { return x+y; }
 ```
 
