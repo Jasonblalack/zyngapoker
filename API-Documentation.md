@@ -346,6 +346,23 @@ function concat(divider, strings)
 **Note:** Best approach is to place these dynamic arguments lists to the end of the functions signature. This might be documented right when done otherwise, but this is not directly good supported in JavaScript. You have to access the value of `divider` not by its variable name then, but by the position in the arguments list.
 
 
+#### Object maps
+
+Sometimes it is useful to define the expected members of an parameter e.g. when a method accepts a "config" object or puts all optional parameters inside a object. This can be done using the dot syntax:
+
+```js
+/**
+ * Additional arguments can be passed in via @options {Object?}:
+ *
+ * - @options.reverse {Boolean?false}
+ * - @options.filter {Boolean?false}
+ */
+function iterate(list, options) {
+  ...
+}
+```
+
+
 
 ### Return Types
 
