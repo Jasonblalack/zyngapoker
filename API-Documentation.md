@@ -173,3 +173,40 @@ function calc() { return this.x1 + this.x2; }
  */
 function sum(x, y) { return x+y; }
 ```
+
+### Parameters
+
+Parameters have to use the `@` in front of the name of the parameter. The type of the parameter or its default values only needs to be assigned once to the parameter. These data is defined using curly brackets `{Number}` after the name of the parameter.
+
+```js
+/** 
+ * {Number} Calculates and returns the sum of @x {Number} and @y {Number}
+ */
+function sum(x, y) { return x+y; }
+```
+
+Defining these hints directly inside the written sentence makes comments a lot more compact and far easier to read. And it also omits duplicating the work of creating and maintaining these information.
+
+
+### Return Types
+
+If you wondered about the leading `{Number}`. That's the return type of the method `sum`. By convention if the first thing in a comment is a block of curly brackets it is parsed as a return value (or static type).
+
+
+### Static Types
+
+These are used on non-functions to define the type for static members. Most of these types are figured out automatically. Static type hints are used to fill in the gaps or to correct misunderstandings by the auto detection in Jasy. Static types are defined just like return types, but the first character in the open brackets needs to be a equal sign.
+
+```js
+core.Module("my.Module", 
+{
+  /** {=Date} Start time */
+  start : new Date()
+});
+
+```
+
+
+### Links
+
+### Tags
