@@ -519,7 +519,3 @@ There are also some other built in "pseudo" types available:
 * `undefined`: nothing
 * `this`: Typically used for function return types e.g. to document that this method is chainable.
 * `arguments`: Expects an arguments object (Array like)
-
-
-
-### Deep Objects
