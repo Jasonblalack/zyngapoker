@@ -191,13 +191,15 @@ function sum(x, y) { return x+y; }
 
 Defining these hints directly inside the written sentence makes comments a lot more compact and far easier to read. And it also omits duplicating the work of creating and maintaining these information.
 
+
+
 #### Multiple Types
 
 In both, parameters and return types are *OR* connection of different types is supported. This is done using the pipe `|` symbol:
 
 ```js
 /** 
- * {Number} Returns the sum of @x {Number|String} and @y {Number|String}
+ * {Number|String} Returns the combination of @x {Number|String} and @y {Number|String}
  */
 function sum(x, y) { return x+y; }
 ```
@@ -206,7 +208,7 @@ White spaces are not important. Same result with:
 
 ```js
 /** 
- * {Number} Returns the sum of @x { Number | String } and @y { Number | String }
+ * { Number | String } Returns the combination of @x { Number | String } and @y { Number | String }
  */
 function sum(x, y) { return x+y; }
 ```
@@ -239,7 +241,7 @@ Here again white spaces are not important:
 
 ```js
 /** 
- * {Number} Calculates and returns the sum of @x { Number } and @y { Number  ? 0 }
+ * {Number} Calculates and returns the sum of @x { Number } and @y { Number ? 0 }
  */
 function sum(x, y) { return x + (y || 0); }
 ```
@@ -277,7 +279,7 @@ This also works in combination of static arguments:
 ```js
 /** 
  * {String} Concats and returns all @strings {String...}. 
- * Uses @divider {String?"|"} for separating the incoming strings.
+ * Uses @divider {String ? "|"} for separating the incoming strings.
  */
 function concat(divider, strings) 
 { 
@@ -294,12 +296,26 @@ function concat(divider, strings)
 
 
 
-
-
-
 ### Return Types
 
-If you wondered about the leading `{Number}`. That's the return type of the method `sum`. By convention if the first thing in a comment is a block of curly brackets it is parsed as a return value (or static type).
+If you wondered about the leading `{Number}`. That's the return type of the method `sum`. By convention if the first thing in a comment is a block of curly brackets it is parsed as a return value (or static type). These types also can be of any class available in your projects:
+
+```js
+/** 
+ * {my.Vector} Combines and results both vector @x {my.Vector} and @y {my.Vector}.
+ */
+function sum(x, y) { return x+y; }
+```
+
+There could also be multiple types of return values.
+
+```js
+/** 
+ * {Number|String} Returns the combination of @x {Number|String} and @y {Number|String}
+ */
+function sum(x, y) { return x+y; }
+```
+
 
 
 ### Static Types
@@ -312,7 +328,16 @@ core.Module("my.Module",
   /** {=Date} Start time */
   start : new Date()
 });
+```
 
+This works with all the project classes as well:
+
+```js
+core.Module("my.Module", 
+{
+  /** {=my.NumberFormat} Number format to use */
+  format : new my.NumberFormat("#.##")
+});
 ```
 
 ### Links
