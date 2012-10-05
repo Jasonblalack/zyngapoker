@@ -14,11 +14,11 @@ At developing the API data generator in Jasy we did not like the approach done b
 
 We felt that JSDoc repeat a lot of text. This gets especially annoying with short methods and trivial function signatures and documentation tasks. One has to typically write a lot of stuff here as well, just to correctly document things.
 
-### Markdown for the win
+### Markdown powered
 
 The API system uses Markdown for everything text. Markdown makes writing readable text easy and could be easily transformed into HTML. It supports injecting code blocks via indenting or via so-called fenced blocks.
 
-### Integrated syntax highlighter
+### Syntax highlighter
 
 All code blocks are automatically highlighted. Language to highlight can be specified in fenced code blocks (e.g. support for PHP, Python, etc. is included). The default highlighting is JavaScript.
 
