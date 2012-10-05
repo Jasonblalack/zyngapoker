@@ -214,6 +214,35 @@ function sum(x, y) { return x+y; }
 Defining these hints directly inside the written sentence makes comments a lot more compact and far easier to read. And it also omits duplicating the work of creating and maintaining these information.
 
 
+#### Multiple References
+
+The same parameters might be used multiple times in the same comment. It's good style to mark every parameter occurrence with the `@` symbol. You have to write the additional data like type and defaults only once, though. 
+
+```js
+/**
+ * {Boolean} Returns whether @x is bigger than @y.
+ *
+ * Parameters:
+ *
+ * - @x {Number}
+ * - @y {Number}
+ */
+```
+
+
+In the following example both parameters are type `Number` and not marked as optional and not defined with default values (This means that last parameter specification always wins).
+
+```js
+/**
+ * {Boolean} Returns whether @x {String ? 13} is bigger than @y.
+ *
+ * Parameters:
+ *
+ * - @x {Number}
+ * - @y {Number}
+ */
+```
+
 
 #### Multiple Types
 
@@ -451,7 +480,17 @@ There are also some Jasy internal tags to control pass meta data to the dependen
 **Note:** It's not a good idea to use these names for other proposes.
 
 
-### Code Blocks
+### Built-in types
+
+* String
+* Number
+* Boolean
+* Array
+* Object
+* Map
+
+
+
 
 
 ### Deep Objects
