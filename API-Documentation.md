@@ -425,6 +425,21 @@ Tags are used to mark an item in a special way. In theory tags could be used as 
 * visibility of an item e.g. `#public`, `#private`, ...
 * marking since when item is available e.g. `#since(1.0)`
 
+```js
+/** 
+ * Main controller of my application.
+ *
+ * #controller #since(1.3)
+ */
+core.Module("my.Controller", {
+  ...
+});
+```
+
+**Note 1:** The tags are stripped out the text during the process. They are not kept in place like parameter names. This means using tags outside sentences is a good idea - even if this means some duplication of text.
+
+**Note 2:** Tags can be listed in any way. There is no special line breaks etc. required. You can place them in one line, on multiple lines or in totally different places in the comment text.
+
 There are also some Jasy internal tags to control pass meta data to the dependency tracker in *Jasy*:
 
 * Explicit require: `#require(other.Class)`: Marking `other.Class` as explicitely required - even if not used in code.
