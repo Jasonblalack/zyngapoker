@@ -16,7 +16,7 @@ We felt that JSDoc repeat a lot of text. This gets especially annoying with shor
 
 ### Markdown powered
 
-The API system uses Markdown for everything text. Markdown makes writing readable text easy and could be easily transformed into HTML. It supports injecting code blocks via indenting or via so-called fenced blocks.
+The API system uses Markdown for everything text. Markdown makes writing readable text easy and could be easily transformed into HTML. It supports injecting code blocks via indenting or via so-called fenced blocks. If you're not already familiar with Markdown, you should spend 15 minutes and go over the [excellent Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) at Daring Fireball. In Jasy we make use of the Markdown dialect by GitHub called [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
 
 ### Syntax highlighter
 
