@@ -39,7 +39,7 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Locales]]: How to use locale support in your projects via CLDR support.
 * [[Translations]]: How to translate your projects using get text methods
 * [[Assets]]: Managing assets, custom profiles/url handling, client side APIs
-* [[API Docs]]: How to document your code properly.
+* [[API Documentation]]: How to document your code properly.
 
 ## Migration
 
