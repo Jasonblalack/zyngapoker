@@ -182,6 +182,23 @@ function sum(x, y) { return x+y; }
 
 **Note 2:** Documentation comments must not mix indenting (tabs/spaces) or number of indention. This breaks correctly parsing the comment. This is especially important to pass a correct extracted text to the Markdown parser and supporting indentation dependent features like block quotes or code sections correctly.
 
+### Protected Comments
+
+Protected comments are used to keep information about copyrights etc. These are kept in tact when and are neither processed by Markdown, syntax highlighting or comment parsing. A protected comment is formatted like a documentation comment with the difference that instead of the second star `*` to mark the comment a `!` is used. Example:
+
+```js
+/*!
+ * jQuery JavaScript Library v@VERSION
+ * http://jquery.com/
+ *
+ * Copyright 2011, John Resig
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ */ 
+```
+
+**Note:** There is still some basic outdenting and cleanup logic applied so the actual content of the comment is stored and not the leading stars on every line.
+
 
 ### Parameters
 
@@ -401,6 +418,23 @@ Links to members/events/properties works combining all the previous things:
 
 
 ### Tags
+
+Tags are used to mark an item in a special way. In theory tags could be used as some kind of second level categorization. Typical use cases for tags are:
+
+* deprecation of an item e.g. `#deprecated`
+* visibility of an item e.g. `#public`, `#private`, ...
+* marking since when item is available e.g. `#since(1.0)`
+
+There are also some Jasy internal tags to control pass meta data to the dependency tracker in *Jasy*:
+
+* Explicit require: `#require(other.Class)`: Marking `other.Class` as explicitely required - even if not used in code.
+* Explicit optional: `#optional(other.Class)`: Marking `other.Class` as optional and not required - even if used in code.
+* Explicit break: `#break(other.Class)`: Down prioritizing dependency to other class (fixing circular dependencies)
+* Explicit load: `#load(other.Class)`: Requiring but down prioritizing dependency to other class (lazy loading)
+* Required assets: `#asset(my/css/*)`: Include all assets whose ID is matched by `my/css/*` 
+
+**Note:** It's not a good idea to use these names for other proposes.
+
 
 ### Code Blocks
 
