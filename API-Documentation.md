@@ -178,6 +178,11 @@ function calc() { return this.x1 + this.x2; }
 function sum(x, y) { return x+y; }
 ```
 
+**Note 1:** Documentation comments should be placed directly on top of the item they should document. Don't use any new lines after the comment. This would break the association between the comment and the code. You can use as many line breaks before the comment - that does not has any side effect.
+
+**Note 2:** Documentation comments must not mix indenting (tabs/spaces) or number of indention. This breaks correctly parsing the comment. This is especially important to pass a correct extracted text to the Markdown parser and supporting indentation dependent features like block quotes or code sections correctly.
+
+
 ### Parameters
 
 Parameters have to use the `@` in front of the name of the parameter. The type of the parameter or its default values only needs to be assigned once to the parameter. These data is defined using curly brackets `{Number}` after the name of the parameter.
@@ -389,4 +394,15 @@ Example: `{event:#update}` will link to the event `update` even when there is an
 
 #### Combinations
 
+Links to members/events/properties works combining all the previous things:
+
+* Link to event `update` of `my.Loader`: `{my.Loader#update}`
+* Making type `event` explicit: `{event:my.Loader#update}`
+
+
 ### Tags
+
+### Code Blocks
+
+
+### Deep Objects
