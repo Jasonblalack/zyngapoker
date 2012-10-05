@@ -98,14 +98,22 @@ We felt that JSDoc repeat a lot of text. This gets especially annoying with shor
 
 
 
-## Documenting
+## Formats
 
 ### Supported Constructs
 
 Currently Jasy handles code written using the *Core* library or plain simple JavaScript constructs (with no additional magic applied):
 
-* Core Library: `core.Module`, `core.Class`, `core.Interface` (also: `core.Main.declareNamespace`, `core.Main.addStatics`, `core.Main.addMembers`)
-* Standard JavaScript Prototype: `some.name.Space = {}` or `some.name.Space = function() {}` (incl. prototype)
+* Core Library: 
+  * `core.Module`
+  * `core.Class`
+  * `core.Interface` 
+  * `core.Main.declareNamespace`
+  * `core.Main.addStatics`
+  * `core.Main.addMembers`
+* Vanilla JavaScript: 
+  * `some.name.Space = {}`
+  * `some.name.Space = function() {}` (together with `prototype` for members)
 
 ### Future Extendable
 
@@ -119,6 +127,42 @@ The approach in general is designed to be extendable so more styles might be sup
   * Properties
   * Events
   * Includes
+  * Implements
 
 New styles which should be added must also conform to these two groups for making further analysis possible.
 
+## Documenting
+
+Code comments are formatted using normal JSDoc like comment styles.
+
+### Compact Formatting
+
+```js
+/** Calculates the result */
+function calc() {}
+
+/** {Number} Returns the result */
+function calc() { return this.x1 + this.x2; }
+
+/** {Number} Calculates the sum of @x and @y */
+function sum(x, y) { return x+y; }
+```
+
+### Verbose Formatting
+
+```js
+/** 
+ * Calculates the result 
+ */
+function calc() {}
+
+/** 
+ * {Number} Returns the result 
+ */
+function calc() { return this.x1 + this.x2; }
+
+/** 
+ * {Number} Calculates and returns the sum of @x and @y 
+ */
+function sum(x, y) { return x+y; }
+```
