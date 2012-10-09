@@ -14,7 +14,7 @@ Each Jasy project is able to define requirements to other projects. These requir
 
 ### Custom Project Layout
 
-Jasy supports a set of layouts inside projects. For adding support for the various 3rd party libraries and frameworks Jasy is able to use a custom set of files and is able to files to internal file IDs (basically the exported name of a file e.g. jQuery exports `$`).
+Jasy supports a set of layouts inside projects. For adding support for the various 3rd party libraries and frameworks Jasy is able to use a custom set of files and is able to files to internal file IDs (basically the exported name of a file e.g. jQuery exports `$`). There is a [Jasy Compat]() project showcasing how to integrate jQuery, QUnit, Modernizr and Co using a Jasy configuration.
 
 ### Project Setup Routines
 
@@ -80,12 +80,22 @@ The optimizer feature in Jasy processes the AST before passing it to the compres
 
 ## 5. Assets
 
-- Integrated path abstraction support for assets (images, CSS files, ...) using project IDs instead of filesystem paths on the client side.
-  - Builds a client accessible database of available assets and their meta data. Offers easy to use APIs to access that data.
-  - Support for enterprise grade CDN hosting and checksum based URLs to load assets.
-- Generating and using image sprites (with easy to use client side API to transparently deal with the original file names).
-- Defining and using sprite animations via simple JSON files (for graphically rich animations).
-- Copies all assets to bundle them in a self contained folder. This simplifies deployment by a major extend.
+The asset feature in Jasy allows for referencing assets (images, CSS files, ...) via internal IDs instead of URLs or relative paths. This makes adding support for things like CDNs a breeze later on and easily supports different kind of deploy structures.
+
+### Image Sprites
+
+Generating and using image sprites (with easy to use client side API to transparently deal with the original file names).
+
+### Image Animations
+
+Jasy allows defining and using sprite animations via simple JSON/YAML files (for graphically rich animations).
+
+
+### Deployment
+
+Copies all assets to bundle them in a self contained folder. This simplifies deployment by a major extend.
+
+
 
 
 
@@ -125,7 +135,33 @@ Jasy inlines translation into the permutated application code. No more lookup fo
 - Support tags for easily marking classes, modules, methods etc.
 
 
+
 ## 8. Web Server
+
+The internal web server allows for easily setting up a local web server to deliver the local Jasy based application to the web browser or remote machines. The propose of this server is to make local development easier. 
+
+### Proxying / Mirroring
+
+Jasy supports proxying and mirroring remote server requests and using a full offline feature it can also work from cache only without requiring the original mirrored server. This feature is super useful for slow remote servers, for testing machines under different domains (fix CORS issues), etc. The 
+
+### Mime Types
+
+Jasy's web server comes with a good set of additional mime types to support typical HTML5 features like AppCache or modern video formats.
+
+### Multiple Routes
+
+Jasy is able to define different routes to different targets. It's easy to mix local file delivery with remote mirroring under the same server.
+
 
 
 ## 9. Scaffolding
+
+For setting up new projects Jasy comes with a pretty powerful scaffolding feature. Scaffolding works like a skeleton or boilerplate project but offers on-top configuration to make that new project directly usable after creation.
+
+### Remote Cloning
+
+New projects can be created by remote hosted projects via Git URLs. Jasy will automatically clone the repository into a new temporary folder and copies over and configures an existing skeleton from this "origin" project.
+
+
+
+
