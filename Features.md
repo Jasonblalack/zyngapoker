@@ -31,7 +31,7 @@ Each project in Jasy is able to share actual Python code with other projects. Th
 
 
 
-## 2. Permutations
+## 3. Permutations
 
 Supports permutations to fully remove code blocks, classes, assets, translations which are not required for the current build. This can happen via manual configuration e.g. disabling `debug` or via permutation which basically means to build every possible variant of the original code which is possible. The behavior of this is fully customizable inside the `jasyscript.py`. 
 
@@ -41,11 +41,16 @@ BTW: Results of all these permutations are also cached individually. And Jasy fi
 
 
 
-## 2. JavaScript 
+## 4. JavaScript 
 
 ### Parser
 
 Jasy has deep JavaScript language support through being based on a full-blown parser which itself is based on the mature Spidermonkey parser from Mozilla. Jasy even fully supports upcoming features like generators, array comprehension, etc. of JavaScript 1.8. During that process Jasy generates a easy to process [AST](http://en.wikipedia.org/wiki/Abstract_syntax_tree). This `AST` can be used to transform the original code for e.g. API documentation, code formatting, code linting, optimization, etc. Comments are attached to the generated `AST` nodes during parsing the actual code.
+
+
+### Dependencies
+
+Reliable, automatic dependency analysis for JavaScript is built in. Automatically sorts files by their requirements. Dependency analysis happens with permutations applied (e.g. debug builds might contain classes deployment builds might not contain).
 
 
 ### Compressor
@@ -54,6 +59,10 @@ The compressor feature in Jasy removes white space, comments and any formatting 
 
 
 ### Optimizer
+
+The optimizer feature in Jasy processes the AST before passing it to the compressor. It does a lot of things known from other JavaScript compressors as well. Generally speaking it optimizes code in a very stable fashion and results in comparable output file sizes like [UglifyJS](https://github.com/mishoo/UglifyJS) or [Closure Compiler](https://developers.google.com/closure/compiler/). It out performas [YUI Compressor](http://developer.yahoo.com/yui/compressor/), [qooxdoo](http://qooxdoo.org)'s generator and other older tools by a wide margin.
+
+**Details:**
 
 - Dead code elimination removes unreachable code in `if`/`else` blocks, conditional statements `?:`, `switch`/`case` and `AND`/`OR` operators.
 - Supports comparison of hard-coded or permutation added values for `boolean`, `number` and `string` types.
@@ -67,15 +76,9 @@ The compressor feature in Jasy removes white space, comments and any formatting 
 - Removes needless parens based on priority analysis on the AST
 - Renames file private variables (starting with double underscore by convention)
 
-### Dependencies
-
-Reliable, automatic dependency analysis for JavaScript is built in. Automatically sorts files by their requirements. Dependency analysis happens with permutations applied (e.g. debug builds might contain classes deployment builds might not contain).
 
 
-
-
-
-## 3. Assets
+## 5. Assets
 
 - Integrated path abstraction support for assets (images, CSS files, ...) using project IDs instead of filesystem paths on the client side.
   - Builds a client accessible database of available assets and their meta data. Offers easy to use APIs to access that data.
@@ -87,10 +90,9 @@ Reliable, automatic dependency analysis for JavaScript is built in. Automaticall
 
 
 
+## 6. Localization
 
-
-
-## 5. Localization
+### Locale Data
 
 - Translate applications with widely support gettext like `po` files.
   - Loads translations from PO-files
@@ -104,10 +106,10 @@ Reliable, automatic dependency analysis for JavaScript is built in. Automaticall
   - Fast access to data without additional API possible
   - Supports project fallback chain
 
+### Gettext Translations
 
-## 6. Translations
+Jasy inlines translation into the permutated application code. No more lookup for translation texts once compiled.
 
-- Inlines translation into the permutated application code. No more lookup for translation texts once compiled.
 
 
 
