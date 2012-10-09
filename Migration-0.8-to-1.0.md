@@ -1,0 +1,1 @@
+0.8 and 1.0 are fully compatible. No changes required.
