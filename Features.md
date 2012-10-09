@@ -1,6 +1,6 @@
 # Features
 
-## Projects
+## 1. Projects
 
 ### Project Dependencies
 
@@ -20,7 +20,7 @@ Some projects are using custom build routines which applies some kind of magic t
 
 
 
-## JavaScript 
+## 2. JavaScript 
 
 ### Parser
 
@@ -55,7 +55,7 @@ Some projects are using custom build routines which applies some kind of magic t
 
 
 
-## Assets
+## 3. Assets
 
 - Integrated path abstraction support for assets (images, CSS files, ...) using project IDs instead of filesystem paths on the client side.
   - Builds a client accessible database of available assets and their meta data. Offers easy to use APIs to access that data.
@@ -68,13 +68,13 @@ Some projects are using custom build routines which applies some kind of magic t
 
 
 
-## Permutations
+## 4. Permutations
 
 Supports permutations to fully remove code blocks, classes, assets, translations which are not required for the current build.
 
 
 
-## Localization
+## 5. Localization
 
 - Translate applications with widely support gettext like `po` files.
   - Loads translations from PO-files
@@ -89,7 +89,7 @@ Supports permutations to fully remove code blocks, classes, assets, translations
   - Supports project fallback chain
 
 
-## Documentation
+## 6. Documentation
 
 - Generating API data from JavaScripts projects with deep-analysis of dependencies etc. The data could be rendered by the [API Browser](https://github.com/zynga/apibrowser) or any other custom application.
 - Support for package documentation to allow projects to define introduction documentation for every package/node.
