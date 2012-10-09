@@ -104,41 +104,58 @@ Copies all assets to bundle them in a self contained folder. This simplifies dep
 
 ### Locale Data
 
-- Translate applications with widely support gettext like `po` files.
-  - Loads translations from PO-files
-  - Create language specific variants
-  - Replaces string instances directly inside the original file
-  - Removes overhead through translation as no function call is needed anymore
-  - Optimizes template replacement e.g. via %1 into a string "plus" operation
 - Industry standard CLDR data for localization support (date formats, calenders, etc.)
-  - Rebuilds XML files to nicely useable ultra-modular JSON data classes
-  - Integrates with dependency system
-  - Fast access to data without additional API possible
-  - Supports project fallback chain
+- Rebuilds XML files to nicely useable ultra-modular JSON data classes
+- Integrates with dependency system
+- Fast access to data without additional API possible
+- Supports project fallback chain
 
 ### Gettext Translations
 
-Jasy inlines translation into the permutated application code. No more lookup for translation texts once compiled.
+- Translate applications with widely support gettext like `po` files.
+- Loads translations from PO-files
+- Create language specific variants
+- Replaces string instances directly inside the original file
+- Removes overhead through translation as no function call is needed anymore
+- Optimizes template replacement e.g. via %1 into a string "plus" operation
+- Jasy inlines translation into the permutated application code. No more lookup for translation texts once compiled.
 
 
 
 
 ## 7. Documentation
 
-- Generating API data from JavaScripts projects with deep-analysis of dependencies etc. The data could be rendered by the [API Browser](https://github.com/zynga/apibrowser) or any other custom application.
-- Support for package documentation to allow projects to define introduction documentation for every package/node.
-- Generates API data from different JavaScript declarations (core library, native prototype, ...)
-  - Supports classes, mixins, interfaces, events and properties
-  - Supports links to native types like `String`, `Array`, etc.
-  - Merges polyfills to target classes e.g. `String.prototype` even if file is named differently.
-- Translates [Markdown](http://daringfireball.net/projects/markdown/) content into HTML and applies syntax highlighting to code sections. Uses GitHubs extended high performance [Sundown](https://github.com/tanoku/sundown) Markdown parser and the widely used [Pygments](http://pygments.org/) for syntax highlighting.
-- Support tags for easily marking classes, modules, methods etc.
+Jayy is able to generate API data from JavaScripts projects with deep-analysis of dependencies etc. The data could be rendered by the [API Browser](https://github.com/zynga/apibrowser) or any other custom application.
+
+### Package Documentation
+
+Jasy supports package documentation to allow projects to define introduction documentation for every package/namespace.
+
+### Dialects
+
+Jasy generates API data from different JavaScript declarations (core library, native prototype, ...)
+
+- Supports classes, mixins, interfaces, events and properties
+- Supports links to native types like `String`, `Array`, etc.
+- Merges polyfills to target classes e.g. `String.prototype` even if file is named differently.
+
+### Markdown
+
+Jasy translates [Markdown](http://daringfireball.net/projects/markdown/) content into HTML and applies syntax highlighting to code sections. It uses GitHubs extended high performance [Sundown](https://github.com/tanoku/sundown) Markdown parser and the widely used [Pygments](http://pygments.org/) for syntax highlighting.
+
+### Tags
+
+Support for tags to easily marking classes, modules, methods etc. is built in as well.
 
 
 
 ## 8. Web Server
 
 The internal web server allows for easily setting up a local web server to deliver the local Jasy based application to the web browser or remote machines. The propose of this server is to make local development easier. 
+
+### Multiple Routes
+
+Jasy is able to define different routes to different targets. It's easy to mix local file delivery with remote mirroring under the same server.
 
 ### Proxying / Mirroring
 
@@ -148,15 +165,23 @@ Jasy supports proxying and mirroring remote server requests and using a full off
 
 Jasy's web server comes with a good set of additional mime types to support typical HTML5 features like AppCache or modern video formats.
 
-### Multiple Routes
-
-Jasy is able to define different routes to different targets. It's easy to mix local file delivery with remote mirroring under the same server.
 
 
 
 ## 9. Scaffolding
 
 For setting up new projects Jasy comes with a pretty powerful scaffolding feature. Scaffolding works like a skeleton or boilerplate project but offers on-top configuration to make that new project directly usable after creation.
+
+
+### Placeholders
+
+Jasy supports modifiying the original code of the skeleton to match the requirements of the new project. It automatically replaces placeholders in all files by the actual values defined via questions or command line parameters.
+
+
+### Custom Setup Routines / Questions
+
+The skeleton is able to define questions for confiuguration. These can be answered interactively during project creation or pre-defined via command line parameters. Questions can also be interactive and fine tune the original skeleton in quite powerful ways. For that Jasy supports a custom `jasycreate.py` for writing down custom code which is executed on the files copied over from the skeleton.
+
 
 ### Remote Cloning
 
