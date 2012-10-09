@@ -1,5 +1,8 @@
 # Features
 
+## 1. Scriptable
+
+
 ## 1. Projects
 
 ### Project Dependencies
@@ -16,6 +19,16 @@ Some projects are using custom build routines which applies some kind of magic t
 
 ### Remote Projects
 
+Jasy can automatically clone Git projects by all supported URLs from private and public repositories. It uses so called shallow clones to improve download speed and reduced disk space usage. Jasy is smart enough to update branches automatically on every run (reducing the hassle with typical Git sub modules) while keeping tagged versions in their original state. Switching between versions is as easy as updating the configuration file and pushing the change to that file to the server. All other users of the projects will download the new version of the dependency automatically with the next time they execute Jasy.
+
+
+
+## 2. Permutations
+
+Supports permutations to fully remove code blocks, classes, assets, translations which are not required for the current build. This can happen via manual configuration e.g. disabling `debug` or via permutation which basically means to build every possible variant of the original code which is possible. The behavior of this is fully customizable inside the `jasyscript.py`. 
+
+BTW: Results of all these permutations are also cached individually. And Jasy figures out which file uses which code mutations to not permutate files which are not affected by specific settings.
+
 
 
 
@@ -30,15 +43,13 @@ Some projects are using custom build routines which applies some kind of magic t
 
 ### Compressor
 
+Removes white space, comments and any formatting from original code.
+
 ### Optimizer
 
-- Removes white space, comments and any formatting from original code.
-- Inlines translation into the permutated application code. No more lookup for translation texts once compiled.
-- Optimizations happens in the same league of [Google Closure Compiler](https://developers.google.com/closure/compiler/) and [Uglify](https://github.com/mishoo/UglifyJS).
 - Dead code elimination removes unreachable code in `if`/`else` blocks, conditional statements `?:`, `switch`/`case` and `AND`/`OR` operators.
 - Supports comparison of hard-coded or permutation added values for `boolean`, `number` and `string` types.
 - Groups single `var` statements into blocks.
-- Renames file private variables (starting with double underscore by convention)
 - Removes needless blocks (with just one statement)
 - Automatically combines strings and numbers (e.g. "Version " + 1.3 => "Version 1.3")
 - Optimizes if(-else) statements with expressions as content
@@ -46,10 +57,11 @@ Some projects are using custom build routines which applies some kind of magic t
   - Translates if-statements with else using conditional operator `? :` (especially worth with returns/assignments)
 - Removes needless else (if previous if-block ends with a return/throw statement)
 - Removes needless parens based on priority analysis on the AST
+- Renames file private variables (starting with double underscore by convention)
 
 ### Dependencies
 
-- Reliable, automatic dependency analysis for JavaScript is built in. Automatically sorts files by their requirements. Dependency analysis happens with permutations applied (e.g. debug builds might contain classes deployment builds might not contain).
+Reliable, automatic dependency analysis for JavaScript is built in. Automatically sorts files by their requirements. Dependency analysis happens with permutations applied (e.g. debug builds might contain classes deployment builds might not contain).
 
 
 
@@ -68,10 +80,6 @@ Some projects are using custom build routines which applies some kind of magic t
 
 
 
-## 4. Permutations
-
-Supports permutations to fully remove code blocks, classes, assets, translations which are not required for the current build.
-
 
 
 ## 5. Localization
@@ -89,7 +97,13 @@ Supports permutations to fully remove code blocks, classes, assets, translations
   - Supports project fallback chain
 
 
-## 6. Documentation
+## 6. Translations
+
+- Inlines translation into the permutated application code. No more lookup for translation texts once compiled.
+
+
+
+## 7. Documentation
 
 - Generating API data from JavaScripts projects with deep-analysis of dependencies etc. The data could be rendered by the [API Browser](https://github.com/zynga/apibrowser) or any other custom application.
 - Support for package documentation to allow projects to define introduction documentation for every package/node.
@@ -99,3 +113,9 @@ Supports permutations to fully remove code blocks, classes, assets, translations
   - Merges polyfills to target classes e.g. `String.prototype` even if file is named differently.
 - Translates [Markdown](http://daringfireball.net/projects/markdown/) content into HTML and applies syntax highlighting to code sections. Uses GitHubs extended high performance [Sundown](https://github.com/tanoku/sundown) Markdown parser and the widely used [Pygments](http://pygments.org/) for syntax highlighting.
 - Support tags for easily marking classes, modules, methods etc.
+
+
+## 8. Web Server
+
+
+## 9. Scaffolding
