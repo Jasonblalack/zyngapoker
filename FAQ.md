@@ -21,7 +21,7 @@ Python is great for tools. It's used at Google for a lot of administration tasks
 
 ## Start development
 
-### Do i have to install Jasy?
+### Do I have to install Jasy?
 
 If you don't want to install Jasy like described in the [wiki](https://github.com/zynga/jasy/wiki), simply clone the repository and call Jasy via `$ bin/jasy` from the directories root.  
 
