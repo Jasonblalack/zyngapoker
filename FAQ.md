@@ -21,6 +21,10 @@ Python is great for tools. It's used at Google for a lot of administration tasks
 
 ## Start development
 
+### Do i have to install Jasy?
+
+If you don't want to install Jasy like described in the [wiki](https://github.com/zynga/jasy/wiki), simply clone the repository and call Jasy via `$ bin/jasy` from the directories root.  
+
 ### Is there a smart sample project to start coding from?
 
 Of course! Check out our [Jasy-Boilerplate project](https://github.com/zynga/jasy-html5-boilerplate) and its [QuickStart guide](https://github.com/zynga/jasy-html5-boilerplate/wiki/QuickStart) for beginners.
@@ -29,4 +33,6 @@ Of course! Check out our [Jasy-Boilerplate project](https://github.com/zynga/jas
 
 Yes. Use `$ jasy doctor` to check if all Jasy requirements are installed and up to date and, if not, to get install instructions.
 
-Look up all the scripting functionality of Jasy with `$ jasy showapi`.
+Look up the scripting functionality of Jasy with `$ jasy showapi`.
+
+
