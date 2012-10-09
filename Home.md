@@ -46,3 +46,4 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Migration 0.5 to 0.6]]
 * [[Migration 0.6 to 0.7]]
 * [[Migration 0.7 to 0.8]]
+* [[Migration 0.8 to 1.0]]
