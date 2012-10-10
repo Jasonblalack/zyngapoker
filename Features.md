@@ -82,21 +82,38 @@ In detail this means:
 
 The asset feature in Jasy allows for referencing assets (images, fonts, style sheets, ...) via internal IDs instead of URLs or relative paths. This makes adding support for things like CDNs a breeze later on and easily supports different kind of deployment structures.
 
-### Image Sprites
+In Jasy assets are included by having a JavaScript file requiring them. This means that you are able to define which assets a specific JavaScript class is requiring and only if that class is included into the build the required assets are indexed/copied as well.
 
-Generating and using image sprites (with easy to use client side API to transparently deal with the original file names).
+**Note:** The asset managment requires the [Core Library](http://github.com/zynga/core) on the client side to offer the required APIs. To make use of the `AssetManager` is Jasy projects have to require this library in their configuration.
 
-### Image Animations
 
-Jasy allows defining and using sprite animations via simple JSON/YAML files (for graphically rich animations).
+### Meta Data
+
+Meta data for assets can be automatically pushed to the client as well. Currently this is implemented to send image sizes to the client. This allows for layouting these images without actually having loaded them which is quite useful for building DOM structures in memory.
+
+**Note:** In the future we might add information like video codecs, play duration, file size, etc. The implementation is pretty extensible for supporting these things.
+
 
 ### Deployment
 
-Copies all assets to bundle them in a self contained application folder. This simplifies deployment by a major extend. All relevant files are locally available after deployment.
+During the deployment of assets all files used by the current list of JavaScript files are copied over to the destination folder. The resulting folder is self contained and all relevant assets - even from different projects - are merged into that exact folder.
 
 
+### Image Sprites
+
+Jasy supports image sprite. This consists of two parts: 
+
+1. Creating image sprites and required configuration files from folders of images (via scripting). This uses intelligent packing algortithms to optimize the memory and size of these images automatically.
+2. Using configuration files (could also be hand written instead of generated) to determine which images are part of an image sprite and pushing that info to the client.
+
+On the client only the separate files are being used – not the image sprite name. Jasy takes care of publishing that knowledge to the client. This means that image sprites can be enabled later during development as well - and that without changing a single line of code.
 
 
+### Image Animations
+
+Jasy allows defining and using sprite animations via simple configuration files. These files store the information about how such a animated image is layouted e.g. how many rows and columns are there or whether a fully custom layout is used. Identical to image sprites there are some nice APIs on the client side offered by the [Core Library](http://github.com/zynga/core). These allows accessing a specific frame of an animated image. These return the position and size of the section of the image to render.
+
+**Note:** Image animations could be also stored inside image sprites. Offsets are correctly handled even in that more complex scenario.
 
 
 ## 6. Localization
