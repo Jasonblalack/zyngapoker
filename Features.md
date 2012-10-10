@@ -31,24 +31,7 @@ Each project in Jasy is able to share actual Python code with other projects. Th
 
 
 
-## 3. Permutations
-
-Permutations in Jasy are basically a feature to mutate code and dependencies based on the state of configuration fields. Jasy automatically build permutation objects based on all (configured) possible values of each activated field. For example there might be these fields:
-
-- `engine`: `webkit`, `gecko`, `trident`, `presto`
-- `debug`: `true`, `false`
-- `device`: `smartphone`, `tablet`, `desktop`, `tv`
-
-This configuration would generate a list of `4*2*3 = 24` permutation objects covering all possible values. For every permutation in this list Jasy is able to create separate files, separate folder structures, separate application bundles, etc. This is totally flexible and is fully scriptable in the `jasyscript.py`.
-
-The JavaScript API in Jasy is also able to use permutation data to mutate JavaScript code and this way dependencies to other classes (dependency tracking is done after applying permutations). Basically every method on a class object is able to handle an incoming permutation object and is able to return data based on the mutated code.
-
-**Note:** Regarding performance: Permutations and their effect on the code is heavily cached. Jasy figures out which fields are accessed in each class, only applies relevant permutations and caches the results individually.
-
-
-
-
-## 4. JavaScript 
+## 3. JavaScript 
 
 ### Parser
 
@@ -82,6 +65,22 @@ In detail this means:
 - Removes needless else (if previous if-block ends with a return/throw statement)
 - Removes needless parens based on priority analysis on the AST
 - Renames file private variables (starting with double underscore by convention)
+
+
+
+## 4. Permutations
+
+Permutations in Jasy are basically a feature to mutate code and dependencies based on the state of configuration fields. Jasy automatically build permutation objects based on all (configured) possible values of each activated field. For example there might be these fields:
+
+- `engine`: `webkit`, `gecko`, `trident`, `presto`
+- `debug`: `true`, `false`
+- `device`: `smartphone`, `tablet`, `desktop`, `tv`
+
+This configuration would generate a list of `4*2*3 = 24` permutation objects covering all possible values. For every permutation in this list Jasy is able to create separate files, separate folder structures, separate application bundles, etc. This is totally flexible and is fully scriptable in the `jasyscript.py`.
+
+The JavaScript API in Jasy is also able to use permutation data to mutate JavaScript code and this way dependencies to other classes (dependency tracking is done after applying permutations). Basically every method on a class object is able to handle an incoming permutation object and is able to return data based on the mutated code.
+
+**Note:** Regarding performance: Permutations and their effect on the code is heavily cached. Jasy figures out which fields are accessed in each class, only applies relevant permutations and caches the results individually.
 
 
 
