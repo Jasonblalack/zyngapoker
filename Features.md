@@ -116,15 +116,13 @@ Locale data is always using a fallback chain. It exports data starting with the 
 
 Translations via Gettext are pretty much standard in the open source world and are available in many programming languages (PHP, Python, …) and Frameworks. Jasy builds on top of *polib* to offer an integrated support for translations build on data available in so called po files. Jasy supports the full range of features supported by the PO file format e.g. multi plural forms / rules, context translations, etc.
 
+Translations follow the same logic as locales falling back from full locale `de_AT` to language `de` to original text (used in implementation). 
 
-- Translate applications with widely support gettext like `po` files.
-- Loads translations from PO-files
-- Create language specific variants
-- Replaces string instances directly inside the original file
-- Removes overhead through translation as no function call is needed anymore
-- Optimizes template replacement e.g. via %1 into a string "plus" operation
-- Jasy inlines translation into the permutated application code. No more lookup for translation texts once compiled.
+Jasy is able to patch the original code with translated strings. This is a pretty powerful feature with a lot of benefits:
 
+1. Reducing overhead calling methods like `tr`, `trn`, etc and this way improving performance.
+2. Reducing data transfer to client (no original text anymore, to map to lookup original text for translation)
+3. Replacing template constructs with `%1` etc. into string concats for better performance e.g. `"Hello %1"` is translated into `"Hello " + variable`.
 
 
 
