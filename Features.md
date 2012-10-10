@@ -2,8 +2,13 @@
 
 ## 1. Scriptable
 
-Jasy uses a full scripting language to define tasks. This allows the widest flexibility for the developer. Instead of being limited to a configuration like [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) you can interact with data and methods like in a real programming languages (in fact you are writing your tasks in Python 3). Developers are able to modify results of one method and pass the result into a second method. This kind of flexibility allows Jasy being used in a wide array of projects and situations.
+Jasy uses a full scripting language to define tasks. This allows the widest flexibility for the developer. 
 
+Instead of being limited to a configuration like [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) you can interact with data and methods like in a real programming languages (in fact you are writing your tasks in Python 3). Developers are able to modify results from one method and pass the result into a second method. This kind of flexibility allows Jasy being used in a wide array of projects and situations.
+
+In Jasy you define tasks which are callable from the outside aka on the command line. But the key is one can also have other custom methods and classes one can make use of. It's possible to import any features and modules offered by the standard Python library or locally installed packages e.g. via *pip*.
+
+Tasks support having parameters. These are automatically offered on the command line via `jasy taskname --optionname optionvalue` etc.
 
 
 ## 2. Projects
