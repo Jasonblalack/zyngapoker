@@ -60,7 +60,7 @@ The compressor feature in Jasy removes white space, comments and any formatting 
 
 ### Optimizer
 
-The optimizer feature in Jasy processes the AST before passing it to the compressor. It does a lot of things known from other JavaScript compressors as well. Generally speaking it optimizes code in a very stable fashion and results in comparable output file sizes like [UglifyJS](https://github.com/mishoo/UglifyJS) or [Closure Compiler](https://developers.google.com/closure/compiler/). It out performas [YUI Compressor](http://developer.yahoo.com/yui/compressor/), [qooxdoo](http://qooxdoo.org)'s generator and other older tools by a wide margin.
+The optimizer feature in Jasy processes the AST before passing it to the compressor. It does a lot of things known from other JavaScript compressors as well. Generally speaking it optimizes code in a very stable fashion and results in comparable output file sizes like [UglifyJS](https://github.com/mishoo/UglifyJS) or [Closure Compiler](https://developers.google.com/closure/compiler/). It out performs [YUI Compressor](http://developer.yahoo.com/yui/compressor/), [qooxdoo](http://qooxdoo.org)'s *generator* and other older tools by a wide margin.
 
 In detail this means:
 
@@ -80,7 +80,7 @@ In detail this means:
 
 ## 5. Assets
 
-The asset feature in Jasy allows for referencing assets (images, CSS files, ...) via internal IDs instead of URLs or relative paths. This makes adding support for things like CDNs a breeze later on and easily supports different kind of deploy structures.
+The asset feature in Jasy allows for referencing assets (images, fonts, style sheets, ...) via internal IDs instead of URLs or relative paths. This makes adding support for things like CDNs a breeze later on and easily supports different kind of deployment structures.
 
 ### Image Sprites
 
@@ -89,7 +89,6 @@ Generating and using image sprites (with easy to use client side API to transpar
 ### Image Animations
 
 Jasy allows defining and using sprite animations via simple JSON/YAML files (for graphically rich animations).
-
 
 ### Deployment
 
@@ -160,6 +159,7 @@ Jasy translates [Markdown](http://daringfireball.net/projects/markdown/) content
 ### Tags
 
 Support for tags to easily marking classes, modules, methods etc. is built in as well. That's useful for marking properties like `deprecated`, `overridden`, `new`, etc.
+
 
 
 
