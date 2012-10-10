@@ -33,10 +33,17 @@ Each project in Jasy is able to share actual Python code with other projects. Th
 
 ## 3. Permutations
 
-Supports permutations to fully remove code blocks, classes, assets, translations which are not required for the current build. This can happen via manual configuration e.g. disabling `debug` or via permutation which basically means to build every possible variant of the original code which is possible. The behavior of this is fully customizable inside the `jasyscript.py`. 
+Permutations in Jasy are basically a feature to mutate code and dependencies based on the state of configuration fields. Jasy automatically build permutation objects based on all (configured) possible values of each activated field. For example there might be these fields:
 
-BTW: Results of all these permutations are also cached individually. And Jasy figures out which file uses which code mutations to not permutate files which are not affected by specific settings.
+- `engine`: `webkit`, `gecko`, `trident`, `presto`
+- `debug`: `true`, `false`
+- `device`: `smartphone`, `tablet`, `desktop`, `tv`
 
+This configuration would generate a list of `4*2*3 = 24` permutation objects covering all possible values. For every permutation in this list Jasy is able to create separate files, separate folder structures, separate application bundles, etc. This is totally flexible and is fully scriptable in the `jasyscript.py`.
+
+The JavaScript API in Jasy is also able to use permutation data to mutate JavaScript code and this way dependencies to other classes (dependency tracking is done after applying permutations). Basically every method on a class object is able to handle an incoming permutation object and is able to return data based on the mutated code.
+
+**Note:** Regarding performance: Permutations and their effect on the code is heavily cached. Jasy figures out which fields are accessed in each class, only applies relevant permutations and caches the results individually.
 
 
 
