@@ -11,6 +11,7 @@ In Jasy you define tasks which are callable from the outside aka on the command 
 Tasks support having parameters. These are automatically offered on the command line via `jasy taskname --optionname optionvalue` etc.
 
 
+
 ## 2. Projects
 
 ### Project Dependencies
@@ -32,6 +33,10 @@ Jasy can automatically clone Git projects by all supported URLs from private and
 ### Shared Code
 
 Each project in Jasy is able to share actual Python code with other projects. This is conveniently pre-configurd. One only has to add a `jasylibrary.py` to the root folder of a project and add the `@share` decorator to methods which should be shared to the outside. The exported methods will be part of an object called like the project name in the `jasyscript.py` of the including project.
+
+### Remote Tasks
+
+Jasy is able to execute tasks from another project in the local context. 
 
 
 
@@ -134,7 +139,7 @@ The JavaScript API in Jasy is also able to use permutation data to mutate JavaSc
 
 ### Locale Data
 
-The locale support in Jasy is build on the industry standard CLDR data used by Microsoft, Oracle, IBM and Co as well. It contains information about date and number formats, calendars, sorting priorities, etc.
+The locale support in Jasy is build on the industry standard CLDR data (fully included in the Jasy distribution package) used by Microsoft, Oracle, IBM and Co as well. It contains information about date and number formats, calendars, sorting priorities, etc.
 
 Jasy rebuilds the XML files of each locale into an Jasy-enabled project which is dynamically added during processing the permutations ("locale" is one built-in permutatiomn option).
 
@@ -233,5 +238,44 @@ The skeleton is able to define questions for confiuguration. These can be answer
 New projects can be created by remote hosted projects via Git URLs. Jasy will automatically clone the repository into a new temporary folder and copies over and configures an existing skeleton from this "origin" project.
 
 
+
+
+## 10. Foundation
+
+### Cache
+
+A lot of Jasy's functionality is built upon a so-called binary cache based on `shelve`. This system uses a single cache file per project, intensively caches access and write to the memory and improved IO on most system by a large extend compared to single file based implementations.
+
+### Configuration
+
+Jasy supports either YAML or JSON files for configuration and works fine mixing both configuration file types (e.g. using JSON in one project and YAML in another).
+
+### Console
+
+Jasy's logging infrastructure supports auto structuring mesages. It supports colorizing output for terminals.
+
+### Doctor
+
+The doctor in Jasy offer a self inspection infrastructure to verify whether all required components are installed and up-to-date.
+
+### File Manager
+
+An easy to use API makes it possible doing simple file operations with Unix like commands. The file manager also offers some magic regarding placeholders in file names so that you can easily make use of the current permutation checksum, prefix, etc.
+
+### Git
+
+Jasy has a pretty good support for Git repository and is able to clone them, figuring out the current branch, updating them, etc.
+
+### Markdown
+
+Jasy integrates a pretty powerful Markdown implementation. This is mainly used by the API generator but can be used to transform other Markdown files in custom tasks as well.
+
+### Output Manager
+
+The output manager is the central instance to manage all optimization and formatting of generated files e.g. adding line breaks to JavaScript, indent JSON, etc.
+
+### Tasks
+
+Tasks in Jasy are the main coding block of `jasyscript.py` files. All methods decorated with the `task` method are made publically available on the command line. The documentation of these methods and their exact signature is automatically shown on the help screen as well.
 
 
