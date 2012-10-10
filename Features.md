@@ -68,23 +68,7 @@ In detail this means:
 
 
 
-## 4. Permutations
-
-Permutations in Jasy are basically a feature to mutate code and dependencies based on the state of configuration fields. Jasy automatically build permutation objects based on all (configured) possible values of each activated field. For example there might be these fields:
-
-- `engine`: `webkit`, `gecko`, `trident`, `presto`
-- `debug`: `true`, `false`
-- `device`: `smartphone`, `tablet`, `desktop`, `tv`
-
-This configuration would generate a list of `4*2*3 = 24` permutation objects covering all possible values. For every permutation in this list Jasy is able to create separate files, separate folder structures, separate application bundles, etc. This is totally flexible and is fully scriptable in the `jasyscript.py`.
-
-The JavaScript API in Jasy is also able to use permutation data to mutate JavaScript code and this way dependencies to other classes (dependency tracking is done after applying permutations). Basically every method on a class object is able to handle an incoming permutation object and is able to return data based on the mutated code.
-
-**Note:** Regarding performance: Permutations and their effect on the code is heavily cached. Jasy figures out which fields are accessed in each class, only applies relevant permutations and caches the results individually.
-
-
-
-## 5. Assets
+## 4. Assets
 
 The asset feature in Jasy allows for referencing assets (images, fonts, style sheets, ...) via internal IDs instead of URLs or relative paths. This makes adding support for things like CDNs a breeze later on and easily supports different kind of deployment structures.
 
@@ -120,6 +104,25 @@ On the client only the separate files are being used – not the image sprite na
 Jasy allows defining and using sprite animations via simple configuration files. These files store the information about how such a animated image is layouted e.g. how many rows and columns are there or whether a fully custom layout is used. Identical to image sprites there are some nice APIs on the client side offered by the [Core Library](http://github.com/zynga/core). These allows accessing a specific frame of an animated image. These return the position and size of the section of the image to render.
 
 **Note:** Image animations could be also stored inside image sprites. Offsets are correctly handled even in that more complex scenario.
+
+
+
+
+## 5. Permutations
+
+Permutations in Jasy are basically a feature to mutate code and dependencies based on the state of configuration fields. Jasy automatically build permutation objects based on all (configured) possible values of each activated field. For example there might be these fields:
+
+- `engine`: `webkit`, `gecko`, `trident`, `presto`
+- `debug`: `true`, `false`
+- `device`: `smartphone`, `tablet`, `desktop`, `tv`
+
+This configuration would generate a list of `4*2*3 = 24` permutation objects covering all possible values. For every permutation in this list Jasy is able to create separate files, separate folder structures, separate application bundles, etc. This is totally flexible and is fully scriptable in the `jasyscript.py`.
+
+The JavaScript API in Jasy is also able to use permutation data to mutate JavaScript code and this way dependencies to other classes (dependency tracking is done after applying permutations). Basically every method on a class object is able to handle an incoming permutation object and is able to return data based on the mutated code.
+
+**Note:** Regarding performance: Permutations and their effect on the code is heavily cached. Jasy figures out which fields are accessed in each class, only applies relevant permutations and caches the results individually.
+
+
 
 
 ## 6. Localization
