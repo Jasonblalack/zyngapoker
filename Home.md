@@ -14,7 +14,7 @@ We have different tutorials for installing Jasy specific to the operating system
 * [[Mac OS X]]
 * [[Linux]]
 
-**Warning**: Installation of Jasy dependency *requests* is [broken with version 0.14.2 in Python 3](https://github.com/kennethreitz/requests/issues/916). Try install *requests* on your own and/or verify that the version is between 0.13 and 0.14.1. Sorry for the inconvenience.
+**Warning**: Installation of Jasy dependency *requests* is [broken with version 0.14.2 in Python 3](https://github.com/kennethreitz/requests/issues/916). Try install *requests* on your own and/or verify that the version is between 0.13 and 0.14.1 (`pip install requests==0.14.1`). Sorry for the inconvenience.
 
 *Doctor*: There is a built-in task called "doctor" which can be used to easily verify an environment. Just call `jasy doctor` when installed or `bin/jasy doctor` in your repository clone.
 
